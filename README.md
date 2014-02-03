@@ -10,10 +10,10 @@ Requirements:
 
     1.Tornado
     2.Jinja2
-    3.PostgresSQL
+    3.SQLite3
     4.Markdown
 
 License
 =====
 
-MIT License.
+Please read the MIT-LICENSE
