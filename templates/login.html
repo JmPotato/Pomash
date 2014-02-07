@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-4 col-md-offset-5">
+        <div class="container">
+            <h1>Login</h1>
+        </div>
+    </div>
+</div>
+<div class="col-md-4 col-md-offset-4">
+    <dic class="container">
+        <form role="form" method="POST">
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-control" placeholder="Username" name="username">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" placeholder="Password" name="password">
+            </div>
+            <button type="submit" class="btn btn-default btn-block">Ok</button>
+        </form>
+    </dic>
+</div>
+{% if not_login %}
+<div class="container">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="alert alert-danger">Oh snap! Your password looks like wrong.</div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

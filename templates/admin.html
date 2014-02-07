@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Admin Panel</h3>
+    </div>
+    <div class="panel-body">
+        <h4>Hello! {{ blog_author }}. Welcome back!</h4>
+    </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="/admin/new" class="btn btn-primary btn-lg">Write a new article</a>
+        </li>
+        <li class="list-group-item">
+            <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Article Name</th>
+                    <th>Last Update</th>
+                    <th>Manage</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for article in articlesList %}
+                <tr>
+                    <td>{{ article.id }}</td>
+                    <td>{{ article.title }}</td>
+                    <td>{{ article.date }}</td>
+                    <td>
+                        <a href="/admin/edit/{{ article.id }}" class="btn btn-primary btn-xs">Edit</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        </li>
+    </ul>
+</div>
+{% endblock %}

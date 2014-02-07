@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% for artcile in articlesList %}
+<div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="text-align:center">{{ artcile.title }}</h3>
+        </div>
+        <div class="panel-body">
+            <h4>{{ artcile.content }}</h4>
+        </div>
+        <div class="panel-footer">
+            Post on {{ artcile.date }}
+            <div style="float:right">Tags: {{ artcile.tags }}</div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
