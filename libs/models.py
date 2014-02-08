@@ -27,3 +27,13 @@ def creat_article(**kwargs):
 def creat_category(name):
     category_id = db.execute('''INSERT INTO category (name) VALUES (?);''', name)
     return category_id
+
+
+def delete_article(id):
+    db.execute("DELETE FROM articles WHERE id=?;", id)
+    db.execute("DELETE FROM category WHERE articles_id=?;", id)
+    return True
+
+def delete_category(category_name):
+    db.execute("DELETE FROM category WHERE id=?;", category_name)
+    return True
