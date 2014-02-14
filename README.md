@@ -9,9 +9,8 @@ Installation
 Requirements:
 
     1.Tornado
-    2.Jinja2
-    3.SQLite3
-    4.Markdown
+    2.SQLite3
+    3.Markdown
 
 License
 =====
