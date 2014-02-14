@@ -12,7 +12,7 @@ if not os.path.exists("blog.db"):
              (username text NOT NULL PRIMARY KEY, password text NOT NULL, token text);''')
     print "Creat Admin Config......"
     c.execute('''CREATE TABLE articles 
-             (id integer NOT NULL PRIMARY KEY autoincrement, title text NOT NULL, content text NOT NULL, category text NOT NULL, datetime date NOT NULL);''')
+             (id integer NOT NULL PRIMARY KEY autoincrement, title text NOT NULL, content text NOT NULL, category text NOT NULL, datetime text NOT NULL);''')
     print "Creat Article Database......"
     c.execute('''CREATE TABLE category
              (id integer NOT NULL PRIMARY KEY autoincrement, name text NOT NULL, articles_id integer);''')
@@ -25,8 +25,6 @@ if not os.path.exists("blog.db"):
     conn.commit()
     conn.close()
     print "Successful to creat database file."
-    print "Please move your database file to libs file!!"
 else:
     print "Database File already exists."
     print "Failed to create database file."
-    print "Please remove database file first."

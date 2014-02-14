@@ -1,12 +1,24 @@
+import os
 import datetime
 
 from tools import *
 
-db = Connection("blog.db")
+class DatabaseError(Exception):
+    def __init__(self, content):
+        Exception.__init__(self)
+
+if os.path.exists("blog.db"):
+    db = Connection("blog.db")
+else:
+    raise DatabaseError("Database file not found !")
 
 def get_article(id):
     article = db.get("SELECT * FROM articles WHERE id = ?;", id)
     return article
+
+def get_articles(count):
+    articles = db.query("SELECT * FROM articles ORDER BY id DESC LIMIT ?;",count)
+    return articles
 
 def get_article_by_category(category_name):
     articles = db.get("SELECT articles_id FROM category WHERE name = ?;", category_name)
@@ -19,8 +31,8 @@ def update_article(id, **kwargs):
 
 def creat_article(**kwargs):
     today = datetime.date.today()
-    sql = '''INSERT INTO article (title, content, category) VALUES (?,?,?,?);'''
-    article_id = db.execute(sql, kwargs["title"], kwargs["content"], kwargs["category"], today)
+    sql = '''INSERT INTO articles (title, content, category, datetime) VALUES (?,?,?,?);'''
+    article_id = db.execute(sql, kwargs["title"], kwargs["content"], kwargs["category"], str(today))
     return article_id
 
 def creat_category(name):

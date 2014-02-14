@@ -33,4 +33,4 @@ class BaseHandler(tornado.web.RequestHandler):
 
 class HomeHandler(BaseHandler):
     def get(self):
-        self.render("home.html", title = blog_name, blog_url = blog_url, blog_name = blog_name, articlesList = [])
+        self.render("home.html", title = blog_name, blog_url = blog_url, blog_name = blog_name, articlesList = get_articles(4))

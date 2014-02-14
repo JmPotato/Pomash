@@ -4,7 +4,7 @@ import tornado.httpserver
 from tornado.options import define, options
 from Pomash import Application
 
-define("port", default=8888, help="run on the given port for develop", type=int)
+define("port", default=8080, help="run on the given port for develop", type=int)
 
 def main():
     tornado.options.parse_command_line()

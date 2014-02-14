@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
     <title>{{ title }}</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ static_url("css/style.css") }}">
     {% block header %}
     {% end %}
 </head>
@@ -37,16 +37,13 @@
             {% block content %}
             {% end %}
         </div>
-        <div class="row">
-            <hr/>
-            <div class="footer">
-                Powered by 
-                <a href="https://github.com/JmPotato/Pomash">Pomash</a> 
-                &
-                Created by 
-                <a href="http://ipotato.me">JmPotato</a>
-            </div>
-        </div>
     </div>
+</div>
+<div class="footer">
+    Powered by 
+    <a href="https://github.com/JmPotato/Pomash">Pomash</a> 
+    &
+    Created by 
+    <a href="http://ipotato.me">JmPotato</a>
 </div>
 </html>
