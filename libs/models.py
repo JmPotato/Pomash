@@ -1,9 +1,8 @@
 import datetime
-import sqlite3
 
 from tools import *
 
-db = sqlite.Connection("blog.db")
+db = Connection("blog.db")
 
 def get_article(id):
     article = db.get("SELECT * FROM articles WHERE id = ?;", id)

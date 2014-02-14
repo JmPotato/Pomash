@@ -4,7 +4,7 @@ blog_author = "JmPotato"
 blog_url = "/"
 
 #Please Change it!!!!!!
-cookie_secret = "2Easdu344HK#(98dsdOhgRTDj/Vo="
+cookie_secret = "2Easdu344FGDS#$!8dsdOhgo="
 
 #Admin Settings
 login_username = "admin"
