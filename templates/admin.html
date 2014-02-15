@@ -6,11 +6,16 @@
         <h3 class="panel-title">Admin Panel</h3>
     </div>
     <div class="panel-body">
-        <h4>Hello! {{ blog_author }}. Welcome back!</h4>
+        <h4>Hello! {{ blog_author }}. Welcome back!   <a href="/logout">Logout</a></h4>
     </div>
     <ul class="list-group">
+        {% if success %}
+        <li class="list-group-item" style="padding-top: 3rem">
+            <div class="alert alert-success">{{ message }}</div>
+        </li>
+        {% end %}
         <li class="list-group-item">
-            <a href="/admin/new" class="btn btn-primary btn-lg">Write a new article</a>
+            <a href="/admin/edit/new" class="btn btn-primary btn-lg">Write a new article</a>
         </li>
         <li class="list-group-item">
             <table class="table">
@@ -30,6 +35,7 @@
                     <td>{{ article.datetime }}</td>
                     <td>
                         <a href="/admin/edit/{{ article.id }}" class="btn btn-primary btn-xs">Edit</a>
+                        <a href="/admin/edit/delete/{{ article.id }}" class="btn btn-danger btn-xs">Delete</a>
                     </td>
                 </tr>
             {% end %}

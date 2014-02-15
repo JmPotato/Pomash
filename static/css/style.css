@@ -13,6 +13,10 @@
     color: #b3b3b3;
     width: 100%;
 }
+textarea{
+    width:100%;
+    resize:vertical;
+}
 .hll { background-color: #ffffcc }
 .c { color: #60a0b0; font-style: italic } /* Comment */
 .err { border: 1px solid #FF0000 } /* Error */
