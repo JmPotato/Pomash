@@ -26,7 +26,7 @@ def get_all_articles():
     return articles
 
 def get_article_by_category(category_name):
-    articles = db.get("SELECT articles_id FROM category WHERE name = ?;", category_name)
+    articles = db.query("SELECT articles_id FROM category WHERE name = ?;", category_name)
     return articles
 
 def update_article(id, **kwargs):
@@ -43,6 +43,14 @@ def creat_article(**kwargs):
 def creat_category(name):
     category_id = db.execute('''INSERT INTO category (name) VALUES (?);''', name)
     return category_id
+
+def get_category(category_name):
+    category = db.get("SELECT * FROM category WHERE name = ?;", category_name)
+    return category
+
+def get_all_categories():
+    categories = db.query("SELECT * FROM category;")
+    return categories
 
 def delete_article(id):
     db.execute("DELETE FROM articles WHERE id=?;", id)
