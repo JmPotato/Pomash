@@ -7,11 +7,10 @@ class BaseHandler(tornado.web.RequestHandler):
             return None
         return username
 
-    def render_string(self, template_name, title, **kwargs):
+    def render_string(self, template_name, **kwargs):
         base_value = dict(
             blog_url = self.application.settings["blog_url"],
             blog_name = self.application.settings["blog_name"],
-            title = title,
             )
         template_path = self.get_template_path()
         if not template_path:

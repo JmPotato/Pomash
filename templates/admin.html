@@ -16,7 +16,6 @@
         {% end %}
         <li class="list-group-item">
             <a href="/admin/edit/new/article" class="btn btn-primary btn-lg">Write a new article</a>
-            <a href="/admin/edit/new/category" class="btn btn-primary btn-lg">Creat a new category</a>
         </li>
         <li class="list-group-item">
             <table class="table">
@@ -24,7 +23,6 @@
                 <tr>
                     <th>ID</th>
                     <th>Article Name</th>
-                    <th>Category</th>
                     <th>Last Update</th>
                     <th>Manage</th>
                 </tr>
@@ -34,7 +32,6 @@
                 <tr>
                     <td>{{ article.id }}</td>
                     <td>{{ article.title }}</td>
-                    <td>{{ article.category }}</td>
                     <td>{{ article.datetime }}</td>
                     <td>
                         <a href="/admin/edit/article/{{ article.id }}" class="btn btn-primary btn-xs">Edit</a>

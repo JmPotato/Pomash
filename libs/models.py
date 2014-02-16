@@ -25,40 +25,24 @@ def get_all_articles():
     articles = db.query("SELECT * FROM articles;")
     return articles
 
-def get_article_by_category(category_name):
-    articles = db.query("SELECT articles_id FROM category WHERE name = ?;", category_name)
-    return articles
-
-def update_article(id, **kwargs):
-    sql = '''UPDATE articles SET title=?, content=?, category=? WHERE id=?;'''
-    db.execute(sql, kwargs["title"], kwargs["content"], kwargs["category"], id)
-    return True
-
 def creat_article(**kwargs):
     today = datetime.date.today()
-    sql = '''INSERT INTO articles (title, content, category, datetime) VALUES (?,?,?,?);'''
-    article_id = db.execute(sql, kwargs["title"], kwargs["content"], kwargs["category"], str(today))
+    sql = '''INSERT INTO articles (title, content, datetime) VALUES (?,?,?,?);'''
+    article_id = db.execute(sql, kwargs["title"], kwargs["content"], str(today))
     return article_id
 
-def creat_category(name):
-    category_id = db.execute('''INSERT INTO category (name) VALUES (?);''', name)
-    return category_id
-
-def get_category(category_name):
-    category = db.get("SELECT * FROM category WHERE name = ?;", category_name)
-    return category
-
-def get_all_categories():
-    categories = db.query("SELECT * FROM category;")
-    return categories
+def update_article(id, **kwargs):
+    sql = '''UPDATE articles SET title=?, content=? WHERE id=?;'''
+    db.execute(sql, kwargs["title"], kwargs["content"], id)
+    return True
 
 def delete_article(id):
     db.execute("DELETE FROM articles WHERE id=?;", id)
-    db.execute("DELETE FROM category WHERE articles_id=?;", id)
     return True
 
-def delete_category(category_name):
-    db.execute("DELETE FROM category WHERE id=?;", category_name)
+def updata_token(username, token):
+    sql = '''UPDATE admin_config SET token=? WHERE username=?;'''
+    db.execute(sql, token, username)
     return True
 
 def verify_user(username, password_md5):
@@ -75,7 +59,3 @@ def verify_token(username, token):
     else:
         return False
 
-def updata_token(username, token):
-    sql = '''UPDATE admin_config SET token=? WHERE username=?;'''
-    db.execute(sql, token, username)
-    return True

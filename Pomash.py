@@ -18,7 +18,6 @@ class Application(tornado.web.Application):
             ("/admin/edit/article/([\d]+)", EditArticleHandler),
             ("/admin/edit/new/article", NewArticleHandler),
             ("/admin/edit/delete/article/([\d]+)", DelArticleHandler),
-            ("/admin/edit/new/category", NewCategoryHandler),
         ]
         settings = dict(
             static_path = os.path.join(os.path.dirname(__file__), "static"),
@@ -101,9 +100,8 @@ class NewArticleHandler(BaseHandler):
 
     def post(self):
         title = self.get_argument("title", None)
-        category = self.get_argument("category", None)
         content = self.get_argument("content", None)
-        creat_article(title = title, category = category, content = content)
+        creat_article(title = title, content = content)
 
 class EditArticleHandler(BaseHandler):
     @tornado.web.authenticated
@@ -116,9 +114,8 @@ class EditArticleHandler(BaseHandler):
     
     def post(self, article_id):
         title = self.get_argument("title", None)
-        category = self.get_argument("category", None)
         content = self.get_argument("content", None)
-        if update_article(int(article_id), title = title, category = category, content = content):
+        if update_article(int(article_id), title = title, content = content):
             pass
         else:
             pass
@@ -134,8 +131,3 @@ class DelArticleHandler(BaseHandler):
             success = True,
             message = "Successful to delete an article"
             )
-
-class NewCategoryHandler(BaseHandler):
-    @tornado.web.authenticated
-    def get(self):
-        pass
