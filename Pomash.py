@@ -15,9 +15,10 @@ class Application(tornado.web.Application):
             ("/login", LoginHandler),
             ("/logout", LogoutHandler),
             ("/admin", AdminHandler),
-            ("/admin/edit/new", NewArticleHandler),
-            ("/admin/edit/([\d]+)", EditArticleHandler),
-            ("/admin/edit/delete/([\d]+)", DelArticleHandler),
+            ("/admin/edit/article/([\d]+)", EditArticleHandler),
+            ("/admin/edit/new/article", NewArticleHandler),
+            ("/admin/edit/delete/article/([\d]+)", DelArticleHandler),
+            ("/admin/edit/new/category", NewCategoryHandler),
         ]
         settings = dict(
             static_path = os.path.join(os.path.dirname(__file__), "static"),
@@ -98,13 +99,29 @@ class NewArticleHandler(BaseHandler):
             categories = get_all_categories(),
             )
 
+    def post(self):
+        title = self.get_argument("title", None)
+        category = self.get_argument("category", None)
+        content = self.get_argument("content", None)
+        creat_article(title = title, category = category, content = content)
+
 class EditArticleHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self, article_id):
         self.render("editor.html",
             title = blog_name + " | Edit",
             new = False,
+            article = get_article(article_id),
             )
+    
+    def post(self, article_id):
+        title = self.get_argument("title", None)
+        category = self.get_argument("category", None)
+        content = self.get_argument("content", None)
+        if update_article(int(article_id), title = title, category = category, content = content):
+            pass
+        else:
+            pass
 
 class DelArticleHandler(BaseHandler):
     @tornado.web.authenticated
@@ -117,5 +134,8 @@ class DelArticleHandler(BaseHandler):
             success = True,
             message = "Successful to delete an article"
             )
-        time.sleep(3)
-        self.redirect("/admin")
+
+class NewCategoryHandler(BaseHandler):
+    @tornado.web.authenticated
+    def get(self):
+        pass

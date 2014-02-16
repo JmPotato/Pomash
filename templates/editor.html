@@ -7,13 +7,14 @@
             <div class="panel-heading">
                 <h3 class="panel-title">
                     {% if new %}
-                        New Article
+                        New
                     {% else %}
-                        Edit Article
+                        Edit
                     {% end %}
                 </h3>
             </div>
             <div class="panel-body">
+                {% if new %}
                 <form action="" method="post" class="form-horizontal" style="padding:10px 15px 15px;">
                     <div class="form-group">
                         <label>Title</label>
@@ -22,6 +23,7 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label>Category</label>
                         <select class="form-control" name="category">
                         {% for category in categories %}
                             <option>{{ category.name }}</option>
@@ -29,7 +31,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Concent</label>
+                        <label>Content</label>
                         <div class="col-sm-13">
                             <textarea rows="15" name="content"></textarea>
                         </div>
@@ -38,6 +40,31 @@
                         <button type="submit" class="btn btn-primary">Post</button>
                     </div>
                 </form>
+                {% else %}
+                <form action="" method="post" class="form-horizontal" style="padding:10px 15px 15px;">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <div class="col-sm-13">
+                            <input type="text" class="form-control" name="title" value="{{ article.title }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select class="form-control" name="category">
+                            <option>{{ article.category }}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Content</label>
+                        <div class="col-sm-13">
+                            <textarea rows="15" name="content">{{ article.content }}</textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Post</button>
+                    </div>
+                </form>
+                {% end %}
             </div>
         </div>
     </div>
