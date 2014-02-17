@@ -53,7 +53,7 @@ class Connection(object):
             self._execute(cursor, query, parameters)
             return cursor.lastrowid
         finally:
-            cursor.close()
+            pass
       
     def executemany(self, query, parameters):
         """Executes the given query against all the given param sequences"""
