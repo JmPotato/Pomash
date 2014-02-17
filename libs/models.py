@@ -27,7 +27,7 @@ def get_all_articles():
 
 def creat_article(**kwargs):
     today = datetime.date.today()
-    sql = '''INSERT INTO articles (title, content, datetime) VALUES (?,?,?,?);'''
+    sql = '''INSERT INTO articles (title, content, datetime) VALUES (?,?,?);'''
     article_id = db.execute(sql, kwargs["title"], kwargs["content"], str(today))
     return article_id
 
