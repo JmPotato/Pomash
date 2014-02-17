@@ -2,6 +2,7 @@ import time
 import string
 import os.path
 import tornado.web
+import tornado.template
 
 from settings import *
 from libs.utils import *
@@ -22,6 +23,7 @@ class Application(tornado.web.Application):
         settings = dict(
             static_path = os.path.join(os.path.dirname(__file__), "static"),
             template_path = os.path.join(os.path.dirname(__file__), "templates"),
+            autoescape=None,
             blog_name = blog_name,
             blog_url = blog_url,
             cookie_secret = cookie_secret,
@@ -95,13 +97,13 @@ class NewArticleHandler(BaseHandler):
         self.render("editor.html",
             title = blog_name + " | New",
             new = True,
-            categories = get_all_categories(),
             )
 
     def post(self):
         title = self.get_argument("title", None)
         content = self.get_argument("content", None)
         creat_article(title = title, content = content)
+        self.redirect("/")
 
 class EditArticleHandler(BaseHandler):
     @tornado.web.authenticated
@@ -116,7 +118,7 @@ class EditArticleHandler(BaseHandler):
         title = self.get_argument("title", None)
         content = self.get_argument("content", None)
         if update_article(int(article_id), title = title, content = content):
-            pass
+            self.redirect("/")
         else:
             pass
 

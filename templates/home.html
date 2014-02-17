@@ -3,16 +3,12 @@
 {% block content %}
 {% for artcile in articlesList %}
 <div class="col-md-8 col-md-offset-2">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title" style="text-align:center">{{ artcile.title }}</h3>
+    <div class="block">
+        <div class="block-header">
+            <h1 style="text-align:center">{{ artcile.title }}</h1>
+            <div style="text-align:center">{{ artcile.datetime }}</div>
         </div>
-        <div class="panel-body">
-            <h4>{{ artcile.content }}</h4>
-        </div>
-        <div class="panel-footer">
-            <div style="float:right">Post on {{ artcile.datetime }}</div>
-        </div>
+        {{ handler.md_to_html(artcile.content) }}
     </div>
 </div>
 {% end %}
