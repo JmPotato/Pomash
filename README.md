@@ -10,7 +10,16 @@ Requirements:
 
     1.Tornado
     2.SQLite3
-    3.Markdown
+    3.Misaka
+    4.pygments
+
+1.Edit the `settings.py`  Notice: Please change cookie secret!
+
+2.Run `init_db.py` to creat database.
+
+3.Run `run.py`
+
+4.Your blog is ready for you!
 
 License
 =====
