@@ -1,6 +1,19 @@
+import misaka
 import tornado.web
 
+from markdown import *
+from tornado.escape import to_unicode
+
 class BaseHandler(tornado.web.RequestHandler):
+    def md_to_html(self, text):
+        text = to_unicode(text)
+        render = MyRender(flags=misaka.HTML_USE_XHTML)
+        md = misaka.Markdown(
+            render,
+            extensions=misaka.EXT_FENCED_CODE | misaka.EXT_AUTOLINK,
+        )
+        return md.render(text)
+
     def get_current_user(self):
         username = self.get_secure_cookie("username")
         if not username:
