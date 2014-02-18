@@ -13,13 +13,14 @@ Requirements:
     3.Misaka
     4.pygments
 
-1.Edit the `settings.py`  Notice: Please change cookie secret!
+How to Build:
 
-2.Run `init_db.py` to creat database.
-
-3.Run `run.py`
-
-4.Your blog is ready for you!
+* `git clone https://github.com/SerhoLiu/serholiu.com.git`
+* `pip install -r requirements.txt`
+* Edit the `settings.py`
+* Run `init_db.py` to creat database.
+* Run `run.py`
+* Your blog is ready for you!
 
 License
 =====
