@@ -61,7 +61,7 @@ class LoginHandler(BaseHandler):
         password = self.get_argument("password", None)
         if verify_user(username, to_md5(password)):
             token = make_token(username)
-            updata_token(username, token)
+            update_token(username, token)
             self.set_secure_cookie("token", token)
             self.set_secure_cookie("username", username)
             self.redirect("/admin")

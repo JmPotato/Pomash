@@ -41,7 +41,7 @@ def delete_article(id):
     db.execute("DELETE FROM articles WHERE id=?;", id)
     return True
 
-def updata_token(username, token):
+def update_token(username, token):
     sql = '''UPDATE admin_config SET token=? WHERE username=?;'''
     db.execute(sql, token, username)
     return True
