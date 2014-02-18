@@ -1,6 +1,7 @@
 import string
 import random
 import hashlib
+import pygments
 
 def to_md5(word):
     return hashlib.md5(word).hexdigest()

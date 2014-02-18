@@ -32,8 +32,9 @@ def creat_article(**kwargs):
     return article_id
 
 def update_article(id, **kwargs):
-    sql = '''UPDATE articles SET title=?, content=? WHERE id=?;'''
-    db.execute(sql, kwargs["title"], kwargs["content"], id)
+    today = datetime.date.today()
+    sql = '''UPDATE articles SET title=?, content=?, datetime=? WHERE id=?;'''
+    db.execute(sql, kwargs["title"], kwargs["content"], str(today), id)
     return True
 
 def delete_article(id):

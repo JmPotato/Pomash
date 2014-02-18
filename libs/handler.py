@@ -1,10 +1,6 @@
-import markdown
 import tornado.web
 
 class BaseHandler(tornado.web.RequestHandler):
-    def md_to_html(self, content):
-        return markdown.markdown(content)
-
     def get_current_user(self):
         username = self.get_secure_cookie("username")
         if not username:
