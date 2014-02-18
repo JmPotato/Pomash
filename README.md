@@ -15,7 +15,7 @@ Requirements:
 
 How to Build:
 
-* `git clone https://github.com/SerhoLiu/serholiu.com.git`
+* `git clone https://github.com/JmPotato/Pomash.git`
 * `pip install -r requirements.txt`
 * Edit the `settings.py`
 * Run `init_db.py` to creat database.
