@@ -1,24 +1,17 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">Admin Panel</h3>
+<div class="block">
+    <div class="block-title">Admin Panel</div>
+    <div class="block-item">
+        <h3>Hello! {{ blog_author }}. Welcome back! <a href="/logout">Logout</a></h3>
     </div>
-    <div class="panel-body">
-        <h4>Hello! {{ blog_author }}. Welcome back!   <a href="/logout">Logout</a></h4>
+    <div class="block-item">
+        <a href="/admin/edit/new/article" class="btn btn-primary btn-lg" style="margin-top:6px;">Write a new article</a>
+        <a href="/admin/edit/new/article" class="btn btn-primary btn-lg" style="margin-top:6px;">Creat a new page</a>
     </div>
-    <ul class="list-group">
-        {% if success %}
-        <li class="list-group-item" style="padding-top: 3rem">
-            <div class="alert alert-success">{{ message }}</div>
-        </li>
-        {% end %}
-        <li class="list-group-item">
-            <a href="/admin/edit/new/article" class="btn btn-primary btn-lg">Write a new article</a>
-        </li>
-        <li class="list-group-item">
-            <table class="table">
+    <div class="block-item">
+        <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -40,8 +33,7 @@
                 </tr>
             {% end %}
             </tbody>
-            </table>
-        </li>
-    </ul>
+        </table>
+    </div>
 </div>
 {% end %}

@@ -36,7 +36,7 @@ class HomeHandler(BaseHandler):
     def get(self):
         self.render("home.html",
             title = blog_name,
-            articlesList = get_articles(5),
+            articlesList = get_articles(3),
             )
 
 class LoginHandler(BaseHandler):

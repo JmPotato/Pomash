@@ -1,0 +1,229 @@
+pre .hll {
+    background-color:#ffc
+}
+pre .c {
+    color:#333
+}
+pre .err {
+    color:#a61717;
+    background-color:#e3d2d2
+}
+pre .g {
+    color:#388
+}
+pre .k {
+    color:#6ab825;
+    font-weight:bold
+}
+pre .l {
+    color:#08c
+}
+pre .n {
+    color:#366;
+    font-weight:bold
+}
+pre .o {
+    color:#366;
+    font-weight:bold
+}
+pre .x {
+    color:#08c
+}
+pre .p {
+    color:#08c
+}
+pre .cm {
+    color:#999999;
+    font-style:italic
+}
+pre .cp {
+    color:#cd2828;
+    font-weight:bold
+}
+pre .c1 {
+    color:#999999;
+    font-style:italic
+}
+pre .cs {
+    color:#e50808;
+    font-weight:bold;
+    background-color:#520000
+}
+pre .gd {
+    color:#d22323
+}
+pre .ge {
+    color:#388;
+    font-style:italic
+}
+pre .gr {
+    color:#d22323
+}
+pre .gh {
+    color:#366;
+    font-weight:bold
+}
+pre .gi {
+    color:#589819
+}
+pre .go {
+    color:#5AA
+}
+pre .gp {
+    color:#aaaaaa
+}
+pre .gs {
+    color:#355;
+    font-weight:bold
+}
+pre .gu {
+    color:#366;
+    text-decoration:underline
+}
+pre .gt {
+    color:#d22323
+}
+pre .kc {
+    color:#6ab825;
+    font-weight:bold
+}
+pre .kd {
+    color:#6ab825;
+    font-weight:bold
+}
+pre .kn {
+    color:#6ab825;
+    font-weight:bold
+}
+pre .kp {
+    color:#6ab825
+}
+pre .kr {
+    color:#6ab825;
+    font-weight:bold
+}
+pre .kt {
+    color:#6ab825;
+    font-weight:bold
+}
+pre .ld {
+    color:#38c
+}
+pre .m {
+    color:#3677a9
+}
+pre .s {
+    color:#ed9d13
+}
+pre .na {
+    color:#aaa
+}
+pre .nb {
+    color:#24909d
+}
+pre .nc {
+    color:#447fcf;
+    text-decoration:underline
+}
+pre .no {
+    color:#3aa
+}
+pre .nd {
+    color:#ffa500
+}
+pre .ni {
+    color:#a0a0a0
+}
+pre .ne {
+    color:#bbbbbb
+}
+pre .nf {
+    color:#447fcf
+}
+pre .nl {
+    color:#a0a0a0
+}
+pre .nn {
+    color:#447fcf;
+    text-decoration:underline
+}
+pre .nx {
+    color:#a0a0a0
+}
+pre .py {
+    color:#a0a0a0
+}
+pre .nt {
+    color:#6ab825;
+    font-weight:bold
+}
+pre .nv {
+    color:#3AA
+}
+pre .ow {
+    color:#6ab825;
+    font-weight:bold
+}
+pre .w {
+    color:#666666
+}
+pre .mf {
+    color:#3677a9
+}
+pre .mh {
+    color:#3677a9
+}
+pre .mi {
+    color:#3677a9
+}
+pre .mo {
+    color:#3677a9
+}
+pre .sb {
+    color:#ed9d13
+}
+pre .sc {
+    color:#ed9d13
+}
+pre .sd {
+    color:#ed9d13
+}
+pre .s2 {
+    color:#ed9d13
+}
+pre .se {
+    color:#ed9d13
+}
+pre .sh {
+    color:#ed9d13
+}
+pre .si {
+    color:#ed9d13
+}
+pre .sx {
+    color:#ffa500
+}
+pre .sr {
+    color:#ed9d13
+}
+pre .s1 {
+    color:#ed9d13
+}
+pre .ss {
+    color:#ed9d13
+}
+pre .bp {
+    color:#24909d
+}
+pre .vc {
+    color:#3AA
+}
+pre .vg {
+    color:#3AA
+}
+pre .vi {
+    color:#3AA
+}
+pre .il {
+    color:#3677a9
+}

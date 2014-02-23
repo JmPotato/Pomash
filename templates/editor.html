@@ -1,58 +1,29 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="container">
-    <div class="col-md-6 col-md-offset-3">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">
-                    {% if new %}
-                        New
-                    {% else %}
-                        Edit
-                    {% end %}
-                </h3>
-            </div>
-            <div class="panel-body">
+<div class="block">
+    <div class="block-title">Editor</div>
+    <div class="block-content">
+        <form action="#" method="post" id="editor">
+            <div class="input">
+                <label for="title">Title</label>
                 {% if new %}
-                <form action="" method="post" class="form-horizontal" style="padding:10px 15px 15px;">
-                    <div class="form-group">
-                        <label>Title</label>
-                        <div class="col-sm-13">
-                            <input type="text" class="form-control" placeholder="Title" name="title">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Content</label>
-                        <div class="col-sm-13">
-                            <textarea rows="15" name="content"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Post</button>
-                    </div>
-                </form>
+                <input id="title" name="title" type="text">
                 {% else %}
-                <form action="" method="post" class="form-horizontal" style="padding:10px 15px 15px;">
-                    <div class="form-group">
-                        <label>Title</label>
-                        <div class="col-sm-13">
-                            <input type="text" class="form-control" name="title" value="{{ article.title }}">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Content</label>
-                        <div class="col-sm-13">
-                            <textarea rows="15" name="content">{{ article.content }}</textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Post</button>
-                    </div>
-                </form>
+                <input id="title" name="title" type="text" value="{{ article.title }}">
                 {% end %}
             </div>
-        </div>
+            <div class="input">
+                <label for="content">Content</label><br />
+                {% if new %}
+                <textarea rows="30" id="content" name="content"></textarea>
+                {% else %}
+                <textarea rows="30" id="content" name="content">{{ article.content }}</textarea>
+                {% end %}
+            <div id="submit">
+                <button type="submit" class="btn btn-primary">Post</button>
+            </div>
+        </form>
     </div>
 </div>
 {% end %}

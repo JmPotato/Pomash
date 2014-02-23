@@ -1,5 +1,4 @@
 import os
-import datetime
 
 from tools import *
 from utils import *
@@ -25,10 +24,13 @@ def get_all_articles():
     articles = db.query("SELECT * FROM articles;")
     return articles
 
+def get_article_count():
+    count = db.query('''SELECT COUNT(*) AS count FROM articles''')
+    return count[0].count
+
 def creat_article(**kwargs):
-    today = datetime.date.today()
     sql = '''INSERT INTO articles (title, content, datetime) VALUES (?,?,?);'''
-    article_id = db.execute(sql, kwargs["title"], kwargs["content"], str(today))
+    article_id = db.execute(sql, kwargs["title"], kwargs["content"], get_date())
     return article_id
 
 def update_article(id, **kwargs):
