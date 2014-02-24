@@ -360,10 +360,11 @@ table td[class*="col-"],table th[class*="col-"] {
 }
 #main .block-content ul {
     list-style-type:square;
+    padding: 10px 40px;
 }
 #main .block-content ul li {
-    margin:0 0 24px 6px;
-    padding-left:16px;
+    margin:0 0 15px 6px;
+    padding-left:5px;
 }
 #main .block-content h1 {
     font-size:25px;
