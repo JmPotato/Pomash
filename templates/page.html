@@ -21,7 +21,8 @@
     <ul class="pager">
         {% if page-1 > 0 %}
         <li class="next"><a href="/page/{{ page-1 }}">&larr; Newer</a></li>
-        {% elif count%3 > 0 %}
+        {% end %}
+        {% if 3*page <= count %}
         <li class="previous"><a href="/page/{{ page+1 }}">Older &rarr;</a></li>
         {% end %}
     </ul>
