@@ -42,60 +42,49 @@ div#submit {
     text-align:center;
 }
 .pager {
-    padding-left: 0;
-    margin: 20px 0;
-    text-align: center;
-    list-style: none;
+    padding-left:0;
+    margin:20px 0;
+    text-align:center;
+    list-style:none;
 }
-
-.pager:before, .pager:after {
-    display: table;
-    content: " "
+.pager:before,.pager:after {
+    display:table;
+    content:" "
 }
-
 .pager:after {
-    clear: both
+    clear:both
 }
-
-.pager:before, .pager:after {
-    display: table;
-    content: " "
+.pager:before,.pager:after {
+    display:table;
+    content:" "
 }
-
 .pager:after {
-    clear: both
+    clear:both
 }
-
 .pager li {
-    display: inline
+    display:inline
 }
-
-.pager li>a, .pager li>span {
-    display: inline-block;
-    padding: 5px 14px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 15px
+.pager li>a,.pager li>span {
+    display:inline-block;
+    padding:5px 14px;
+    background-color:#fff;
+    border:1px solid #ddd;
+    border-radius:15px
 }
-
-.pager li>a:hover, .pager li>a:focus {
-    text-decoration: none;
-    background-color: #eee
+.pager li>a:hover,.pager li>a:focus {
+    text-decoration:none;
+    background-color:#eee
 }
-
-.pager .next>a, .pager .next>span {
-    float: left;
+.pager .next>a,.pager .next>span {
+    float:left;
 }
-
-.pager .previous>a, .pager .previous>span {
-    float: right;
+.pager .previous>a,.pager .previous>span {
+    float:right;
 }
-
-.pager .disabled>a, .pager .disabled>a:hover, .pager .disabled>a:focus,
-.pager .disabled>span {
-    color: #999;
-    cursor: not-allowed;
-    background-color: #fff
+.pager .disabled>a,.pager .disabled>a:hover,.pager .disabled>a:focus,.pager .disabled>span {
+    color:#999;
+    cursor:not-allowed;
+    background-color:#fff
 }
 .btn {
     display:inline-block;

@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 #Main Settings
 blog_name = "Pomash"
 blog_author = "JmPotato"
