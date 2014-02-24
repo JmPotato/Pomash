@@ -145,6 +145,4 @@ class DelArticleHandler(BaseHandler):
             title = blog_name,
             blog_author = blog_author,
             articlesList = get_all_articles(),
-            success = True,
-            message = "Successful to delete an article"
             )
