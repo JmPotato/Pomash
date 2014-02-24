@@ -4,7 +4,7 @@
 <div class="block">
     <div class="block-title">Admin Panel</div>
     <div class="block-item">
-        <h3>Hello! {{ blog_author }}. Welcome back! <a href="/logout">Logout</a></h3>
+        <h3>Hello! {{ blog_author }}. Welcome back! <a href="/logout" onclick="return confirm('Are you sure to delete this article?');">Logout</a></h3>
     </div>
     <div class="block-item">
         <a href="/admin/edit/new/article" class="btn btn-primary btn-lg" style="margin-top:6px;">Write a new article</a>
@@ -28,7 +28,7 @@
                     <td>{{ article.datetime }}</td>
                     <td>
                         <a href="/admin/edit/article/{{ article.id }}" class="btn btn-primary btn-xs">Edit</a>
-                        <a href="/admin/edit/delete/article/{{ article.id }}" class="btn btn-danger btn-xs">Delete</a>
+                        <a href="/admin/edit/delete/article/{{ article.id }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete this article?');">Delete</a>
                     </td>
                 </tr>
             {% end %}
