@@ -63,12 +63,10 @@ class LoginHandler(BaseHandler):
             else:
                 self.render("login.html",
                     title = blog_name,
-                    not_login = True
                     )
         else:
             self.render("login.html",
                 title = blog_name,
-                not_login = False
                 )
 
     def post(self):
