@@ -132,15 +132,9 @@ class EditArticleHandler(BaseHandler):
         content = self.get_argument("content", None)
         if update_article(int(article_id), title = title, content = content):
             self.redirect("/")
-        else:
-            pass
 
 class DelArticleHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self, article_id):
-        delete_article(article_id)
-        self.render("admin.html",
-            title = blog_name,
-            blog_author = blog_author,
-            articlesList = get_all_articles(),
-            )
+        if delete_article(article_id):
+            self.redirect("/")
