@@ -28,7 +28,7 @@
                     <td>{{ article.datetime }}</td>
                     <td>
                         <a href="/admin/edit/article/{{ article.id }}" class="btn btn-primary btn-xs">Edit</a>
-                        <a href="/admin/edit/delete/article/{{ article.id }}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete this article?');">Delete</a>
+                        <a class="btn btn-danger btn-xs" onclick="if(confirm('Are you sure to delete this article?')){window.location.href='/admin/edit/delete/article/{{ article.id }}';}">Delete</a>
                     </td>
                 </tr>
             {% end %}
