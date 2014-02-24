@@ -13,6 +13,7 @@ class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             ("/", HomeHandler),
+            ("/page/([\d]+)", PageHandler),
             ("/login", LoginHandler),
             ("/logout", LogoutHandler),
             ("/admin", AdminHandler),
@@ -36,7 +37,18 @@ class HomeHandler(BaseHandler):
     def get(self):
         self.render("home.html",
             title = blog_name,
-            articlesList = get_articles(3),
+            articlesList = get_articles(1),
+            page = 1,
+            count = get_article_count(),
+            )
+
+class PageHandler(BaseHandler):
+    def get(self, page):
+        self.render("home.html",
+            title = blog_name,
+            articlesList = get_articles(int(page)),
+            page = int(page),
+            count = get_article_count(),
             )
 
 class LoginHandler(BaseHandler):

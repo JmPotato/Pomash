@@ -16,8 +16,8 @@ def get_article(id):
     article = db.get("SELECT * FROM articles WHERE id = ?;", id)
     return article
 
-def get_articles(count):
-    articles = db.query("SELECT * FROM articles ORDER BY id DESC LIMIT ?;",count)
+def get_articles(page):
+    articles = db.query("SELECT * FROM articles ORDER BY id DESC LIMIT ?, 3;",(page - 1) * 3)
     return articles
 
 def get_all_articles():
