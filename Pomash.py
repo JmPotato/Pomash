@@ -83,17 +83,18 @@ class LoginHandler(BaseHandler):
     def post(self):
         username = self.get_argument("username", None)
         password = self.get_argument("password", None)
-        if verify_user(username, to_md5(password)):
-            token = make_token(username)
-            update_token(username, token)
-            self.set_secure_cookie("token", token)
-            self.set_secure_cookie("username", username)
-            self.redirect("/admin")
-            return
+        if login_username == username:
+            if verify_user(username, to_md5(password)):
+                token = make_token(username)
+                update_token(username, token)
+                self.set_secure_cookie("token", token)
+                self.set_secure_cookie("username", username)
+                self.redirect("/admin")
+                return
+            else:
+                self.redirect("/login")
         else:
-            self.render("login.html",
-                title = blog_name,
-                )
+            self.redirect("/login")
 
 class LogoutHandler(BaseHandler):
     @tornado.web.authenticated
