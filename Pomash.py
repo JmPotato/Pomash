@@ -16,12 +16,15 @@ class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             ("/", HomeHandler),
-            ("/page/([\d]+)", PageHandler),
+            ("/admin", AdminHandler),
             ("/login", LoginHandler),
             ("/logout", LogoutHandler),
-            ("/admin", AdminHandler),
-            ("/admin/edit/article/([\d]+)", EditArticleHandler),
+            ("/tags", TagHandler),
+            ("/articles", ArticleHandler),
+            ("/page/([\d]+)", PageHandler),
+            ("/admin/edit/new/page", NewPageHandler),
             ("/admin/edit/new/article", NewArticleHandler),
+            ("/admin/edit/article/([\d]+)", EditArticleHandler),
             ("/admin/edit/delete/article/([\d]+)", DelArticleHandler),
         ]
         settings = dict(
@@ -54,6 +57,14 @@ class PageHandler(BaseHandler):
             count = get_article_count(),
             )
 
+class ArticleHandler(BaseHandler):
+    def get(self):
+        pass
+
+class TagHandler(BaseHandler):
+    def get(self):
+        pass
+
 class LoginHandler(BaseHandler):
     def get(self):
         if self.get_current_user():
@@ -82,10 +93,10 @@ class LoginHandler(BaseHandler):
         else:
             self.render("login.html",
                 title = blog_name,
-                not_login = True,
                 )
 
 class LogoutHandler(BaseHandler):
+    @tornado.web.authenticated
     def get(self):
         user = self.get_current_user()
         if not user:
@@ -101,8 +112,12 @@ class AdminHandler(BaseHandler):
             title = blog_name + " | Admin",
             blog_author = blog_author,
             articlesList = get_all_articles(),
-            success = False,
             )
+
+class NewPageHandler(BaseHandler):
+    @tornado.web.authenticated
+    def get(self):
+        pass
 
 class NewArticleHandler(BaseHandler):
     @tornado.web.authenticated
