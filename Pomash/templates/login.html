@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="block">
+    <div class="block-title">Login</div>
+    <div class="block-content">
+        <form action="#" method="post" id="login">
+            <div class="input">
+                <label for="username">Username</label><input id="username" name="username" type="text">
+            </div>
+            <div class="input">
+                <label for="password">Password</label><input id="password" name="password" type="password">
+            </div>
+            <div id="submit">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% end %}

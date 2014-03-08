@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="block">
+    <div class="block-title">Editor</div>
+    <div class="block-content">
+        <form action="#" method="post" id="editor">
+            <div class="input">
+                <label for="title">Title</label>
+                {% if new %}
+                <input id="title" name="title" type="text">
+                {% else %}
+                <input id="title" name="title" type="text" value="{{ article.title }}">
+                {% end %}
+            </div>
+            <div class="input">
+                <label for="tag">Tag</label>
+                {% if new %}
+                <input id="tag" name="tag" type="text">
+                {% else %}
+                <input id="tag" name="tag" type="text" value="{{ article.tag }}">
+                {% end %}
+            </div>
+            <div class="input">
+                <label for="content">Content</label><br />
+                {% if new %}
+                <textarea rows="30" id="content" name="content"></textarea>
+                {% else %}
+                <textarea rows="30" id="content" name="content">{{ article.content }}</textarea>
+                {% end %}
+            <div id="submit">
+                <button type="submit" class="btn btn-primary">Post</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% end %}

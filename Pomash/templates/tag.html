@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="block">
+    <div class="block-title">{{ tag_name }}</div>
+    <div class="block-content">
+        <ul>
+            {% for article in articlesList %}
+                <li><a href="/article/{{ article.id }}">{{ article.title }}</a></li>
+            {% end %}
+        </ul>
+    </div>
+</div>
+{% end %}
