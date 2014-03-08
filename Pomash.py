@@ -16,12 +16,13 @@ class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
             ("/", HomeHandler),
+            ("/tag/([\d]+)", TagHandler),
+            ("/articles", ArticlesHandler),
+            ("/article/([\d]+)", ArticleHandler),
+            ("/page/([\d]+)", PageHandler),
             ("/admin", AdminHandler),
             ("/login", LoginHandler),
             ("/logout", LogoutHandler),
-            ("/tags", TagHandler),
-            ("/articles", ArticleHandler),
-            ("/page/([\d]+)", PageHandler),
             ("/admin/edit/new/page", NewPageHandler),
             ("/admin/edit/new/article", NewArticleHandler),
             ("/admin/edit/article/([\d]+)", EditArticleHandler),
@@ -58,12 +59,35 @@ class PageHandler(BaseHandler):
             )
 
 class ArticleHandler(BaseHandler):
+    def get(self, article_id):
+        article = get_article(article_id)
+        self.render("article.html",
+            title = blog_name + " | %s" % article.title,
+            article = article,
+            )
+
+class ArticlesHandler(BaseHandler):
     def get(self):
-        pass
+        all_articles = get_all_articles()
+        year_list = {}
+        articlesList = []
+        for article in all_articles:
+            year = article["datetime"].split("-")[0]
+            if year in year_list:
+                year_list[year].append(article)
+            else:
+                year_list[year] = []
+                year_list[year].append(article)
+        articlesList.append(year_list)
+        self.render("articles.html",
+            title = blog_name + " | Articles",
+            articlesList = articlesList,
+            )
 
 class TagHandler(BaseHandler):
-    def get(self):
-        pass
+    def get(self, tag_id):
+        self.render("tag.html",
+            )
 
 class LoginHandler(BaseHandler):
     def get(self):

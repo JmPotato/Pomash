@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block content %}
+{% for article in articlesList %}
+{% for year in article.keys() %}
+<div class="block">
+    <div class="block-title">
+        {{ year }}
+    </div>
+    <div class="block-content">
+        <ul>
+            {% for i in range(len(article[year])) %}
+                <li><a href="/article/{{ article[year][i].id }}">{{ article[year][i].title }}</a></li>
+            {% end %}
+        </ul>
+    </div>
+</div>
+{% end %}
+{% end %}
+{% end %}
