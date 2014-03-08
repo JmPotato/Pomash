@@ -17,9 +17,10 @@ How to Build:
 
 * `git clone https://github.com/JmPotato/Pomash.git`
 * `pip install -r requirements.txt`
+* `cd Pomash`
 * Edit the `settings.py`
-* Run `init_db.py` to creat database.
-* Run `run.py`
+* `python init_db.py` to creat database.
+* `python run.py` to run your blog.
 * Your blog is ready for you!
 
 License
