@@ -295,7 +295,7 @@ table td[class*="col-"],table th[class*="col-"] {
 }
 #header .nav {
     margin:auto;
-    width:800px;
+    width:700px;
     z-index:2000;
 }
 #header h1 {
@@ -319,7 +319,7 @@ table td[class*="col-"],table th[class*="col-"] {
 #main {
     margin:0 auto;
     margin-top:70px;
-    width:800px;
+    width:700px;
 }
 #main .container {
     padding:20px;
@@ -405,3 +405,4 @@ table td[class*="col-"],table th[class*="col-"] {
     padding-bottom:10px;
     border-top:1px solid rgba(0,0,0,0.1);
 }
+
