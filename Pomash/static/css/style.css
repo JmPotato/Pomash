@@ -306,6 +306,7 @@ table td[class*="col-"],table th[class*="col-"] {
     display:inline-block;
 }
 #main {
+    margin:0 auto;
     margin-top:70px;
     width:700px;
 }
