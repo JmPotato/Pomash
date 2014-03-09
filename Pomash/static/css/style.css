@@ -233,16 +233,6 @@ table td[class*="col-"],table th[class*="col-"] {
 .table-hover>tbody>tr>.warning:hover,.table-hover>tbody>.warning:hover>td,.table-hover>tbody>.warning:hover>th {
     background-color:#faf2cc
 }
-@media(max-width:767px) {
-    .table-responsive {
-    width:100%;
-    margin-bottom:15px;
-    overflow-x:scroll;
-    overflow-y:hidden;
-    border:1px solid #ddd;
-    -ms-overflow-style:-ms-autohiding-scrollbar;
-    -webkit-overflow-scrolling:touch
-}
 .table-responsive>.table {
     margin-bottom:0
 }
@@ -310,7 +300,6 @@ table td[class*="col-"],table th[class*="col-"] {
 #header ul {
     margin-top:20px;
     display:inline-block;
-    float:right;
 }
 #header ul li {
     margin-left:10px;
@@ -408,12 +397,18 @@ table td[class*="col-"],table th[class*="col-"] {
     padding-bottom:10px;
     border-top:1px solid rgba(0,0,0,0.1);
 }
-@media only screen and (max-width:768px) {
+@media only screen and (max-width:760px) {
     #header .nav {
         width: auto;
     }
     #main {
         width:auto;
     }
-
+    #header h1 {
+        display: block;
+        text-align: center;
+    }
+    #header ul {
+        text-align: center;
+    }
 }
