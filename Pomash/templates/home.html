@@ -21,7 +21,7 @@
         {% if page-1 > 0 %}
         <li class="next"><a href="/page/{{ page-1 }}">&larr; Newer</a></li>
         {% end %}
-        {% if 3*page <= count %}
+        {% if 3*page < count %}
         <li class="previous"><a href="/page/{{ page+1 }}">Older &rarr;</a></li>
         {% end %}
     </ul>
