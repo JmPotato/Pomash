@@ -408,4 +408,12 @@ table td[class*="col-"],table th[class*="col-"] {
     padding-bottom:10px;
     border-top:1px solid rgba(0,0,0,0.1);
 }
+@media only screen and (max-width:768px) {
+    #header .nav {
+        width: auto;
+    }
+    #main {
+        width:auto;
+    }
 
+}
