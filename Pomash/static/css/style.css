@@ -297,13 +297,15 @@ table td[class*="col-"],table th[class*="col-"] {
     font-weight:700;
     color:#333;
 }
-#header ul {
-    margin-top:20px;
-    display:inline-block;
+#header #nav-list {
+    display: inline-block;
+    font-size: 22px;
+    margin-left: 20px;
+    margin-right: auto;
+    margin-bottom: 10px;
 }
-#header ul li {
-    margin-left:10px;
-    display:inline-block;
+#header #nav-list a {
+    margin: 5px;
 }
 #main {
     margin:0 auto;
@@ -401,15 +403,31 @@ table td[class*="col-"],table th[class*="col-"] {
     #header .nav {
         width: auto;
     }
-    #main {
-        margin-top: 120px;
-        width:auto;
-    }
     #header h1 {
         display: block;
         text-align: center;
     }
-    #header ul {
+    #header #nav-list {
+        display: block;
         text-align: center;
+    }
+    #main {
+        margin-top: 120px;
+        width:auto;
+    }
+    #main .block-title {
+        font-size:30px;
+    }
+    #main .block-content blockquote {
+        font-size:12.5px;
+    }
+    #main .block-content h1 {
+        font-size:25px;
+    }
+    #main .block-content p {
+        font-size:13px;
+    }
+    #main .block-footer p {
+        font-size:10px;
     }
 }
