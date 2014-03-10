@@ -291,6 +291,7 @@ table td[class*="col-"],table th[class*="col-"] {
 #header h1 {
     display:inline-block;
     font-size:25px;
+    margin-right:5px;
 }
 #header a {
     text-decoration:none;
@@ -299,8 +300,8 @@ table td[class*="col-"],table th[class*="col-"] {
 }
 #header #nav-list {
     display:inline-block;
-    font-size:22px;
-    margin-left:20px;
+    font-size:20px;
+    margin-left:auto;
     margin-right:auto;
     margin-bottom:10px;
 }
