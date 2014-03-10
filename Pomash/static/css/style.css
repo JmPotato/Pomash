@@ -404,19 +404,21 @@ table td[class*="col-"],table th[class*="col-"] {
         width: auto;
     }
     #header h1 {
+        font-size: 20px;
         display: block;
         text-align: center;
     }
     #header #nav-list {
+        font-size: 17px;
         display: block;
         text-align: center;
     }
     #main {
-        margin-top: 120px;
+        margin-top: 90px;
         width:auto;
     }
     #main .block-title {
-        font-size:30px;
+        font-size:25px;
     }
     #main .block-content blockquote {
         font-size:12.5px;
@@ -428,6 +430,9 @@ table td[class*="col-"],table th[class*="col-"] {
         font-size:13px;
     }
     #main .block-footer p {
+        font-size:10px;
+    }
+    #main .block-footer #date {
         font-size:10px;
     }
 }
