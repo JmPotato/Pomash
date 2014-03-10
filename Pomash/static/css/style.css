@@ -380,11 +380,11 @@ table td[class*="col-"],table th[class*="col-"] {
     font-size:15px;
     display:inline-block;
 }
-#main .block-footer div#date {
-    float:left;
-}
 #main .block-footer div#tags {
-    float:right;
+    padding-top:10px;
+}
+#main .block-footer div#tags a {
+    padding:3px;
 }
 #main .block-page {
     background:#FFF;
@@ -444,8 +444,10 @@ table td[class*="col-"],table th[class*="col-"] {
 }
 #main .block-footer #date {
     font-size:10px;
+    display:block;
 }
 #main .block-footer #tags {
     font-size:10px;
+    display:block;
 }
 }
