@@ -298,14 +298,14 @@ table td[class*="col-"],table th[class*="col-"] {
     color:#333;
 }
 #header #nav-list {
-    display: inline-block;
-    font-size: 22px;
-    margin-left: 20px;
-    margin-right: auto;
-    margin-bottom: 10px;
+    display:inline-block;
+    font-size:22px;
+    margin-left:20px;
+    margin-right:auto;
+    margin-bottom:10px;
 }
 #header #nav-list a {
-    margin: 5px;
+    margin:5px;
 }
 #main {
     margin:0 auto;
@@ -354,7 +354,7 @@ table td[class*="col-"],table th[class*="col-"] {
 }
 #main .block-content ul {
     list-style-type:square;
-    padding:10px 40px;
+    padding:10px 20px;
 }
 #main .block-content ul li {
     margin:0 0 15px 6px;
@@ -369,7 +369,7 @@ table td[class*="col-"],table th[class*="col-"] {
     margin-bottom:24px;
 }
 #main .block-content img {
-    padding: 5px;
+    padding:5px;
 }
 #main .block-footer {
     border-top:2px solid #eee;
@@ -401,38 +401,44 @@ table td[class*="col-"],table th[class*="col-"] {
 }
 @media only screen and (max-width:760px) {
     #header .nav {
-        width: auto;
-    }
-    #header h1 {
-        font-size: 20px;
-        display: block;
-        text-align: center;
-    }
-    #header #nav-list {
-        font-size: 17px;
-        display: block;
-        text-align: center;
-    }
-    #main {
-        margin-top: 90px;
-        width:auto;
-    }
-    #main .block-title {
-        font-size:25px;
-    }
-    #main .block-content blockquote {
-        font-size:12.5px;
-    }
-    #main .block-content h1 {
-        font-size:25px;
-    }
-    #main .block-content p {
-        font-size:13px;
-    }
-    #main .block-footer p {
-        font-size:10px;
-    }
-    #main .block-footer #date {
-        font-size:10px;
-    }
+    width:auto;
+}
+#header h1 {
+    font-size:20px;
+    display:block;
+    text-align:center;
+}
+#header #nav-list {
+    font-size:17px;
+    display:block;
+    text-align:center;
+}
+#main {
+    margin-top:90px;
+    width:auto;
+}
+#main .block-title {
+    font-size:25px;
+}
+#main .block-content blockquote {
+    font-size:12.5px;
+}
+#main .block-content h1 {
+    font-size:25px;
+}
+#main .block-content p {
+    font-size:13px;
+}
+#main .block-content ul li {
+    font-size:13px;
+}
+#main .block-content ol li {
+    font-size:13px;
+}
+#main .block-footer p {
+    font-size:10px;
+}
+#main .block-footer #date {
+    font-size:10px;
+}
 }
