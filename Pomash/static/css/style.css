@@ -300,8 +300,13 @@ table td[class*="col-"],table th[class*="col-"] {
 }
 #header #nav-list {
     display:inline-block;
+<<<<<<< HEAD
     font-size:20px;
     margin-left:auto;
+=======
+    font-size:22px;
+    margin-left: auto;
+>>>>>>> FETCH_HEAD
     margin-right:auto;
     margin-bottom:10px;
 }
