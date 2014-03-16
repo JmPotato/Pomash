@@ -403,51 +403,51 @@ table td[class*="col-"],table th[class*="col-"] {
 @media only screen and (max-width:760px) {
     #header .nav {
     width:auto;
-}
-#header h1 {
-    font-size:20px;
-    display:block;
-    text-align:center;
-}
-#header #nav-list {
-    font-size:17px;
-    display:block;
-    text-align:center;
-}
-#main {
-    margin-top:90px;
-    width:auto;
-}
-#main .block-title {
-    font-size:25px;
-}
-#main .block-content blockquote {
-    font-size:12.5px;
-}
-#main .block-content h1 {
-    font-size:25px;
-}
-#main .block-content p {
-    font-size:13px;
-}
-#main .block-content a {
-    font-size:13px;
-}
-#main .block-content ul li {
-    font-size:13px;
-}
-#main .block-content ol li {
-    font-size:13px;
-}
-#main .block-footer p {
-    font-size:10px;
-}
-#main .block-footer #date {
-    font-size:10px;
-    display:block;
-}
-#main .block-footer #tags {
-    font-size:10px;
-    display:block;
-}
+    }
+    #header h1 {
+        font-size:20px;
+        display:block;
+        text-align:center;
+    }
+    #header #nav-list {
+        font-size:17px;
+        display:block;
+        text-align:center;
+    }
+    #main {
+        margin-top:90px;
+        width:auto;
+    }
+    #main .block-title {
+        font-size:25px;
+    }
+    #main .block-content blockquote {
+        font-size:12.5px;
+    }
+    #main .block-content h1 {
+        font-size:25px;
+    }
+    #main .block-content p {
+        font-size:13px;
+    }
+    #main .block-content a {
+        font-size:13px;
+    }
+    #main .block-content ul li {
+        font-size:13px;
+    }
+    #main .block-content ol li {
+        font-size:13px;
+    }
+    #main .block-footer p {
+        font-size:10px;
+    }
+    #main .block-footer #date {
+        font-size:10px;
+        display:block;
+    }
+    #main .block-footer #tags {
+        font-size:10px;
+        display:block;
+    }
 }

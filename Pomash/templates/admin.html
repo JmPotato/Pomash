@@ -35,5 +35,28 @@
             </tbody>
         </table>
     </div>
+    <div class="block-item">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Page Title</th>
+                    <th>Manage</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for page in pages %}
+                <tr>
+                    <td>{{ page.id }}</td>
+                    <td>{{ page.title }}</td>
+                    <td>
+                        <a href="/admin/edit/page/{{ page.id }}" class="btn btn-primary btn-xs">Edit</a>
+                        <a class="btn btn-danger btn-xs" onclick="if(confirm('Are you sure to delete this article?')){window.location.href='/admin/edit/delete/page/{{ page.id }}';}">Delete</a>
+                    </td>
+                </tr>
+            {% end %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% end %}

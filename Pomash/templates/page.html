@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="block">
+    <div class="block-title">
+        {{ page.title }}
+    </div>
+    <div class="block-content">
+        {{ handler.md_to_html(page.content) }}
+    </div>
+</div>
+{% end %}

@@ -24,10 +24,12 @@ class Application(tornado.web.Application):
             ("/admin", AdminHandler),
             ("/login", LoginHandler),
             ("/logout", LogoutHandler),
-            ("/admin/edit/new/page", NewPageHandler),
             ("/admin/edit/new/article", NewArticleHandler),
             ("/admin/edit/article/([\d]+)", EditArticleHandler),
             ("/admin/edit/delete/article/([\d]+)", DelArticleHandler),
+            ("/admin/edit/new/page", NewPageHandler),
+            ("/admin/edit/page/([\d]+)", EditPageHandler),
+            ("/admin/edit/delete/page/([\d]+)", DelPageHandler),
             (r'.*', PageNotFound),
         ]
         settings = dict(
@@ -154,6 +156,16 @@ class AdminHandler(BaseHandler):
             )
 
 class NewPageHandler(BaseHandler):
+    @tornado.web.authenticated
+    def get(self):
+        pass
+
+class EditPageHandler(BaseHandler):
+    @tornado.web.authenticated
+    def get(self):
+        pass
+
+class DelPageHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
         pass

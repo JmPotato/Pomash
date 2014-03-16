@@ -16,6 +16,9 @@
                 <a href="/articles">Articles</a>
                 <a href="/alltags">Tags</a>
                 <a href="/admin">Admin</a>
+                {% for page in pages %}
+                    <a href="/{{ page.id }}">{{ page.title }}</a>
+                {% end %}
             </div>
         </div>
     </header>
