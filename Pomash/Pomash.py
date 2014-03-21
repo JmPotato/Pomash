@@ -156,7 +156,7 @@ class AdminHandler(BaseHandler):
             )
 
 class NewPageHandler(BaseHandler):
-    @tornado.web.authenticated
+    @tornado,web,authenticated
     def get(self):
         pass
 
