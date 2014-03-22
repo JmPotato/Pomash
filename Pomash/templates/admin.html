@@ -45,7 +45,7 @@
                 </tr>
             </thead>
             <tbody>
-            {% for page in pages %}
+            {% for page in handler.get_custom_page() %}
                 <tr>
                     <td>{{ page.id }}</td>
                     <td>{{ page.title }}</td>

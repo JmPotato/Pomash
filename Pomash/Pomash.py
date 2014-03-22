@@ -21,6 +21,7 @@ class Application(tornado.web.Application):
             ("/articles", ArticlesHandler),
             ("/article/([\d]+)", ArticleHandler),
             ("/page/([\d]+)", PageHandler),
+            ("/page/custom/([\d]+)", CuPageHandler),
             ("/admin", AdminHandler),
             ("/login", LoginHandler),
             ("/logout", LogoutHandler),
@@ -62,6 +63,14 @@ class PageHandler(BaseHandler):
             count = get_article_count(),
             )
 
+class CuPageHandler(BaseHandler):
+    def get(self, page_id):
+        page = gat_page(page_id)
+        self.render("page.html",
+            title = blog_name + " | %s" % page.title,
+            page = page,
+            )
+        
 class ArticleHandler(BaseHandler):
     def get(self, article_id):
         article = get_article(article_id)
@@ -156,25 +165,49 @@ class AdminHandler(BaseHandler):
             )
 
 class NewPageHandler(BaseHandler):
-    @tornado,web,authenticated
+    @tornado.web.authenticated
     def get(self):
-        pass
+        self.render("editor.html",
+            is_page = True,
+            title = blog_name + " | New Page",
+            new = True,
+            )
+
+    def post(self):
+        title = self.get_argument("title", None)
+        content = self.get_argument("content", None)
+        if creat_page(title = title, content = content):
+            self.redirect("/")
+        else:
+            self.redirect("/admin")
 
 class EditPageHandler(BaseHandler):
     @tornado.web.authenticated
-    def get(self):
-        pass
+    def get(self, page_id):
+        self.render("editor.html",
+            is_page = True,
+            title = blog_name + " | Edit Page",
+            new = False,
+            page = gat_page(page_id),
+            )
+    
+    def post(self, page_id):
+        title = self.get_argument("title", None)
+        content = self.get_argument("content", None)
+        if update_page(int(page_id), title = title, content = content):
+            self.redirect("/")
 
 class DelPageHandler(BaseHandler):
     @tornado.web.authenticated
-    def get(self):
-        pass
+    def get(self, page_id):
+        if delete_page(page_id):
+            self.redirect("/")
 
 class NewArticleHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
         self.render("editor.html",
-            title = blog_name + " | New",
+            title = blog_name + " | New Article",
             new = True,
             )
 
@@ -189,7 +222,7 @@ class EditArticleHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self, article_id):
         self.render("editor.html",
-            title = blog_name + " | Edit",
+            title = blog_name + " | Edit Article",
             new = False,
             article = get_article(article_id),
             )

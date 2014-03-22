@@ -2,9 +2,6 @@ body {
     line-height:1;
     font-family:"Lucida Grande","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-li {
-    font-size:20px;
-}
 a {
     text-decoration:none;
     color:#06C;
@@ -298,15 +295,27 @@ table td[class*="col-"],table th[class*="col-"] {
     font-weight:700;
     color:#333;
 }
-#header #nav-list {
+#header #nav-list-url {
     display:inline-block;
     font-size:20px;
     margin-left:auto;
     margin-right:auto;
     margin-bottom:10px;
 }
-#header #nav-list a {
+#header #nav-list-url a {
     margin:5px;
+    padding:0.5px;
+}
+#header #nav-list-page {
+    display:inline-block;
+    font-size:20px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-bottom:10px;
+}
+#header #nav-list-page a {
+    margin:5px;
+    padding:0.5px;
 }
 #main {
     margin:0 auto;
@@ -355,23 +364,23 @@ table td[class*="col-"],table th[class*="col-"] {
 }
 #main .block-content ul {
     list-style-type:square;
-    padding:10px 25px;
+    padding:5px 25px;
 }
 #main .block-content ul li {
     margin:0 0 15px 6px;
     padding-left:5px;
+    font-size:18px;
 }
 #main .block-content h1 {
     font-size:30px;
 }
 #main .block-content p {
-    line-height:24px;
+    line-height:22px;
     font-size:18px;
     margin-bottom:24px;
 }
 #main .block-content img {
     max-width:98%;
-    padding:5px;
 }
 #main .block-footer {
     border-top:2px solid #eee;
@@ -403,14 +412,19 @@ table td[class*="col-"],table th[class*="col-"] {
 }
 @media only screen and (max-width:760px) {
     #header .nav {
-    width:auto;
+        width:auto;
     }
     #header h1 {
         font-size:20px;
         display:block;
         text-align:center;
     }
-    #header #nav-list {
+    #header #nav-list-url {
+        font-size:17px;
+        display:block;
+        text-align:center;
+    }
+    #header #nav-list-page {
         font-size:17px;
         display:block;
         text-align:center;
@@ -420,13 +434,13 @@ table td[class*="col-"],table th[class*="col-"] {
         width:auto;
     }
     #main .block-title {
-        font-size:25px;
+        font-size:20px;
     }
     #main .block-content blockquote {
         font-size:12.5px;
     }
     #main .block-content h1 {
-        font-size:25px;
+        font-size:20px;
     }
     #main .block-content p {
         font-size:13px;

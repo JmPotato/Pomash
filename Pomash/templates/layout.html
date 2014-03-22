@@ -12,12 +12,13 @@
     <header id="header" class="fixed-top">
         <div class="nav">
             <h1><a href="{{ blog_url }}">{{ blog_name }}</a></h1>
-            <div id="nav-list">
+            <div id="nav-list-url">
                 <a href="/articles">Articles</a>
                 <a href="/alltags">Tags</a>
-                <a href="/admin">Admin</a>
-                {% for page in pages %}
-                    <a href="/{{ page.id }}">{{ page.title }}</a>
+            </div>
+            <div id="nav-list-page">
+                {% for page in handler.get_custom_page() %}
+                    <a href="/page/custom/{{ page.id }}">{{ page.title }}</a>
                 {% end %}
             </div>
         </div>

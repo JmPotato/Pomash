@@ -15,6 +15,14 @@ if os.path.exists("blog.db"):
 else:
     raise DatabaseError("Database file not found !")
 
+def gat_page(id):
+    page = db.get("SELECT * FROM pages WHERE id = ?", id)
+    return page
+
+def get_all_pages():
+    pages = db.query("SELECT * FROM pages")
+    return pages
+
 def get_article(id):
     article = db.get("SELECT * FROM articles WHERE id = ?;", id)
     return article
@@ -39,6 +47,24 @@ def get_tag_articles(tag_name):
 def get_all_tags():
     tags = db.query("SELECT name FROM tags;")
     return tags
+
+def creat_page(**kwargs):
+    count = db.query('''SELECT COUNT(*) AS count FROM pages''')
+    if count[0].count < 5: 
+        sql = '''INSERT INTO pages (title, content) VALUES (?,?);'''
+        id = db.execute(sql, kwargs["title"], kwargs["content"])
+        return id
+    else:
+        return False
+
+def update_page(id, **kwargs):
+    sql = '''UPDATE pages SET title=?, content=? WHERE id=?;'''
+    db.execute(sql, kwargs["title"], kwargs["content"], id)
+    return True
+
+def delete_page(id):
+    db.execute("DELETE FROM pages WHERE id=?;", id)
+    return True
 
 def creat_article(**kwargs):
     sql = '''INSERT INTO articles (title, content, tag, datetime) VALUES (?,?,?,?);'''

@@ -4,6 +4,7 @@
 import misaka
 import tornado.web
 
+from models import *
 from markdown import *
 from tornado.escape import to_unicode
 
@@ -16,6 +17,9 @@ class BaseHandler(tornado.web.RequestHandler):
             extensions=misaka.EXT_FENCED_CODE | misaka.EXT_AUTOLINK,
         )
         return md.render(text)
+
+    def get_custom_page(self):
+        return get_all_pages()
 
     def get_current_user(self):
         username = self.get_secure_cookie("username")
