@@ -207,6 +207,7 @@ class NewArticleHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
         self.render("editor.html",
+            is_page = False,
             title = blog_name + " | New Article",
             new = True,
             )
@@ -222,6 +223,7 @@ class EditArticleHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self, article_id):
         self.render("editor.html",
+            is_page = False,
             title = blog_name + " | Edit Article",
             new = False,
             article = get_article(article_id),
