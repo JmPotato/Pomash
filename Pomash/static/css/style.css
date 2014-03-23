@@ -403,7 +403,7 @@ table td[class*="col-"],table th[class*="col-"] {
     box-shadow:0px 0px 20px rgba(0,0,0,0.45);
 }
 #footer {
-    font-size:1em;
+    font-size:18px;
     text-align:center;
     margin-top:20px;
     padding-top:10px;
@@ -414,19 +414,20 @@ table td[class*="col-"],table th[class*="col-"] {
     #header .nav {
         width:auto;
     }
-    #header h1 {
+    #header h1 a {
+        padding-left:7px;
         font-size:20px;
         display:block;
         text-align:center;
     }
     #header #nav-list-url {
         font-size:17px;
-        display:block;
+        display:inline-block;
         text-align:center;
     }
     #header #nav-list-page {
         font-size:17px;
-        display:block;
+        display:inline-block;
         text-align:center;
     }
     #main {
@@ -442,10 +443,7 @@ table td[class*="col-"],table th[class*="col-"] {
     #main .block-content h1 {
         font-size:20px;
     }
-    #main .block-content p {
-        font-size:13px;
-    }
-    #main .block-content a {
+    #main .block-content p,pre,a,code {
         font-size:13px;
     }
     #main .block-content ul li {
@@ -457,11 +455,7 @@ table td[class*="col-"],table th[class*="col-"] {
     #main .block-footer p {
         font-size:10px;
     }
-    #main .block-footer #date {
-        font-size:10px;
-        display:block;
-    }
-    #main .block-footer #tags {
+    #main .block-footer #date,#tags {
         font-size:10px;
         display:block;
     }
