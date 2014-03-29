@@ -12,39 +12,6 @@ from libs.utils import *
 from libs.models import *
 from libs.handler import *
 
-class Application(tornado.web.Application):
-    def __init__(self):
-        handlers = [
-            ("/", HomeHandler),
-            ("/tag/([^/]+)/*", TagHandler),
-            ("/alltags", AllTagsHandler),
-            ("/articles", ArticlesHandler),
-            ("/article/([\d]+)", ArticleHandler),
-            ("/page/([\d]+)", PageHandler),
-            ("/page/custom/([\d]+)", CuPageHandler),
-            ("/admin", AdminHandler),
-            ("/login", LoginHandler),
-            ("/logout", LogoutHandler),
-            ("/admin/edit/new/article", NewArticleHandler),
-            ("/admin/edit/article/([\d]+)", EditArticleHandler),
-            ("/admin/edit/delete/article/([\d]+)", DelArticleHandler),
-            ("/admin/edit/new/page", NewPageHandler),
-            ("/admin/edit/page/([\d]+)", EditPageHandler),
-            ("/admin/edit/delete/page/([\d]+)", DelPageHandler),
-            (r'.*', PageNotFound),
-        ]
-        settings = dict(
-            static_path = os.path.join(os.path.dirname(__file__), "static"),
-            template_path = os.path.join(os.path.dirname(__file__), "templates"),
-            autoescape=None,
-            blog_name = blog_name,
-            blog_url = blog_url,
-            cookie_secret = cookie_secret,
-            login_url = "/login",
-            debug = DeBug
-        )
-        tornado.web.Application.__init__(self, handlers, **settings)
-
 class HomeHandler(BaseHandler):
     def get(self):
         self.render("home.html",
@@ -245,3 +212,23 @@ class DelArticleHandler(BaseHandler):
 class PageNotFound(BaseHandler):
     def get(self):
         raise tornado.web.HTTPError(404)
+
+handlers = [
+    ("/", HomeHandler),
+    ("/tag/([^/]+)/*", TagHandler),
+    ("/alltags", AllTagsHandler),
+    ("/articles", ArticlesHandler),
+    ("/article/([\d]+)", ArticleHandler),
+    ("/page/([\d]+)", PageHandler),
+    ("/page/custom/([\d]+)", CuPageHandler),
+    ("/admin", AdminHandler),
+    ("/login", LoginHandler),
+    ("/logout", LogoutHandler),
+    ("/admin/edit/new/article", NewArticleHandler),
+    ("/admin/edit/article/([\d]+)", EditArticleHandler),
+    ("/admin/edit/delete/article/([\d]+)", DelArticleHandler),
+    ("/admin/edit/new/page", NewPageHandler),
+    ("/admin/edit/page/([\d]+)", EditPageHandler),
+    ("/admin/edit/delete/page/([\d]+)", DelPageHandler),
+    (r'.*', PageNotFound),
+]
