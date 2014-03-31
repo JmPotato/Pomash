@@ -1,7 +1,7 @@
 About
 ======
 
-A Lightweight Blog System. Powered by Tornadoweb Web Framework. Easy to read and write.
+A Lightweight Blog System. Powered by Tornado Web Framework. Easy to read and write.
 
 Installation
 ======
