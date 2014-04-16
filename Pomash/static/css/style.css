@@ -275,10 +275,8 @@ table td[class*="col-"],table th[class*="col-"] {
 }
 #header {
     width:100%;
-    background:#fff;
-    -webkit-box-shadow:0 1px 3px rgba(0,0,0,0.25);
-    -moz-box-shadow:0 1px 3px rgba(0,0,0,0.25);
-    box-shadow:0 1px 3px rgba(0,0,0,0.25);
+    opacity:0.8;
+    background: #FFFFFF;
 }
 #header .nav {
     margin:auto;
@@ -287,35 +285,27 @@ table td[class*="col-"],table th[class*="col-"] {
 }
 #header h1 {
     display:inline-block;
-    font-size:25px;
-    margin-right:5px;
+    font-family: AvenirNext-Bold;
+    font-size: 25px;
+    color: #4A4A4A;
 }
 #header a {
     text-decoration:none;
-    font-weight:700;
+    font-weight:500;
     color:#333;
 }
-#header #nav-list-url {
+#header #nav-list-url, #nav-list-page {
     display:inline-block;
-    font-size:20px;
+    font-family: Georgia;
+    font-size: 20px;
     margin-left:auto;
     margin-right:auto;
     margin-bottom:10px;
+    padding-left: 5px;
 }
-#header #nav-list-url a {
+#header #nav-list-url a, #nav-list-page a {
     margin:5px;
-    padding:0.5px;
-}
-#header #nav-list-page {
-    display:inline-block;
-    font-size:20px;
-    margin-left:auto;
-    margin-right:auto;
-    margin-bottom:10px;
-}
-#header #nav-list-page a {
-    margin:5px;
-    padding:0.5px;
+    padding:0.7px;
 }
 #main {
     margin:0 auto;
@@ -420,15 +410,12 @@ table td[class*="col-"],table th[class*="col-"] {
         display:block;
         text-align:center;
     }
-    #header #nav-list-url {
-        font-size:17px;
+    #header #nav-list-url, #nav-list-page {
         display:inline-block;
         text-align:center;
     }
-    #header #nav-list-page {
-        font-size:17px;
-        display:inline-block;
-        text-align:center;
+    #header #nav-list-url a, #nav-list-page a {
+        font-size: 13px;
     }
     #main {
         margin-top:90px;
