@@ -22,7 +22,7 @@ if not os.path.exists("blog.db"):
     print("Creat Page Database......")
     c.execute('''CREATE TABLE tags 
              (id integer NOT NULL PRIMARY KEY autoincrement, name text NOT NULL, article_id integer NOT NULL);''')
-    print("Creat Tag Database"
+    print("Creat Tag Database......")
     c.execute('''INSERT INTO admin_config VALUES (\"%s\", \"%s\", "token");''' % (login_username, hashlib.md5(login_password).hexdigest()))
     c.execute("CREATE UNIQUE INDEX articles_id ON articles(id);")
     print("Creat Index......")
