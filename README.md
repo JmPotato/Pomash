@@ -16,6 +16,7 @@ Requirements:
 How to Build:
 
 * `git clone https://github.com/JmPotato/Pomash.git`
+* `cd Pomash`
 * `pip install -r requirements.txt`
 * `cd Pomash`
 * Edit the `settings.py`
