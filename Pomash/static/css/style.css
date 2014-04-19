@@ -297,7 +297,7 @@ table td[class*="col-"],table th[class*="col-"] {
 #header h1 {
     display:inline-block;
     font-family:AvenirNext-Bold;
-    font-size:25px;
+    font-size:27px;
     color:#4A4A4A;
 }
 #header a {
@@ -308,7 +308,7 @@ table td[class*="col-"],table th[class*="col-"] {
 #header #nav-list-url,#nav-list-page {
     display:inline-block;
     font-family:Georgia;
-    font-size:20px;
+    font-size:22px;
     margin-left:auto;
     margin-right:auto;
     margin-bottom:10px;
