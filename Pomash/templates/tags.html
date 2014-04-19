@@ -4,9 +4,11 @@
 <div class="block">
     <div class="block-title">All Tags</div>
     <div class="block-content">
+    <ul class="tag_box">
     {% for tag in tags %}
-        <a href="/tag/{{ tag.name }}" style="padding:5px;">#{{ tag.name }}<span>&nbsp;&nbsp;</span></a>
+        <a href="/tag/{{ tag.name }}" class="tag_box">#{{ tag.name }}<span>&nbsp;&nbsp;</span></a>
     {% end %}
+    </ul>
     </div>
 </div>
 {% end %}
