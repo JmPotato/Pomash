@@ -24,13 +24,16 @@ div#submit {
     margin:10px;
     text-align:center;
 }
-.tag_box a {
-    padding: 3px 6px;
-    margin: 2px;
-    background: #eee;
+.tag_box {
+    padding:3px 6px;
+    margin:5px;
+    background:#eee;
     color:#005F6B;
-    border-radius: 3px;
-    text-decoration:none;
+    border-radius:3px;
+}
+.tag_box span {
+    vertical-align:super;
+    font-size:0.8em;
 }
 .pager {
     padding-left:0;
@@ -284,7 +287,7 @@ table td[class*="col-"],table th[class*="col-"] {
 #header {
     width:100%;
     opacity:0.8;
-    background: #FFFFFF;
+    background:#FFFFFF;
 }
 #header .nav {
     margin:auto;
@@ -293,25 +296,25 @@ table td[class*="col-"],table th[class*="col-"] {
 }
 #header h1 {
     display:inline-block;
-    font-family: AvenirNext-Bold;
-    font-size: 25px;
-    color: #4A4A4A;
+    font-family:AvenirNext-Bold;
+    font-size:25px;
+    color:#4A4A4A;
 }
 #header a {
     text-decoration:none;
     font-weight:500;
     color:#333;
 }
-#header #nav-list-url, #nav-list-page {
+#header #nav-list-url,#nav-list-page {
     display:inline-block;
-    font-family: Georgia;
-    font-size: 20px;
+    font-family:Georgia;
+    font-size:20px;
     margin-left:auto;
     margin-right:auto;
     margin-bottom:10px;
-    padding-left: 5px;
+    padding-left:5px;
 }
-#header #nav-list-url a, #nav-list-page a {
+#header #nav-list-url a,#nav-list-page a {
     margin:5px;
     padding:0.7px;
 }
@@ -417,12 +420,12 @@ table td[class*="col-"],table th[class*="col-"] {
         display:block;
         text-align:center;
     }
-    #header #nav-list-url, #nav-list-page {
+    #header #nav-list-url,#nav-list-page {
         display:inline-block;
         text-align:center;
     }
-    #header #nav-list-url a, #nav-list-page a {
-        font-size: 13px;
+    #header #nav-list-url a,#nav-list-page a {
+        font-size:13px;
     }
     #main {
         margin-top:60px;
