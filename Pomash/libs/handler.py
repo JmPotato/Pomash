@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import misaka
+import mistune
 import tornado.web
 
 from models import *
@@ -11,11 +11,8 @@ from tornado.escape import to_unicode
 class BaseHandler(tornado.web.RequestHandler):
     def md_to_html(self, text):
         text = to_unicode(text)
-        render = MyRender(flags=misaka.HTML_USE_XHTML)
-        md = misaka.Markdown(
-            render,
-            extensions=misaka.EXT_FENCED_CODE | misaka.EXT_AUTOLINK,
-        )
+        renderer = MyRenderer()
+        md = mistune.Markdown(renderer=renderer)
         return md.render(text)
 
     def get_custom_page(self):

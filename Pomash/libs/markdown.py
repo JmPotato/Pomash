@@ -2,20 +2,18 @@
 # -*- coding: utf-8 -*-
 
 import re
-import misaka
+import mistune
 
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import get_lexer_by_name
 
-from tornado.escape import xhtml_escape
-
-class MyRender(misaka.HtmlRenderer, misaka.SmartyPants):
+class MyRenderer(mistune.Renderer):
     def block_code(self, code, language):
         if language:
             lexer = get_lexer_by_name(language, stripall=True)
         else:
-            return "<pre><code>%s</code></pre>" % xhtml_escape(code.strip())
+            return "<pre><code>%s</code></pre>" % code.strip()
 
         formatter = HtmlFormatter(noclasses=False, linenos=False)
 
