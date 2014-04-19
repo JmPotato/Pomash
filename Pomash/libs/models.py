@@ -45,7 +45,7 @@ def get_tag_articles(tag_name):
     return articles
 
 def get_all_tags():
-    tags = db.query("SELECT name FROM tags;")
+    tags = db.query("SELECT name, COUNT(name) AS num FROM tags GROUP BY name ORDER BY num DESC;")
     return tags
 
 def creat_page(**kwargs):
