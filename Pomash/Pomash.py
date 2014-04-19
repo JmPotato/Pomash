@@ -74,7 +74,7 @@ class TagHandler(BaseHandler):
             articlesList = get_tag_articles(tag_name),
             )
 
-class AllTagsHandler(BaseHandler):
+class TagsHandler(BaseHandler):
     def get(self):
         self.render("tags.html",
             title = blog_name + " | All Tags",
@@ -216,7 +216,7 @@ class PageNotFound(BaseHandler):
 handlers = [
     ("/", HomeHandler),
     ("/tag/([^/]+)/*", TagHandler),
-    ("/alltags", AllTagsHandler),
+    ("/tags", TagsHandler),
     ("/articles", ArticlesHandler),
     ("/article/([\d]+)", ArticleHandler),
     ("/page/([\d]+)", PageHandler),
