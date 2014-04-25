@@ -320,11 +320,10 @@ table td[class*="col-"],table th[class*="col-"] {
 }
 #main {
     margin:0 auto;
-    margin-top:70px;
     width:700px;
 }
 #main .container {
-    padding:20px;
+    margin-top:100px;
 }
 #main .block {
     background:#FFF;
@@ -433,7 +432,7 @@ table td[class*="col-"],table th[class*="col-"] {
     }
     #main {
         margin-top:60px;
-        width:auto;
+        width:100%;
     }
     #main .block-title {
         font-size:19px;
