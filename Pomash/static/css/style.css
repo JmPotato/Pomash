@@ -334,6 +334,7 @@ table td[class*="col-"],table th[class*="col-"] {
     box-shadow:0px 0px 20px rgba(0,0,0,0.45);
 }
 #main .block-title {
+    color:#06C;
     font-size:35px;
     padding:25px 20px 20px;
     text-align:center;
@@ -396,6 +397,9 @@ table td[class*="col-"],table th[class*="col-"] {
 #main .block-footer div#tags a {
     padding:3px;
 }
+#main .comment {
+    border-top:2px solid #eee;
+}
 #main .block-page {
     background:#FFF;
     padding:5px 10px 5px;
@@ -430,6 +434,9 @@ table td[class*="col-"],table th[class*="col-"] {
     #main {
         margin-top:60px;
         width:auto;
+    }
+    #main .block-title {
+        font-size:19px;
     }
     #main .block-title a {
         font-size:19px;

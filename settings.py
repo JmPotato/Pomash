@@ -6,6 +6,9 @@ blog_name = "Pomash"
 blog_author = "JmPotato"
 blog_url = "/"
 
+enable_comment = True
+disqus_name = "pomash"
+
 #Please Change it!!!!!!
 cookie_secret = "2Easdu344FGDS#$!8dsdOhgo="
 
@@ -13,4 +16,5 @@ cookie_secret = "2Easdu344FGDS#$!8dsdOhgo="
 login_username = "admin"
 login_password = "admin"
 
+#Development Settings
 DeBug = True

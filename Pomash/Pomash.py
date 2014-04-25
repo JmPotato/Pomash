@@ -46,6 +46,8 @@ class ArticleHandler(BaseHandler):
             title = blog_name + " | %s" % article.title,
             article = article,
             tags = tags,
+            comment = enable_comment,
+            disqus_name = disqus_name,
             )
 
 class ArticlesHandler(BaseHandler):
