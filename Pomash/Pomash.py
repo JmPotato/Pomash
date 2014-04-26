@@ -164,13 +164,13 @@ class EditPageHandler(BaseHandler):
         title = self.get_argument("title", None)
         content = self.get_argument("content", None)
         if update_page(int(page_id), title = title, content = content):
-            self.redirect("/")
+            self.redirect("/admin")
 
 class DelPageHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self, page_id):
         if delete_page(page_id):
-            self.redirect("/")
+            self.redirect("/admin")
 
 class NewArticleHandler(BaseHandler):
     @tornado.web.authenticated
@@ -203,13 +203,13 @@ class EditArticleHandler(BaseHandler):
         tags = self.get_argument("tag", None)
         content = self.get_argument("content", None)
         if update_article(int(article_id), title = title, content = content, tags = tags):
-            self.redirect("/")
+            self.redirect("/admin")
 
 class DelArticleHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self, article_id):
         if delete_article(article_id):
-            self.redirect("/")
+            self.redirect("/admin")
 
 class FeedHandler(BaseHandler):
     def get(self):
