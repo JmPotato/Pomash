@@ -440,6 +440,9 @@ table td[class*="col-"],table th[class*="col-"] {
     #main .block-title a {
         font-size:19px;
     }
+    #main .block-content {
+        padding:0px;
+    }
     #main .block-content blockquote {
         font-size:13px;
     }
