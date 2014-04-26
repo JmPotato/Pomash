@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>{{ blog_name }}</title>
     <subtitle>{{ blog_name }}</subtitle>
-    <updated>{{ articlesList[-1].datetime }}</updated>
+    <updated>{{ articlesList[0].datetime }}</updated>
     <author>
         <name><![CDATA[ {{ blog_author }} ]]></name>
     </author>
