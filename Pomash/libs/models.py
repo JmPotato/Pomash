@@ -32,7 +32,7 @@ def get_articles(page):
     return articles
 
 def get_all_articles():
-    articles = db.query("SELECT * FROM articles;")
+    articles = db.query("SELECT * FROM articles ORDER BY id DESC;")
     return articles
 
 def get_article_count():
@@ -75,10 +75,9 @@ def creat_article(**kwargs):
     return id
 
 def update_article(id, **kwargs):
-    today = datetime.date.today()
     db.execute("DELETE FROM tags WHERE article_id=?;", id)
     sql = '''UPDATE articles SET title=?, content=?, tag=?, datetime=? WHERE id=?;'''
-    db.execute(sql, kwargs["title"], kwargs["content"], kwargs["tags"], str(today), id)
+    db.execute(sql, kwargs["title"], kwargs["content"], kwargs["tags"], get_datetime(), id)
     tags = [tag.strip() for tag in kwargs["tags"].split(",")]
     for tag in tags:
         db.execute("INSERT INTO tags (name, article_id) VALUES (?,?);", tag, id)
