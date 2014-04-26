@@ -68,7 +68,7 @@ def delete_page(id):
 
 def creat_article(**kwargs):
     sql = '''INSERT INTO articles (title, content, tag, datetime) VALUES (?,?,?,?);'''
-    id = db.execute(sql, kwargs["title"], kwargs["content"], kwargs["tags"], get_date())
+    id = db.execute(sql, kwargs["title"], kwargs["content"], kwargs["tags"], get_datetime())
     tags = [tag.strip() for tag in kwargs["tags"].split(",")]
     for tag in tags:
         db.execute("INSERT INTO tags (name, article_id) VALUES (?,?);", tag, id)

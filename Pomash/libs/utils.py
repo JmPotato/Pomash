@@ -14,6 +14,5 @@ def make_token(username):
     key = ''.join(random.sample(string.letters+string.digits, 20))
     return key
 
-def get_date():
-    today = str(datetime.date.today())
-    return today
+def get_datetime():
+    return str(datetime.datetime.now()).split('.')[0]

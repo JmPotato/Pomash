@@ -14,7 +14,7 @@
       <link>{{ blog_url }}/article/{{ article.id }}</link>
       <id>{{ blog_url }}/article/{{ article.id }}</id>
       <published>{{ article.datetime }}</published>
-      <content type="html"><![CDATA[{{ article.content }}]]></content>
+      <content type="html"><![CDATA[{{ handler.md_to_html(article.content) }}]]></content>
     </entry>
     {% end %}
 </feed>
