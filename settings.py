@@ -4,7 +4,7 @@
 #Main Settings
 blog_name = "Pomash"
 blog_author = "JmPotato"
-blog_url = "/"
+blog_url = "http://xxx.oo/"
 
 enable_comment = True
 disqus_name = "pomash"
