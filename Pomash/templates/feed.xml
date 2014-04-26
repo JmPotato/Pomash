@@ -6,15 +6,17 @@
     <author>
         <name><![CDATA[ {{ blog_author }} ]]></name>
     </author>
-    <link href="{{ blog_url }}" />
-    <id>{{ blog_url }}</id>
+    <link href="{{ request.host }}" />
+    <id>http://{{ request.host }}</id>
     {% for article in articlesList %}
-    <entry>
-      <title>{{ article.title }}</title>
-      <link>{{ blog_url }}/article/{{ article.id }}</link>
-      <id>{{ blog_url }}/article/{{ article.id }}</id>
-      <published>{{ article.datetime }}</published>
-      <content type="html"><![CDATA[{{ handler.md_to_html(article.content) }}]]></content>
-    </entry>
+        <entry>
+            <title>{{ article.title }}</title>
+            <link>http://{{ request.host }}/article/{{ article.id }}</link>
+            <id>http://{{ request.host }}/article/{{ article.id }}</id>
+            <published>{{ article.datetime }}</published>
+            <content type="html">
+                <![CDATA[{{ handler.md_to_html(article.content) }}]]>
+            </content>
+        </entry>
     {% end %}
 </feed>
