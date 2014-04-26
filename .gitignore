@@ -1,3 +1,6 @@
+#PyCharm
+.idea
+
 *.py[co]
 
 # Packages
@@ -16,5 +19,16 @@ develop-eggs
 # Installer logs
 pip-log.txt
 
+# Unit test / coverage reports
+.coverage
+.tox
+
 #OS X
 .DS_Store
+
+#Virtualenv
+.Python
+lib/
+include/
+htmlcov
+tests/site/deploy
