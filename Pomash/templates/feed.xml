@@ -6,7 +6,7 @@
     <author>
         <name><![CDATA[ {{ blog_author }} ]]></name>
     </author>
-    <link href="{{ request.host }}" />
+    <link href="http://{{ request.host }}" />
     <id>http://{{ request.host }}</id>
     {% for article in articlesList %}
         <entry>

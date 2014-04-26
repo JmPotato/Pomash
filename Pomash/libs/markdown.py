@@ -11,7 +11,10 @@ from pygments.lexers import get_lexer_by_name
 class MyRenderer(mistune.Renderer):
     def block_code(self, code, language):
         if language:
-            lexer = get_lexer_by_name(language, stripall=True)
+            try:
+                lexer = get_lexer_by_name(language, stripall=True)
+            except:
+                return "<pre><code>%s</code></pre>" % code.strip()
         else:
             return "<pre><code>%s</code></pre>" % code.strip()
 

@@ -414,6 +414,14 @@ table td[class*="col-"],table th[class*="col-"] {
     border-top:1px solid rgba(0,0,0,0.1);
 }
 @media only screen and (max-width:760px) {
+    .highlight {
+        padding:5px 20px;
+        color:#c7254e;
+        font-size:13px;
+        background-color:#f9f2f4;
+        border-radius:4px;
+        overflow:auto;
+    }
     #header .nav {
         width:auto;
     }
