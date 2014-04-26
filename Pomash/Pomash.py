@@ -211,6 +211,14 @@ class DelArticleHandler(BaseHandler):
         if delete_article(article_id):
             self.redirect("/")
 
+class FeedHandler(BaseHandler):
+    def get(self):
+        self.set_header("Content-Type", "application/atom+xml")
+        self.render("feed.xml",
+            articlesList = get_all_articles(),
+            blog_author = blog_author,
+            )
+
 class PageNotFound(BaseHandler):
     def get(self):
         raise tornado.web.HTTPError(404)
@@ -219,6 +227,7 @@ handlers = [
     ("/", HomeHandler),
     ("/tag/([^/]+)/*", TagHandler),
     ("/tags", TagsHandler),
+    ("/feed", FeedHandler),
     ("/articles", ArticlesHandler),
     ("/article/([\d]+)", ArticleHandler),
     ("/page/([\d]+)", PageHandler),

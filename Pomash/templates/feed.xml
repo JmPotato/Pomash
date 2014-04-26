@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>{{ blog_name }}</title>
+    <subtitle>{{ blog_name }}</subtitle>
+    <updated>{{ articlesList[-1].datetime }}</updated>
+    <author>
+        <name><![CDATA[ {{ blog_author }} ]]></name>
+    </author>
+    <link href="{{ blog_url }}" />
+    <id>{{ blog_url }}</id>
+    {% for article in articlesList %}
+    <entry>
+      <title>{{ article.title }}</title>
+      <link>{{ blog_url }}/article/{{ article.id }}</link>
+      <id>{{ blog_url }}/article/{{ article.id }}</id>
+      <published>{{ article.datetime }}</published>
+      <content type="html"><![CDATA[{{ article.content }}]]></content>
+    </entry>
+    {% end %}
+</feed>
