@@ -213,7 +213,7 @@ class DelArticleHandler(BaseHandler):
 
 class FeedHandler(BaseHandler):
     def get(self):
-        self.set_header("Content-Type", "application/atom+xml")
+        self.set_header("Content-Type", "text/xml; charset=utf-8")
         self.render("feed.xml",
             articlesList = get_all_articles(),
             blog_author = blog_author,
