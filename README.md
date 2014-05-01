@@ -9,9 +9,8 @@ Installation
 Requirements:
 
     1.Tornado
-    2.SQLite3
-    3.Misaka
-    4.pygments
+    2.Mistune
+    3.pygments
 
 How to Build:
 
