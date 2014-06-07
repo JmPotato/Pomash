@@ -18,11 +18,11 @@
 {% if count > 3 %}
 <div class="block-page">
     <ul class="pager">
-        {% if page-1 > 0 %}
-        <li class="next"><a href="/page/{{ page-1 }}">&larr; Newer</a></li>
+        {% if page_number-1 > 0 %}
+        <li class="next"><a href="/page/{{ page_number-1 }}">&larr; Newer</a></li>
         {% end %}
-        {% if 3*page < count %}
-        <li class="previous"><a href="/page/{{ page+1 }}">Older &rarr;</a></li>
+        {% if 3*page_number < count %}
+        <li class="previous"><a href="/page/{{ page_number+1 }}">Older &rarr;</a></li>
         {% end %}
     </ul>
 </div>
