@@ -9,6 +9,8 @@ blog_url = "http://xxx.oo/"
 enable_comment = True
 disqus_name = "pomash"
 
+theme = "default"
+
 #Please Change it!!!!!!
 cookie_secret = "2Easdu344FGDS#$!8dsdOhgo="
 

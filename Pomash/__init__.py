@@ -7,12 +7,14 @@ import tornado.web
 from settings import *
 from .Pomash import handlers as handler
 
+theme_path = os.path.join(os.path.dirname(__file__), "theme/" + theme)
+
 class Application(tornado.web.Application):
     def __init__(self):
         handlers = handler
         settings = dict(
-            static_path = os.path.join(os.path.dirname(__file__), "static"),
-            template_path = os.path.join(os.path.dirname(__file__), "templates"),
+            static_path = os.path.join(theme_path, "static"),
+            template_path = os.path.join(theme_path, "templates"),
             autoescape=None,
             blog_name = blog_name,
             blog_url = blog_url,
