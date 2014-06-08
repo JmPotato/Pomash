@@ -27,8 +27,8 @@ def get_article(id):
     article = db.get("SELECT * FROM articles WHERE id = ?;", id)
     return article
 
-def get_articles(page):
-    articles = db.query("SELECT * FROM articles ORDER BY id DESC LIMIT ?, 3;",(page - 1) * 3)
+def get_articles(page, post_per_page):
+    articles = db.query("SELECT * FROM articles ORDER BY id DESC LIMIT ?, ?;",(page - 1) * 3, post_per_page)
     return articles
 
 def get_all_articles():
@@ -40,7 +40,7 @@ def get_article_count():
     return count[0].count
 
 def get_tag_articles(tag_name):
-    sql = """SELECT a.id, a.title FROM articles AS a INNER JOIN tags AS t ON a.id = t.article_id WHERE t.name = ?;"""
+    sql = """SELECT * FROM articles AS a INNER JOIN tags AS t ON a.id = t.article_id WHERE t.name = ?;"""
     articles = db.query(sql, tag_name)
     return articles
 

@@ -16,7 +16,8 @@ class HomeHandler(BaseHandler):
     def get(self):
         self.render("home.html",
             title = blog_name,
-            articlesList = get_articles(1),
+            articlesList = get_articles(1, post_per_page),
+            post_per_page = post_per_page,
             page_number = 1,
             count = get_article_count(),
             )
@@ -25,7 +26,8 @@ class PageHandler(BaseHandler):
     def get(self, page):
         self.render("home.html",
             title = blog_name,
-            articlesList = get_articles(int(page)),
+            articlesList = get_articles(int(page), post_per_page),
+            post_per_page = post_per_page,
             page_number = int(page),
             count = get_article_count(),
             )

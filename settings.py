@@ -10,6 +10,7 @@ enable_comment = True
 disqus_name = "pomash"
 
 theme = "default"
+post_per_page = 3
 
 #Please Change it!!!!!!
 cookie_secret = "2Easdu344FGDS#$!8dsdOhgo="
