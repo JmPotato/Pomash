@@ -22,6 +22,13 @@ How to Build:
 * `python run.py` to run your blog.
 * Your blog is ready for you!
 
+Theme
+=====
+
+Pomash's theme named "Potheme". Here is a Potheme list:
+
+* [Potheme-Clean](https://github.com/JmPotato/Potheme-Clean)
+
 License
 =====
 
