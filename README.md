@@ -25,7 +25,7 @@ How to Build:
 Theme
 =====
 
-Pomash's theme named "Potheme". Here is a Potheme list:
+Pomash's theme named Potheme. Here is a Potheme list:
 
 * [Potheme-Clean](https://github.com/JmPotato/Potheme-Clean)
 
