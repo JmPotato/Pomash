@@ -28,6 +28,7 @@ class BaseHandler(tornado.web.RequestHandler):
         base_value = dict(
             blog_url = self.application.settings["blog_url"],
             blog_name = self.application.settings["blog_name"],
+            analytics = self.application.settings["analytics"],
             )
         template_path = self.get_template_path()
         if not template_path:

@@ -15,10 +15,11 @@ class Application(tornado.web.Application):
         settings = dict(
             static_path = os.path.join(theme_path, "static"),
             template_path = os.path.join(theme_path, "templates"),
-            autoescape=None,
+            autoescape = None,
             blog_name = blog_name,
-            blog_url = blog_url,
+            blog_url = blog_url.strip().lstrip().rstrip("/"),
             cookie_secret = cookie_secret,
+            analytics = analytics.strip().lstrip(),
             login_url = "/login",
             debug = DeBug
         )

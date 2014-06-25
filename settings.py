@@ -6,6 +6,8 @@ blog_name = "Pomash"
 blog_author = "JmPotato"
 blog_url = "http://xxx.oo/"
 
+analytics = ""
+
 enable_comment = True
 disqus_name = "pomash"
 
