@@ -4,24 +4,29 @@
 <script>
 function AutoSave(it) {
     var _value = it.value;
-	if (!_value) {
-		var _LastContent = GetCookie('AutoSaveContent');
+	if (_value) {
 
-		if (!_LastContent) return;
-
-		if (confirm("Load Last AutoSave Content?")) {
-			it.value = _LastContent;
-			return true;
-		}
-	} else {
-
-		var expDays = 30;
+        var expDays = 30;
 		var exp = new Date();
 		exp.setTime( exp.getTime() + (expDays * 86400000) );
 		var expires='; expires=' + exp.toGMTString();
 
 		document.cookie = "AutoSaveContent=" + escape (_value) + expires;
 	}
+}
+
+function AutoLoad(it) {
+    var _value = it.value;
+    if (!_value) {
+        var _LastContent = GetCookie('AutoSaveContent');
+
+        if (!_LastContent) return;
+
+        if (confirm("Load Last AutoSave Content?")) {
+            it.value = _LastContent;
+            return true;
+        }
+    }
 }
 
 function getCookieVal (offset) {
@@ -70,10 +75,11 @@ function DeleteCookie (name) {
             <div class="input">
                 <label for="content">Content</label><br />
                 {% if new %}
-                <textarea rows="30" id="content" name="content" onkeyup="AutoSave(this);" onselect="AutoSave(this);" onclick="AutoSave(this);"></textarea>
+                <textarea rows="30" id="content" name="content" onkeyup="AutoSave(this);" ondblclick="AutoSave(this);"></textarea>
                 {% else %}
-                <textarea rows="30" id="content" name="content" onkeyup="AutoSave(this);" onselect="AutoSave(this);" onclick="AutoSave(this);">{{ page.content }}</textarea>
+                <textarea rows="30" id="content" name="content" onkeyup="AutoSave(this);" ondblclick="AutoLoad(this);">{{ page.content }}</textarea>
                 {% end %}
+                <label>Trip: Double click box to load last autosave content</label>
             <div id="submit">
                 <button type="submit" class="btn btn-primary">Post</button>
             </div>
@@ -99,10 +105,11 @@ function DeleteCookie (name) {
             <div class="input">
                 <label for="content">Content</label><br />
                 {% if new %}
-                <textarea rows="30" id="content" name="content" onkeyup="AutoSave(this);" onselect="AutoSave(this);" onclick="AutoSave(this);"></textarea>
+                <textarea rows="30" id="content" name="content" onkeyup="AutoSave(this);" ondblclick="AutoLoad(this);"></textarea>
                 {% else %}
-                <textarea rows="30" id="content" name="content" onkeyup="AutoSave(this);" onselect="AutoSave(this);" onclick="AutoSave(this);">{{ article.content }}</textarea>
+                <textarea rows="30" id="content" name="content" onkeyup="AutoSave(this);" ondblclick="AutoLoad(this);">{{ article.content }}</textarea>
                 {% end %}
+                <label>Trip: Double click box to load last autosave content</label>
             <div id="submit">
                 <button type="submit" class="btn btn-primary">Post</button>
             </div>
