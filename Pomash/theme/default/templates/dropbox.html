@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="block">
+    <div class="block-title">Dropbox</div>
+    {% if not authorized %}
+    <div class="block-item">
+        <h3>Please go to the url and authenticating Pomash: <a href="{{ authorize_url }}">Authorize Url</a></h3>
+    </div>
+    <div class="block-item">
+    <h3>Please enter the code you got:</h3>
+        <form action="#" method="post" id="dropbox">
+            <div class="input">
+                <input id="code" name="code" type="text">
+            </div>
+            <div id="submit">
+                <button type="submit" class="btn btn-primary">Ok</button>
+            </div>
+        </form>
+    </div>
+    {% else %}
+    <div class="block-item"><h3>You got it~</h3></div>
+    {% end %}
+</div>
+{% end %}

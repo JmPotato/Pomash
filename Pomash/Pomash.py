@@ -12,6 +12,13 @@ from libs.utils import *
 from libs.models import *
 from libs.handler import *
 
+from dropbox.client import DropboxOAuth2FlowNoRedirect, DropboxClient
+
+app_key = 'fugru0h79njb20s'
+app_secret = 'l2aigyu0eldnmzn'
+
+flow = DropboxOAuth2FlowNoRedirect(app_key, app_secret)
+
 class HomeHandler(BaseHandler):
     def get(self):
         self.render("home.html",
@@ -135,6 +142,25 @@ class AdminHandler(BaseHandler):
             articlesList = get_all_articles(),
             )
 
+class DropboxHandler(BaseHandler):
+    @tornado.web.authenticated
+    def get(self):
+        if self.get_secure_cookie("access_token"):
+            authorized = True
+        else:
+            authorized = False
+        self.render("dropbox.html",
+            title = blog_name + " | Dropbox",
+            authorized = authorized,
+            authorize_url = flow.start(),
+            )
+
+    def post(self):
+        code = self.get_argument("code", None).strip()
+        access_token, user_id = flow.finish(code)
+        self.set_secure_cookie("access_token", access_token)
+        self.redirect("/admin/dropbox")
+
 class NewPageHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
@@ -237,6 +263,7 @@ handlers = [
     ("/admin", AdminHandler),
     ("/login", LoginHandler),
     ("/logout", LogoutHandler),
+    ("/admin/dropbox", DropboxHandler),
     ("/admin/edit/new/article", NewArticleHandler),
     ("/admin/edit/article/([\d]+)", EditArticleHandler),
     ("/admin/edit/delete/article/([\d]+)", DelArticleHandler),
