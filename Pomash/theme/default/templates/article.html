@@ -1,5 +1,16 @@
 {% extends "layout.html" %}
 
+{% block head %}
+    {% if twitter_card %}
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="{{ twitter_username }}">
+        <meta name="twitter:title" content="{{ article.title }}">
+        <meta name="twitter:description" content="{{ handler.md_to_html(article.content)[:199] }}">
+        <meta name="twitter:creator" content="{{ twitter_username }}">
+        <meta name="twitter:domain" content="{{ blog_url }}">
+    {% end %}
+{% end %}
+
 {% block content %}
 <div class="block">
     <div class="block-title">
