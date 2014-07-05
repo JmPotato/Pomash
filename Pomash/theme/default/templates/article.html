@@ -5,7 +5,11 @@
         <meta name="twitter:card" content="summary">
         <meta name="twitter:site" content="{{ twitter_username }}">
         <meta name="twitter:title" content="{{ article.title }}">
-        <meta name="twitter:description" content="{{ handler.md_to_html(article.content)[:199] }}">
+        {% if len(handler.md_to_html(article.content)) <= 200%}
+            <meta name="twitter:description" content="{{ handler.md_to_html(article.content)[:len(handler.md_to_html(article.content))/2-1] }}">
+        {% elif len(handler.md_to_html(article.content)) > 200 %}
+            <meta name="twitter:description" content="{{ handler.md_to_html(article.content)[:199] }}">
+        {% end %}
         <meta name="twitter:creator" content="{{ twitter_username }}">
         <meta name="twitter:domain" content="{{ blog_url }}">
     {% end %}
