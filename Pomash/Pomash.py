@@ -57,6 +57,8 @@ class ArticleHandler(BaseHandler):
             tags = tags,
             comment = enable_comment,
             disqus_name = disqus_name,
+            twitter_card = twitter_card,
+            twitter_username = twitter_username,
             )
 
 class ArticlesHandler(BaseHandler):

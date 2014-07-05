@@ -6,6 +6,9 @@ blog_name = "Pomash"
 blog_author = "JmPotato"
 blog_url = "http://xxx.oo/"
 
+twitter_card = False
+twitter_username = "@Jm_Potato"
+
 analytics = ""
 
 enable_comment = True
@@ -15,7 +18,7 @@ theme = "default"
 post_per_page = 3
 
 #Please Change it!!!!!!
-cookie_secret = "2Easdu344FGDS#$!8dsdOhgo="
+cookie_secret = "PLEASE BE SURE TO CHANGE ME!!!!!"
 
 #Admin Settings
 login_username = "admin"
