@@ -22,7 +22,7 @@ cookie_secret = "PLEASE BE SURE TO CHANGE ME!!!!!"
 
 #Admin Settings
 login_username = "admin"
-login_password = "admin"
+#login_password = "admin"
 
 #Development Settings
 DeBug = True

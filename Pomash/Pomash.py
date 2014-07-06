@@ -133,6 +133,8 @@ class LogoutHandler(BaseHandler):
             self.redirect("/")
         self.clear_cookie("username")
         self.clear_cookie("token")
+        self.clear_cookie("access_token")
+        self.clear_cookie("user_id")
         self.redirect("/")
 
 class AdminHandler(BaseHandler):
@@ -143,6 +145,27 @@ class AdminHandler(BaseHandler):
             blog_author = blog_author,
             articlesList = get_all_articles(),
             )
+
+class PasswordHandler(BaseHandler):
+    @tornado.web.authenticated
+    def get(self):
+        message = self.get_argument('message', None)
+        self.render("change_pw.html",
+            title = blog_name + " | Change Password",
+            message = message,
+            )
+
+    def post(self):
+        username = self.get_current_user()
+        if verify_user(username, to_md5(self.get_argument("o_password", None))):
+            if change_password(username, to_md5(self.get_argument("n_password", None))):
+                self.clear_cookie("username")
+                self.clear_cookie("token")
+                self.clear_cookie("access_token")
+                self.clear_cookie("user_id")
+                self.redirect("/")
+        else:
+            self.redirect("/admin/change_password?message=Failed to change Password: Wrong Old Password")
 
 class DropboxHandler(BaseHandler):
     @tornado.web.authenticated
@@ -306,6 +329,7 @@ handlers = [
     ("/admin/dropbox", DropboxHandler),
     ("/admin/dropbox/start", DropboxBUHandler),
     ("/admin/dropbox/load", DropboxLDHandler),
+    ("/admin/change_password", PasswordHandler),
     ("/admin/edit/new/article", NewArticleHandler),
     ("/admin/edit/article/([\d]+)", EditArticleHandler),
     ("/admin/edit/delete/article/([\d]+)", DelArticleHandler),

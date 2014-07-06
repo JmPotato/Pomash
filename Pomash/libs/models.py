@@ -107,3 +107,7 @@ def verify_token(username, token):
     else:
         return False
 
+def change_password(username, n_password_md5):
+    sql = '''UPDATE admin_config SET password=? WHERE username=?;'''
+    db.execute(sql, n_password_md5, username)
+    return True
