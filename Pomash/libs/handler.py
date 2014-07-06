@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import re
 import mistune
 import tornado.web
 
@@ -9,6 +10,12 @@ from markdown import *
 from tornado.escape import to_unicode
 
 class BaseHandler(tornado.web.RequestHandler):
+    def description(self, text):
+        if len(text) <= 200:
+            return re.sub('(<.*?>)', '', text).replace('\n', ' ')[:len(text)/2-4] + '...'
+        elif len(text) > 200:
+            return re.sub('(<.*?>)', '', text).replace('\n', ' ')[:195] + '...'
+
     def md_to_html(self, text):
         text = to_unicode(text)
         renderer = MyRenderer()
