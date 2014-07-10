@@ -14,9 +14,6 @@ from libs.handler import *
 
 from dropbox.client import DropboxOAuth2FlowNoRedirect, DropboxClient
 
-app_key = 'fugru0h79njb20s'
-app_secret = 'l2aigyu0eldnmzn'
-
 flow = DropboxOAuth2FlowNoRedirect(app_key, app_secret)
 
 class HomeHandler(BaseHandler):

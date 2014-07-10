@@ -26,3 +26,7 @@ login_username = "admin"
 
 #Development Settings
 DeBug = True
+
+#Dropbox
+app_key = ''
+app_secret = ''
