@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+{% block title %} | {{ article.title }}{% end %}
+
 {% block head %}
     {% if twitter_card %}
         <meta name="twitter:card" content="summary">

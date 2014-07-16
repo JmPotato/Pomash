@@ -19,7 +19,6 @@ flow = DropboxOAuth2FlowNoRedirect(app_key, app_secret)
 class HomeHandler(BaseHandler):
     def get(self):
         self.render("home.html",
-            title = blog_name,
             articlesList = get_articles(1, post_per_page),
             post_per_page = post_per_page,
             page_number = 1,
@@ -29,7 +28,6 @@ class HomeHandler(BaseHandler):
 class PageHandler(BaseHandler):
     def get(self, page):
         self.render("home.html",
-            title = blog_name,
             articlesList = get_articles(int(page), post_per_page),
             post_per_page = post_per_page,
             page_number = int(page),
@@ -40,7 +38,6 @@ class CuPageHandler(BaseHandler):
     def get(self, page_id):
         page = gat_page(page_id)
         self.render("page.html",
-            title = blog_name + " | %s" % page.title,
             page = page,
             )
         
@@ -49,7 +46,6 @@ class ArticleHandler(BaseHandler):
         article = get_article(article_id)
         tags = [tag.strip() for tag in article.tag.split(",")]
         self.render("article.html",
-            title = blog_name + " | %s" % article.title,
             article = article,
             tags = tags,
             comment = enable_comment,
@@ -72,14 +68,12 @@ class ArticlesHandler(BaseHandler):
                 year_list[year].append(article)
         articlesList.append(year_list)
         self.render("articles.html",
-            title = blog_name + " | Articles",
             articlesList = articlesList,
             )
 
 class TagHandler(BaseHandler):
     def get(self, tag_name):
         self.render("tag.html",
-            title = blog_name + " | %s" % tag_name,
             tag_name = tag_name,
             articlesList = get_tag_articles(tag_name),
             )
@@ -87,7 +81,6 @@ class TagHandler(BaseHandler):
 class TagsHandler(BaseHandler):
     def get(self):
         self.render("tags.html",
-            title = blog_name + " | All Tags",
             tags = get_all_tags(),
             )
 
@@ -98,13 +91,9 @@ class LoginHandler(BaseHandler):
                 self.redirect("/admin")
                 return
             else:
-                self.render("login.html",
-                    title = blog_name,
-                    )
+                self.render("login.html")
         else:
-            self.render("login.html",
-                title = blog_name,
-                )
+            self.render("login.html")
 
     def post(self):
         username = self.get_argument("username", None)
@@ -134,7 +123,6 @@ class AdminHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
         self.render("admin.html",
-            title = blog_name + " | Admin",
             blog_author = blog_author,
             articlesList = get_all_articles(),
             )
@@ -144,7 +132,6 @@ class PasswordHandler(BaseHandler):
     def get(self):
         message = self.get_argument('message', None)
         self.render("change_pw.html",
-            title = blog_name + " | Change Password",
             message = message,
             )
 
@@ -167,7 +154,6 @@ class DropboxHandler(BaseHandler):
         else:
             authorized = False
         self.render("dropbox.html",
-            title = blog_name + " | Dropbox",
             authorized = authorized,
             authorize_url = flow.start(),
             message = message,
@@ -221,7 +207,6 @@ class NewPageHandler(BaseHandler):
     def get(self):
         self.render("editor.html",
             is_page = True,
-            title = blog_name + " | New Page",
             new = True,
             )
 
@@ -239,7 +224,6 @@ class EditPageHandler(BaseHandler):
     def get(self, page_id):
         self.render("editor.html",
             is_page = True,
-            title = blog_name + " | Edit Page",
             new = False,
             page = gat_page(page_id),
             )
@@ -262,7 +246,6 @@ class NewArticleHandler(BaseHandler):
     def get(self):
         self.render("editor.html",
             is_page = False,
-            title = blog_name + " | New Article",
             new = True,
             )
 
@@ -279,7 +262,6 @@ class EditArticleHandler(BaseHandler):
     def get(self, article_id):
         self.render("editor.html",
             is_page = False,
-            title = blog_name + " | Edit Article",
             new = False,
             article = get_article(article_id),
             )
