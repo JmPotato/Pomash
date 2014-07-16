@@ -18,6 +18,7 @@ class Application(tornado.web.Application):
             autoescape = None,
             blog_name = blog_name,
             blog_url = blog_url.strip().lstrip().rstrip("/"),
+            blog_author = blog_author,
             cookie_secret = cookie_secret,
             analytics = analytics.strip().lstrip(),
             login_url = "/login",
