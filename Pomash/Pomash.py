@@ -123,15 +123,11 @@ class LoginHandler(BaseHandler):
             self.redirect("/login")
 
 class LogoutHandler(BaseHandler):
-    @tornado.web.authenticated
     def get(self):
         user = self.get_current_user()
         if not user:
             self.redirect("/")
-        self.clear_cookie("username")
-        self.clear_cookie("token")
-        self.clear_cookie("access_token")
-        self.clear_cookie("user_id")
+        self.clear_all_cookies()
         self.redirect("/")
 
 class AdminHandler(BaseHandler):
@@ -152,14 +148,12 @@ class PasswordHandler(BaseHandler):
             message = message,
             )
 
+    @tornado.web.authenticated
     def post(self):
         username = self.get_current_user()
         if verify_user(username, to_md5(self.get_argument("o_password", None))):
             if change_password(username, to_md5(self.get_argument("n_password", None))):
-                self.clear_cookie("username")
-                self.clear_cookie("token")
-                self.clear_cookie("access_token")
-                self.clear_cookie("user_id")
+                self.clear_all_cookies()
                 self.redirect("/")
         else:
             self.redirect("/admin/change_password?message=Failed to change Password: Wrong Old Password")
@@ -179,6 +173,7 @@ class DropboxHandler(BaseHandler):
             message = message,
             )
 
+    @tornado.web.authenticated
     def post(self):
         code = self.get_argument("code", None).strip()
         access_token, user_id = flow.finish(code)
@@ -230,6 +225,7 @@ class NewPageHandler(BaseHandler):
             new = True,
             )
 
+    @tornado.web.authenticated
     def post(self):
         title = self.get_argument("title", None)
         content = self.get_argument("content", None)
@@ -247,7 +243,8 @@ class EditPageHandler(BaseHandler):
             new = False,
             page = gat_page(page_id),
             )
-    
+
+    @tornado.web.authenticated
     def post(self, page_id):
         title = self.get_argument("title", None)
         content = self.get_argument("content", None)
@@ -269,6 +266,7 @@ class NewArticleHandler(BaseHandler):
             new = True,
             )
 
+    @tornado.web.authenticated
     def post(self):
         title = self.get_argument("title", None)
         tags = self.get_argument("tag", None)
@@ -285,7 +283,8 @@ class EditArticleHandler(BaseHandler):
             new = False,
             article = get_article(article_id),
             )
-    
+
+    @tornado.web.authenticated
     def post(self, article_id):
         title = self.get_argument("title", None)
         tags = self.get_argument("tag", None)
