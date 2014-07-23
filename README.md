@@ -22,6 +22,8 @@ How to Build:
 * `python run.py` to run your blog.
 * Your blog is ready for you!
 
+Note: The default admin username is `admin` and the password is 'admin', too. You can change them with `settings.py` and admin panel.
+
 Theme
 =====
 
