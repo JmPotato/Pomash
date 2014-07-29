@@ -36,10 +36,8 @@ class PageHandler(BaseHandler):
 
 class CuPageHandler(BaseHandler):
     def get(self, page_id):
-        page = gat_page(page_id)
-        self.render("page.html",
-            page = page,
-            )
+        article = gat_page(page_id)
+        self.render("page.html", article=article)
         
 class ArticleHandler(BaseHandler):
     def get(self, article_id):

@@ -1,14 +1,14 @@
 {% extends "layout.html" %}
 
-{% block title %} | {{ page.title }}{% end %}
+{% block title %} | {{ article.title }}{% end %}
 
 {% block content %}
 <div class="block">
     <div class="block-title">
-        {{ page.title }}
+        {{ article.title }}
     </div>
     <div class="block-content">
-        {{ handler.md_to_html(page.content) }}
+        {{ handler.md_to_html(article.content) }}
     </div>
 </div>
 {% end %}
