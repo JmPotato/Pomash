@@ -120,9 +120,13 @@ class LogoutHandler(BaseHandler):
 class AdminHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
+        if not (app_key and app_secret):
+            dropbox_on = False
+        dropbox_on = True
         self.render("admin.html",
             blog_author = blog_author,
             articlesList = get_all_articles(),
+            dropbox_on = dropbox_on,
             )
 
 class PasswordHandler(BaseHandler):
@@ -146,7 +150,10 @@ class PasswordHandler(BaseHandler):
 class DropboxHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
-        message = self.get_argument('message', 'Please backup your datebase and settings if you first use Pomash')
+        if not (app_key and app_secret):
+            message = self.get_argument('message', 'Authenticated Failed: You do not have the App Key and App Secret. Please ask author(JmPotato) for these')
+        else:
+            message = self.get_argument('message', 'Please backup your database and settings if you use Pomash first')
         if self.get_secure_cookie("access_token"):
             authorized = True
         else:
