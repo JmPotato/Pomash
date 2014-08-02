@@ -223,7 +223,7 @@ class EditPageHandler(BaseHandler):
         self.render("editor.html",
             is_page = True,
             new = False,
-            page = gat_page(page_id),
+            content = gat_page(page_id),
             )
 
     @tornado.web.authenticated

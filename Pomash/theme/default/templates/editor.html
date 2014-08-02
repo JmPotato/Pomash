@@ -71,17 +71,17 @@ function DeleteCookie (name) {
                 {% if new %}
                 <input id="title" name="title" type="text">
                 {% else %}
-                <input id="title" name="title" type="text" value="{{ page.title }}">
+                <input id="title" name="title" type="text" value="{{ content.title }}">
                 {% end %}
             </div>
             <div class="input">
                 <label for="content">Content</label><br />
                 {% if new %}
-                <textarea rows="30" id="content" name="content" onkeyup="AutoSave(this);" ondblclick="AutoSave(this);"></textarea>
+                <textarea rows="30" id="content" name="content" onkeyup="AutoSave(this);" onchange="AutoSave(this);" ondblclick="AutoLoad(this);"></textarea>
                 {% else %}
-                <textarea rows="30" id="content" name="content" onkeyup="AutoSave(this);" ondblclick="AutoLoad(this);">{{ page.content }}</textarea>
+                <textarea rows="30" id="content" name="content" onkeyup="AutoSave(this);" onchange="AutoSave(this);" ondblclick="AutoLoad(this);">{{ content.content }}</textarea>
                 {% end %}
-                <label>Trip: Double click box to load last autosave content</label>
+                <label>Tip: Double click box to load last autosave content</label>
             <div id="submit">
                 <button type="submit" class="btn btn-primary">Post</button>
             </div>
@@ -107,11 +107,11 @@ function DeleteCookie (name) {
             <div class="input">
                 <label for="content">Content</label><br />
                 {% if new %}
-                <textarea rows="30" id="content" name="content" onkeyup="AutoSave(this);" ondblclick="AutoLoad(this);"></textarea>
+                <textarea rows="30" id="content" name="content" onkeyup="AutoSave(this);" onchange="AutoSave(this);" ondblclick="AutoLoad(this);"></textarea>
                 {% else %}
-                <textarea rows="30" id="content" name="content" onkeyup="AutoSave(this);" ondblclick="AutoLoad(this);">{{ article.content }}</textarea>
+                <textarea rows="30" id="content" name="content" onkeyup="AutoSave(this);" onchange="AutoSave(this);" ondblclick="AutoLoad(this);">{{ article.content }}</textarea>
                 {% end %}
-                <label>Trip: Double click box to load last autosave content</label>
+                <label>Tip: Double click box to load last autosave content</label>
             <div id="submit">
                 <button type="submit" class="btn btn-primary">Post</button>
             </div>
