@@ -120,9 +120,9 @@ class LogoutHandler(BaseHandler):
 class AdminHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
+        dropbox_on = True
         if not (app_key and app_secret):
             dropbox_on = False
-        dropbox_on = True
         self.render("admin.html",
             blog_author = blog_author,
             articlesList = get_all_articles(),
