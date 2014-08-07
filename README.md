@@ -24,6 +24,22 @@ How to Build:
 
 Note: The default admin username is `admin` and the password is 'admin', too. You can change them with `settings.py` and admin panel.
 
+Usgae
+=====
+
+Support Markdown
+
+    #Hello World
+
+    ```python
+    print('Hello, World!')
+    ```
+
+    Hello, World!
+
+    * Hello
+    * World
+
 Theme
 =====
 
