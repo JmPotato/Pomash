@@ -47,6 +47,11 @@ Pomash's theme named Potheme. Here is a Potheme list:
 
 * [Potheme-Clean](https://github.com/JmPotato/Potheme-Clean)
 
+Guide
+=====
+
+A more detailed guide(Chinese): http://ipotato.me/article/16
+
 License
 =====
 
