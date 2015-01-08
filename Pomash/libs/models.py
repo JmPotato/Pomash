@@ -76,8 +76,8 @@ def creat_article(**kwargs):
 
 def update_article(id, **kwargs):
     db.execute("DELETE FROM tags WHERE article_id=?;", id)
-    sql = '''UPDATE articles SET title=?, content=?, tag=?, datetime=? WHERE id=?;'''
-    db.execute(sql, kwargs["title"], kwargs["content"], kwargs["tags"], get_datetime(), id)
+    sql = '''UPDATE articles SET title=?, content=?, tag=? WHERE id=?;'''
+    db.execute(sql, kwargs["title"], kwargs["content"], kwargs["tags"], id)
     tags = [tag.strip() for tag in kwargs["tags"].split(",")]
     for tag in tags:
         db.execute("INSERT INTO tags (name, article_id) VALUES (?,?);", tag, id)
