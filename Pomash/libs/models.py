@@ -40,7 +40,7 @@ def get_article_count():
     return count[0].count
 
 def get_tag_articles(tag_name):
-    sql = """SELECT * FROM articles AS a INNER JOIN tags AS t ON a.id = t.article_id WHERE t.name = ?;"""
+    sql = """SELECT * FROM articles AS a INNER JOIN tags AS t ON a.id = t.article_id WHERE t.name = ? ORDER BY id DESC;"""
     articles = db.query(sql, tag_name)
     return articles
 
