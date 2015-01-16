@@ -28,7 +28,7 @@ def get_article(id):
     return article
 
 def get_articles(page, post_per_page):
-    articles = db.query("SELECT * FROM articles ORDER BY id DESC LIMIT ?, ?;",(page - 1) * 3, post_per_page)
+    articles = db.query("SELECT * FROM articles ORDER BY id DESC LIMIT ?, ?;",(page - 1) * post_per_page, post_per_page)
     return articles
 
 def get_all_articles():
