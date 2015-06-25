@@ -22,7 +22,7 @@ How to Build:
 * `python run.py` to run your blog.
 * Your blog is ready for you!
 
-Note: The default admin username is `admin` and the password is 'admin', too. You can change them with `settings.py` and admin panel.
+Note: The default admin username is `admin` and the password is 'admin', too. You can change them in `settings.py` and admin panel.
 
 Usage
 =====
@@ -43,16 +43,16 @@ Support Markdown
 Theme
 =====
 
-Pomash's theme named Potheme. Here is a Potheme list:
+Pomash's theme engine is called Potheme. Here is a Potheme theme list:
 
 * [Potheme-Clean](https://github.com/JmPotato/Potheme-Clean)
 
 Guide
 =====
 
-A more detailed guide(Chinese): http://ipotato.me/article/16
+A more detailed guide (in Chinese): http://ipotato.me/article/16
 
 License
 =====
 
-Please read the MIT-LICENSE
+Please read the [MIT-LICENSE](./LICENSE)
