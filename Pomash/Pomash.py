@@ -56,7 +56,6 @@ class ArticlesHandler(BaseHandler):
     def get(self):
         all_articles = get_all_articles()
         year_list = {}
-        articlesList = []
         for article in all_articles:
             year = article["datetime"].split("-")[0]
             if year in year_list:
@@ -64,9 +63,8 @@ class ArticlesHandler(BaseHandler):
             else:
                 year_list[year] = []
                 year_list[year].append(article)
-        articlesList.append(year_list)
         self.render("articles.html",
-            articlesList = articlesList,
+            articlesList = year_list,
             )
 
 class TagHandler(BaseHandler):

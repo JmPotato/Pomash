@@ -6,15 +6,13 @@
 <div class="block">
     <div class="block-title">All Articles</div>
     <div class="block-content">
-    {% for article in articlesList %}
-    {% for year in article.keys() %}
+    {% for year in sorted(articlesList.keys(), reverse = True) %}
         <h1>{{ year }}</h1>
         <ul>
-            {% for i in range(len(article[year])) %}
-                <li><a href="/article/{{ article[year][i].id }}">{{ article[year][i].title }}</a></li>
+            {% for i in range(len(articlesList[year])) %}
+                <li><a href="/article/{{ articlesList[year][i].id }}">{{ articlesList[year][i].title }}</a></li>
             {% end %}
         </ul>
-    {% end %}
     {% end %}
     </div>
 </div>
