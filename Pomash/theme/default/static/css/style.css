@@ -35,6 +35,16 @@ div#submit {
     vertical-align:super;
     font-size:0.8em;
 }
+.operation_box {
+    padding:3px 6px;
+    margin:5px;
+    color:#06C;
+    border-radius:3px;
+}
+.operation_box span {
+    vertical-align:super;
+    font-size:0.8em;
+}
 .pager {
     padding-left:0;
     margin:20px 0;
@@ -390,9 +400,16 @@ table td[class*="col-"],table th[class*="col-"] {
     display:inline-block;
 }
 #main .block-footer div#tags {
+    display:inline;
     padding-top:10px;
 }
 #main .block-footer div#tags a {
+    padding:3px;
+}
+#main .block-footer div#operation {
+    float:right;
+}
+#main .block-footer div#operation a {
     padding:3px;
 }
 #main .comment {
