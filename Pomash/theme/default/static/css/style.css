@@ -353,6 +353,18 @@ table td[class*="col-"],table th[class*="col-"] {
     padding:10px;
     border-bottom:2px solid #eee;
 }
+#main .page-item {
+    padding:10px;
+    border-bottom:2px solid #eee;
+    overflow:scroll;
+    max-height:300px;
+}
+#main .article-item {
+    padding:10px;
+    border-bottom:2px solid #eee;
+    overflow:scroll;
+    max-height:600px;
+}
 #main .block-content {
     padding:10px 20px 10px;
 }
