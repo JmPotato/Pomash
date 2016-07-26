@@ -28,7 +28,7 @@
             {% for page in handler.get_custom_page() %}
                 <tr>
                     <td>{{ page.id }}</td>
-                    <td>{{ page.title }}</td>
+                    <td><a href="/page/custom/{{ page.id }}">{{ page.title }}</a></td>
                     <td>
                         <a href="/admin/edit/page/{{ page.id }}" class="btn btn-primary btn-xs">Edit</a>
                         <a class="btn btn-danger btn-xs" onclick="if(confirm('Are you sure to delete this article?')){window.location.href='/admin/edit/delete/page/{{ page.id }}';}">Delete</a>
