@@ -402,6 +402,9 @@ table td[class*="col-"],table th[class*="col-"] {
 }
 #main .block-content img {
     max-width:98%;
+    display:block;
+    margin:auto;
+}
 }
 #main .block-footer {
     border-top:2px solid #eee;
