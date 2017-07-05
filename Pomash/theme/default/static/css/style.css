@@ -348,6 +348,7 @@ table td[class*="col-"],table th[class*="col-"] {
     padding:25px 20px 20px;
     text-align:center;
     border-bottom:2px solid #eee;
+    line-height:40px;
 }
 #main .block-item {
     padding:10px;
@@ -370,6 +371,7 @@ table td[class*="col-"],table th[class*="col-"] {
 }
 #main .block-content code {
     padding:2px 4px;
+    font-size: 18px;
     color:#c7254e;
     background-color:#f9f2f4;
     border-radius:4px;
@@ -426,9 +428,6 @@ table td[class*="col-"],table th[class*="col-"] {
 }
 #main .block-footer div#operation a {
     padding:3px;
-}
-#main .comment {
-    border-top:2px solid #eee;
 }
 #main .block-page {
     background:#FFF;
