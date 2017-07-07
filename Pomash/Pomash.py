@@ -13,9 +13,10 @@ from libs.utils import *
 from libs.models import *
 from libs.handler import *
 
-dbx = dropbox.Dropbox(app_token)
 db_file = os.path.join(os.path.abspath(os.path.dirname("__file__")), 'blog.db')
 set_file = os.path.join(os.path.abspath(os.path.dirname("__file__")), 'settings.py')
+if app_token:
+    dbx = dropbox.Dropbox(app_token)
 
 class HomeHandler(BaseHandler):
     def get(self):
