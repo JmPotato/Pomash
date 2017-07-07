@@ -3,6 +3,7 @@
 
 import time
 import string
+import dropbox
 import os.path
 import tornado.web
 import tornado.template
@@ -12,9 +13,9 @@ from libs.utils import *
 from libs.models import *
 from libs.handler import *
 
-from dropbox.client import DropboxOAuth2FlowNoRedirect, DropboxClient
-
-flow = DropboxOAuth2FlowNoRedirect(app_key, app_secret)
+dbx = dropbox.Dropbox(app_token)
+db_file = os.path.join(os.path.abspath(os.path.dirname("__file__")), 'blog.db')
+set_file = os.path.join(os.path.abspath(os.path.dirname("__file__")), 'settings.py')
 
 class HomeHandler(BaseHandler):
     def get(self):
@@ -119,7 +120,7 @@ class AdminHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
         dropbox_on = True
-        if not (app_key and app_secret):
+        if not app_token:
             dropbox_on = False
         self.render("admin.html",
             blog_author = blog_author,
@@ -148,62 +149,32 @@ class PasswordHandler(BaseHandler):
 class DropboxHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
-        if not (app_key and app_secret):
-            message = self.get_argument('message', 'Authenticated Failed: You do not have the App Key and App Secret. Please ask author(JmPotato) for these')
-        else:
-            message = self.get_argument('message', 'Please backup your database and settings if you use Pomash first')
-        if self.get_secure_cookie("access_token"):
-            authorized = True
-        else:
+        if not app_token:
             authorized = False
+            message = self.get_argument('message', 'Authenticated Failed: You have not filled the token in settings.py')
+        else:
+            authorized = True
+            message = self.get_argument('message', 'Please backup your database and settings regularly.')
         self.render("dropbox.html",
             authorized = authorized,
-            authorize_url = flow.start(),
             message = message,
             )
 
-    @tornado.web.authenticated
-    def post(self):
-        code = self.get_argument("code", None).strip()
-        access_token, user_id = flow.finish(code)
-        self.set_secure_cookie("access_token", access_token)
-        self.set_secure_cookie("user_id", user_id)
-        self.redirect("/admin/dropbox")
-
-class DropboxBUHandler(BaseHandler):
+class DropboxBackupHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
-        client = DropboxClient(self.get_secure_cookie("access_token"))
-        try:
-            client.file_delete('/blog.db')
-            client.file_delete('/settings.py')
-        except:
-            print("Can't find any backup")
-        finally:
-            with open(os.path.join(os.path.abspath(os.path.dirname("__file__")), 'blog.db'), 'rb') as f:
-                response = client.put_file('/blog.db', f)
-            with open(os.path.join(os.path.abspath(os.path.dirname("__file__")), 'settings.py'), 'rb') as f:
-                response = client.put_file('/settings.py', f)
+        if backup(dbx, db_file, 'blog.db') and backup(dbx, set_file, 'settings.py'):
             self.redirect("/admin/dropbox?message=Backup successfully")
+        else:
+            self.redirect("/admin/dropbox?message=Backup failed")
 
-class DropboxLDHandler(BaseHandler):
+class DropboxRestoreHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
-        client = DropboxClient(self.get_secure_cookie("access_token"))
-        try:
-            with client.get_file('/blog.db') as f:
-                out = open('blog.db', 'wb')
-                out.write(f.read())
-                out.close()
-            with client.get_file('/settings.py') as f:
-                out = open('settings.py', 'wb')
-                out.write(f.read())
-                out.close()
-        except:
-            print("Can't find any backup")
-            self.redirect('/admin/dropbox?message=Failed to load backup. Please make sure you have a backup on Dropbox')
-        finally:
-            self.redirect('/admin/dropbox?message=Load backup successfully')
+        if restore(dbx, 'blog.db', db_file) and restore(dbx, 'settings.py', set_file):
+            self.redirect('/admin/dropbox?message=Restore successfully')
+        else:
+            self.redirect('/admin/dropbox?message=Restore failed')
 
 class NewPageHandler(BaseHandler):
     @tornado.web.authenticated
@@ -308,8 +279,8 @@ handlers = [
     ("/login", LoginHandler),
     ("/logout", LogoutHandler),
     ("/admin/dropbox", DropboxHandler),
-    ("/admin/dropbox/start", DropboxBUHandler),
-    ("/admin/dropbox/load", DropboxLDHandler),
+    ("/admin/dropbox/start", DropboxBackupHandler),
+    ("/admin/dropbox/load", DropboxRestoreHandler),
     ("/admin/change_password", PasswordHandler),
     ("/admin/edit/new/article", NewArticleHandler),
     ("/admin/edit/article/([\d]+)", EditArticleHandler),

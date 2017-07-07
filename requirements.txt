@@ -1,4 +1,4 @@
-dropbox==2.1.0
-mistune==0.2.0
-Pygments==1.6
-tornado==3.2
+dropbox==8.0.0
+mistune==0.7.4
+Pygments==2.2.0
+tornado==4.5.1

@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends 'layout.html' %}
 
 {% block title %} | Dropbox{% end %}
 
@@ -7,23 +7,12 @@
     <div class="block-title">Dropbox</div>
     {% if not authorized %}
     <div class="block-item">
-        <h3>Please go to the url and authenticate Pomash: <a href="{{ authorize_url }}">Authorize Url</a></h3>
-    </div>
-    <div class="block-item">
-    <h3>Please enter the code you got:</h3>
-        <form action="#" method="post" id="dropbox">
-            <div class="input">
-                <input id="code" name="code" type="text">
-            </div>
-            <div id="submit">
-                <button type="submit" class="btn btn-primary">Ok</button>
-            </div>
-        </form>
+        <h3>Please modify the settings.py and fill in your dropbox app token.</h3>
     </div>
     {% else %}
     <div class="block-item">
         <a href="/admin/dropbox/start" class="btn btn-primary btn-lg" style="margin-top:6px;">Backup</a>
-        <a href="/admin/dropbox/load" class="btn btn-primary btn-lg" style="margin-top:6px;">Restart from Backup</a>
+        <a href="/admin/dropbox/load" class="btn btn-primary btn-lg" style="margin-top:6px;">Restore</a>
     </div>
     <div class="block-item">
         {{ message }}

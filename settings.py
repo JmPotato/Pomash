@@ -28,5 +28,4 @@ login_username = "admin"
 DeBug = True
 
 #Dropbox
-app_key = ''
-app_secret = ''
+app_token = ''
