@@ -5,6 +5,8 @@ import re
 import mistune
 import tornado.web
 
+from urllib import unquote, quote
+
 from models import *
 from markdown import *
 from tornado.escape import to_unicode
@@ -21,6 +23,12 @@ class BaseHandler(tornado.web.RequestHandler):
         renderer = MyRenderer()
         md = mistune.Markdown(renderer=renderer)
         return md.render(text)
+
+    def urlencode(self, text):
+        return quote(text)
+
+    def urldecode(self, text):
+        return unquote(text)
 
     def get_custom_page(self):
         return get_all_pages()

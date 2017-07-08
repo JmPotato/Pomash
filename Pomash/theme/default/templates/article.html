@@ -25,7 +25,7 @@
         <div id="date">Post on {{ article.datetime }}</div>
         <div id="tags">Tags:
             {% for tag in tags %}
-                <a href="/tag/{{ tag }}" class="tag_box">{{ tag }} </a>
+                <a href="/tag/{{ handler.urlencode(tag) }}" class="tag_box">{{ tag }} </a>
             {% end %}
         </div>
         {% if current_user %}

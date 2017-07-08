@@ -7,7 +7,7 @@
     <div class="block-title">All Tags</div>
     <div class="block-content">
     {% for tag in tags %}
-        <a href="/tag/{{ tag.name }}" class="tag_box">{{ tag.name }}<span>{{ tag.num }}</span></a>
+        <a href="/tag/{{ handler.urlencode(tag.name) }}" class="tag_box">{{ tag.name }}<span>{{ tag.num }}</span></a>
     {% end %}
     </div>
 </div>
