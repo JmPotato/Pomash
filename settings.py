@@ -25,7 +25,7 @@ login_username = "admin"
 #login_password = "admin"
 
 #Development Settings
-DeBug = True
+DeBug = False
 
 #Dropbox
 app_token = ''
