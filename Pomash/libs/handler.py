@@ -25,10 +25,10 @@ class BaseHandler(tornado.web.RequestHandler):
         return md.render(text)
 
     def urlencode(self, text):
-        return quote(text)
+        return quote(text.encode('utf8'))
 
     def urldecode(self, text):
-        return unquote(text)
+        return unquote(text.encode('utf8'))
 
     def get_custom_page(self):
         return get_all_pages()
