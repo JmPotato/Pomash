@@ -9,9 +9,9 @@ import tornado.web
 import tornado.template
 
 from settings import *
-from libs.utils import *
-from libs.models import *
-from libs.handler import *
+from .libs.utils import *
+from .libs.models import *
+from .libs.handler import *
 
 db_file = os.path.join(os.path.abspath(os.path.dirname("__file__")), 'blog.db')
 set_file = os.path.join(os.path.abspath(os.path.dirname("__file__")), 'settings.py')

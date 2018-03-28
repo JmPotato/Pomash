@@ -32,7 +32,7 @@ def backup(dbx, file_path, upload_path):
             client_modified=datetime.datetime(*time.gmtime(mtime)[:6]),
             mute=True)
     except dropbox.exceptions.ApiError as err:
-        print '%s API error' % err
+        print('%s API error' % err)
         return False
     return True
 
@@ -41,6 +41,6 @@ def restore(dbx, file_name, download_path):
     try:
         res = dbx.files_download_to_file(download_path, path)
     except dropbox.exceptions.HttpError as err:
-        print '%s API error' % err
+        print('%s API error' % err)
         return False
     return True

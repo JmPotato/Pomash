@@ -5,10 +5,11 @@ import re
 import mistune
 import tornado.web
 
-from urllib import unquote, quote
 
-from models import *
-from markdown import *
+from urllib.parse import unquote, quote
+
+from .models import *
+from .markdown import *
 from tornado.escape import to_unicode
 
 class BaseHandler(tornado.web.RequestHandler):

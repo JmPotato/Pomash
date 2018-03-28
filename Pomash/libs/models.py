@@ -3,8 +3,8 @@
 
 import os
 
-from tools import *
-from utils import *
+from .tools import *
+from .utils import *
 
 class DatabaseError(Exception):
     def __init__(self, content):
