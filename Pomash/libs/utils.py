@@ -11,10 +11,10 @@ import pygments
 import datetime
 
 def to_md5(word):
-    return hashlib.md5(word).hexdigest()
+    return hashlib.md5(word.encode('utf-8')).hexdigest()
 
 def make_token(username):
-    key = ''.join(random.sample(string.letters+string.digits, 20))
+    key = ''.join(random.sample(string.ascii_letters+string.digits, 20))
     return key
 
 def get_datetime():
