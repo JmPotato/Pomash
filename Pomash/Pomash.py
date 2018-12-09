@@ -123,7 +123,7 @@ class AdminHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
         dropbox_on = True
-        if not app_token:
+        if not dropbox_app_token:
             dropbox_on = False
         self.render("admin.html",
             blog_author = blog_author,
@@ -152,7 +152,7 @@ class PasswordHandler(BaseHandler):
 class DropboxHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
-        if not app_token:
+        if not dropbox_app_token:
             authorized = False
             message = self.get_argument('message', 'Authenticated Failed: You have not filled the token in settings.py')
         else:
