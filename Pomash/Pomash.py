@@ -49,7 +49,8 @@ class ArticleHandler(BaseHandler):
             article = article,
             tags = tags,
             comment = enable_comment,
-            disqus_name = disqus_name,
+            valine_app_id = valine_app_id,
+            valine_app_key = valine_app_key,
             twitter_card = twitter_card,
             twitter_username = twitter_username,
             )
