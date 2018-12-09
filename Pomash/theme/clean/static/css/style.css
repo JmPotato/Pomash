@@ -510,6 +510,12 @@ table {
 #content .post .operation a {
 	color:gray
 }
+#vcomments {
+	margin-top:20px;
+	padding-top:20px;
+	padding-bottom:10px;
+	border-top:1px solid rgba(0,0,0,0.1)
+}
 #footer {
 	color:gray;
 	font-size:0.8em;

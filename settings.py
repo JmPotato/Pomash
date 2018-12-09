@@ -11,11 +11,12 @@ twitter_username = "@Jm_Potato"
 
 analytics = ""
 
-enable_comment = True
-disqus_name = "pomash"
+enable_comment = False
+valine_app_id = ""
+valine_app_key = ""
 
 theme = "clean"
-post_per_page = 10
+post_per_page = 12
 
 #Please Change it!!!!!!
 cookie_secret = "PLEASE BE SURE TO CHANGE ME!!!!!"

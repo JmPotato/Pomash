@@ -35,17 +35,22 @@
         <a style="text-decoration:underline;" onclick="if(confirm('Are you sure to delete this article?')){window.location.href='/admin/edit/delete/article/{{ article.id }}';}">Delete</a>
     </div>
     {% end %}
-    {% if comment %}
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = '{{ disqus_name.strip().lstrip() }}';
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
+    {% if comment and valine_app_id and valine_app_key %}
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <div id="vcomments"></div>
+    <script>
+        new Valine({
+            el: '#vcomments',
+            appId: '{{ valine_app_id }}',
+            appKey: '{{ valine_app_key }}',
+            notify: false,
+            verify: false,
+            lang: 'en',
+            avatar: 'mm',
+            placeholder: 'Make sure your comments are useful to others :)'
+        })
     </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     {% end %}
 </div>
 {% end %}
