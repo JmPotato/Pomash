@@ -36,8 +36,8 @@
     </div>
     {% end %}
     {% if comment and valine_app_id and valine_app_key %}
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+    <script src='{{ static_url("js/av-min.js") }}'></script>
+    <script src='{{ static_url("js/valine.js") }}'></script>
     <div id="vcomments"></div>
     <script>
         new Valine({
