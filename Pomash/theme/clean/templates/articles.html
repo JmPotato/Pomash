@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block title %} | Articles{% end %}
+
+{% block content %}
+{% for year in sorted(articlesList.keys(), reverse = True) %}
+<h2>{{ year }}</h2>
+<ol id="posts">
+    {% for i in range(len(articlesList[year])) %}
+    <li>
+        <span class="meta">{{ articlesList[year][i].datetime[:10] }}</span> <a href="/article/{{ articlesList[year][i].id }}">{{ articlesList[year][i].title }}</a>
+    </li>
+    {% end %}
+</ol>
+{% end %}
+{% end %}

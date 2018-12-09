@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+
+{% block title %} | Tags{% end %}
+
+{% block content %}
+{% for tag in tags %}
+<a href="/tag/{{ handler.urlencode(tag.name) }}" style="padding:5px;">{{ tag.name }}</a>
+{% end %}
+{% end %}

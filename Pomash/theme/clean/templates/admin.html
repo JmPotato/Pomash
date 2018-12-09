@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block title %} | Admin{% end %}
+
+{% block content %}
+<div class="post">
+    <h1 id="title">Admin Panel</h1>
+    <article>
+        <p>Hello! {{ blog_author }}. Welcome back! <a href="/logout" onclick="return confirm('Are you sure to logout?');">Logout</a> & <a href="/admin/change_password">Change Password</a></p>
+        <div class="item">
+            <a href="/admin/edit/new/article" style="margin-right:6px;">Write a new article</a>
+            <a href="/admin/edit/new/page" style="margin-right:6px;">Creat a new page</a>
+            <a href="/admin/dropbox" style="margin-right:6px;">Dropbox Backup</a>
+        </div>
+        <div class="page-item">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Page Title</th>
+                        <th>Manage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for page in handler.get_custom_page() %}
+                    <tr>
+                        <td>{{ page.id }}</td>
+                        <td><a href="/page/custom/{{ page.id }}">{{ page.title }}</a></td>
+                        <td>
+                            <a href="/admin/edit/page/{{ page.id }}">Edit</a>
+                            <a style="text-decoration:underline;" onclick="if(confirm('Are you sure to delete this article?')){window.location.href='/admin/edit/delete/page/{{ page.id }}';}">Delete</a>
+                        </td>
+                    </tr>
+                {% end %}
+                </tbody>
+            </table>
+        </div>
+        <div class="article-item">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Article Name</th>
+                        <th>Created</th>
+                        <th>Manage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for article in articlesList %}
+                    <tr>
+                        <td>{{ article.id }}</td>
+                        <td><a href="/article/{{ article.id }}">{{ article.title }}</a></td>
+                        <td>{{ article.datetime }}</td>
+                        <td>
+                            <a href="/admin/edit/article/{{ article.id }}">Edit</a>
+                            <a style="text-decoration:underline;" onclick="if(confirm('Are you sure to delete this article?')){window.location.href='/admin/edit/delete/article/{{ article.id }}';}">Delete</a>
+                        </td>
+                    </tr>
+                {% end %}
+                </tbody>
+            </table>
+        </div>
+    </article>
+</div>
+{% end %}

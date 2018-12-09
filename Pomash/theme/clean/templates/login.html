@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block title %} | Login{% end %}
+
+{% block content %}
+<div class="post">
+    <h1 id="title">Login</h1>
+    <article>
+        <form action="#" method="post" id="login">
+            <div class="input">
+                <label for="username">Username</label><input id="username" name="username" type="text" style="width:50%;">
+            </div>
+            <div class="input">
+                <label for="password">Password</label><input id="password" name="password" type="password" style="width:50%;">
+            </div>
+            <div id="submit">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </article>
+</div>
+{% end %}

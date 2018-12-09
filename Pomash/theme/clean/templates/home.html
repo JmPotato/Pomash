@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<ol id="posts">
+    {% for article in articlesList %}
+    <li>
+        <span class="date">{{ article.datetime[:10] }}</span> <a href="/article/{{ article.id }}">{{ article.title }}</a>
+    </li>
+    {% end %}
+</ol>
+
+{% if count > post_per_page %}
+<div id="pagination">
+    {% if page_number-1 > 0 %}
+    <a id="prev" href="/page/{{ page_number-1 }}">Prev</a>
+    {% end %}
+
+    <span>Page {{ page_number }} of {{ int(count/post_per_page) + 1 }}</span>
+
+    {% if post_per_page*page_number < count %}
+    <a id="next" href="/page/{{ page_number+1 }}">Next</a>
+    {% end %}
+</div>
+{% end %}
+{% end %}

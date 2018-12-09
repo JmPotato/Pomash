@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block title %} | {{ article.title }}{% end %}
+
+{% block content %}
+<div class="post">
+    <h1 id="title">{{ article.title }}</h1>
+    <article>
+    {{ handler.md_to_html(article.content) }}
+    </article>
+</div>
+{% end %}

@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block title %} | Change Password{% end %}
+
+{% block head %}
+<script>
+    function Check() {
+        if (document.getElementById("n_password").value != document.getElementById("n_password_c").value) {
+            alert("New passwords don't match");
+            document.getElementById("n_password").value= "";
+            document.getElementById("n_password_c").value = "";
+        }
+        else document.getElementById("change_pw").submit();
+    }
+</script>
+{% end %}
+
+{% block content %}
+<div class="post">
+    <h1 id="title">Login</h1>
+    <article>
+        {% if message %}
+            <div class="item"><center><p>{{ message }}</p></center></div>
+        {% end %}
+        <div class="item">
+            <form action="#" method="post" id="change_pw">
+                <div class="input">
+                    <label for="o_password">Old Password</label><input id="o_password" name="o_password" type="password">
+                </div>
+                <div class="input">
+                    <label for="n_password">New Password</label><input id="n_password" name="n_password" type="password">
+                </div>
+                <div class="input">
+                    <label for="n_password_c">Confirm New Password</label><input id="n_password_c" name="n_password_c" type="password">
+                </div>
+                <div id="button">
+                    <button type="button" onclick="Check()">Submit</button>
+                </div>
+            </form>
+        </div>
+    </article>
+</div>
+{% end %}

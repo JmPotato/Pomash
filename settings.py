@@ -14,8 +14,8 @@ analytics = ""
 enable_comment = True
 disqus_name = "pomash"
 
-theme = "default"
-post_per_page = 3
+theme = "clean"
+post_per_page = 10
 
 #Please Change it!!!!!!
 cookie_secret = "PLEASE BE SURE TO CHANGE ME!!!!!"
