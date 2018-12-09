@@ -265,7 +265,7 @@ class FeedHandler(BaseHandler):
 
 class PageNotFound(BaseHandler):
     def get(self):
-        raise tornado.web.HTTPError(404)
+        self.render("404.html")
 
 handlers = [
     ("/", HomeHandler),
