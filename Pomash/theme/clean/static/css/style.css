@@ -516,6 +516,13 @@ table {
 	padding-bottom:10px;
 	border-top:1px solid rgba(0,0,0,0.1)
 }
+#vcomments .vnick {
+	color:#111
+}
+#vcomments .vat {
+	color:gray;
+    font-style:italic;
+}
 #footer {
 	color:gray;
 	font-size:0.8em;
