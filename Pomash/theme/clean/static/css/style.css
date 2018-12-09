@@ -521,7 +521,8 @@ table {
 }
 #vcomments .vat {
 	color:gray;
-    font-style:italic;
+	font-style:italic;
+	text-decoration:underline
 }
 #footer {
 	color:gray;
