@@ -1,32 +1,38 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-#Main Settings
+# Site Settings
 blog_name = "Pomash"
 blog_author = "JmPotato"
-blog_url = "http://xxx.oo/"
+blog_url = "http://localhost:8080/"
 
-twitter_card = False
-twitter_username = "@Jm_Potato"
-
-analytics = ""
-
-enable_comment = False
-valine_app_id = ""
-valine_app_key = ""
-
+# Theme Settings
 theme = "clean"
 post_per_page = 12
 
-#Please Change it!!!!!!
-cookie_secret = "PLEASE BE SURE TO CHANGE ME!!!!!"
+# Twitter Card Settings
+twitter_card = False
+twitter_username = "@Jm_Potato"
 
-#Admin Settings
-login_username = "admin"
-#login_password = "admin"
+# Google Analytics Settings
+analytics = ""
 
-#Development Settings
+# Comment Settings
+# Use number 0.None & 1.Disqus & 2.Valine to change the comment system.
+comment_system = 0
+# Make sure your comment profile correspond to the number you just choosed before.
+disqus_name = ""
+valine_app_id = ""
+valine_app_key = ""
+
+# Buckup Settings
+dropbox_app_token = "" # If you want to use the backup function, get a Dropbox app token first.
+
+# Cookie Settings
+cookie_secret = "JmPotato@#$is#@$a#@$good@!$guy" # PLEASE CHANGE THIS TO YOUR OWN SECRET.
+
+# Admin Settings
+login_username = "admin" # The initial password of admin is "admin". Please change it as soon as possible.
+
+# Development Settings
 DeBug = False
-
-#Dropbox
-app_token = ''

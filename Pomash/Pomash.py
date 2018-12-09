@@ -16,7 +16,7 @@ from .libs.handler import *
 db_file = os.path.join(os.path.abspath(os.path.dirname("__file__")), 'blog.db')
 set_file = os.path.join(os.path.abspath(os.path.dirname("__file__")), 'settings.py')
 if app_token:
-    dbx = dropbox.Dropbox(app_token)
+    dbx = dropbox.Dropbox(dropbox_app_token)
 
 class HomeHandler(BaseHandler):
     def get(self):
@@ -48,7 +48,8 @@ class ArticleHandler(BaseHandler):
         self.render("article.html",
             article = article,
             tags = tags,
-            comment = enable_comment,
+            comment_system = comment_system,
+            disqus_name = disqus_name,
             valine_app_id = valine_app_id,
             valine_app_key = valine_app_key,
             twitter_card = twitter_card,
