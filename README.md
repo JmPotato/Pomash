@@ -45,15 +45,18 @@ python run.py --port=8080
 Usage
 ====
 
-Pomash uses Markdown to write posts and pages.
+Pomash uses Markdown to write posts and pages. LaTeX is also supported.
 
     #Hello World
 
     ```python
     print('Hello, World!')
     ```
-
     Hello, World!
+
+    Inline LaTeX: $\int_a^b f(x)\mathrm{d}x$
+
+    Outline LaTeX: $$\sum_{i=0}^{n}i^2$$
 
     * Hello
     * World
