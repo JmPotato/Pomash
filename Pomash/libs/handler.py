@@ -15,7 +15,7 @@ from tornado.escape import to_unicode
 class BaseHandler(tornado.web.RequestHandler):
     def description(self, text):
         if len(text) <= 200:
-            return re.sub('(<.*?>)', '', text).replace('\n', ' ')[:len(text)/2-4] + '...'
+            return re.sub('(<.*?>)', '', text).replace('\n', ' ')[:int(len(text)/2-4)] + '...'
         elif len(text) > 200:
             return re.sub('(<.*?>)', '', text).replace('\n', ' ')[:195] + '...'
 
