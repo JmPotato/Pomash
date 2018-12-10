@@ -249,7 +249,7 @@ class EditArticleHandler(BaseHandler):
         tags = self.get_argument("tag", None)
         content = self.get_argument("content", None)
         if update_article(int(article_id), title = title, content = content, tags = tags):
-            self.redirect("/admin")
+            self.redirect("/article/" + article_id)
 
 class DelArticleHandler(BaseHandler):
     @tornado.web.authenticated
