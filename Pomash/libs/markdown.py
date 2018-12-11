@@ -9,6 +9,9 @@ from pygments.formatters import HtmlFormatter
 from pygments.lexers import get_lexer_by_name
 
 class MyRenderer(mistune.Renderer):
+    def emphasis(self, text):
+        return '%s' % text
+
     def block_code(self, code, language):
         if language:
             try:
