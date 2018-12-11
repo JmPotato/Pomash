@@ -67,6 +67,8 @@ Theme
 Pomash's theme engine is called Potheme. Here is a Potheme theme list:
 
 * [Potheme-Clean](https://github.com/JmPotato/Potheme-Clean)
+* [Potheme-Maupassant](https://github.com/JmPotato/Potheme-Maupassant)
+* [Potheme-Default](https://github.com/JmPotato/Potheme-Default)
 
 Other Reference
 ====
