@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width" />
     <title>{{ handler.settings['blog_name'] }}{% block title%}{% end %}</title>
-    <link rel="stylesheet" href="{{ static_url("css/style.css") }}" type="text/css" />
+    <link rel="stylesheet" href='{{ static_url("css/style.css") }}' type="text/css" />
     <link rel="alternate" type="application/rss+xml" href="/feed" title="{{ handler.settings['blog_name'] }}" />
-    <link rel="icon" href="{{ static_url("img/Pomash.png") }}" />
+    <link rel="icon" href='{{ static_url("img/Pomash.png") }}' />
     {% if handler.settings['analytics'] %}
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id={{ handler.settings['analytics'] }}"></script>
@@ -14,7 +14,7 @@
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '{{ handler.settings['analytics'] }}');
+            gtag('config', '{{ handler.settings["analytics"] }}');
         </script>
     {% end %}
     {% block head %}{% end %}
