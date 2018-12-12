@@ -21,6 +21,7 @@ if dropbox_app_token:
 class HomeHandler(BaseHandler):
     def get(self):
         self.render("home.html",
+            all_articles = get_all_articles(),
             articlesList = get_articles(1, post_per_page),
             post_per_page = post_per_page,
             page_number = 1,
@@ -30,6 +31,7 @@ class HomeHandler(BaseHandler):
 class PageHandler(BaseHandler):
     def get(self, page):
         self.render("home.html",
+            all_articles = get_all_articles(),
             articlesList = get_articles(int(page), post_per_page),
             post_per_page = post_per_page,
             page_number = int(page),
@@ -39,7 +41,9 @@ class PageHandler(BaseHandler):
 class CuPageHandler(BaseHandler):
     def get(self, page_id):
         article = gat_page(page_id)
-        self.render("page.html", article=article)
+        self.render("page.html",
+            all_articles = get_all_articles(),
+            article=article)
         
 class ArticleHandler(BaseHandler):
     def get(self, article_id):
@@ -68,6 +72,7 @@ class ArticlesHandler(BaseHandler):
                 year_list[year] = []
                 year_list[year].append(article)
         self.render("articles.html",
+            all_articles = get_all_articles(),
             articlesList = year_list,
             )
 
@@ -81,6 +86,7 @@ class TagHandler(BaseHandler):
 class TagsHandler(BaseHandler):
     def get(self):
         self.render("tags.html",
+            all_articles = get_all_articles(),
             tags = get_all_tags(),
             )
 
