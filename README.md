@@ -47,16 +47,23 @@ Usage
 
 Pomash uses Markdown to write posts and pages. LaTeX is also supported.
 
+Note: To avoid conflict between LaTeX and Markdown, Pomash removed the emphasis syntax `*word*` and `_word_` which you should use `<em>word</em>` as an alternative.
+
     #Hello World
 
     ```python
     print('Hello, World!')
     ```
+    
     Hello, World!
 
     Inline LaTeX: $\int_a^b f(x)\mathrm{d}x$
 
-    Outline LaTeX: $$\sum_{i=0}^{n}i^2$$
+    New line LaTeX: $$\sum_{i=0}^{n}i^2$$
+    
+    <em>This is a emphasis.</em>
+    
+    **This is a double emphasis.**
 
     * Hello
     * World
@@ -64,7 +71,7 @@ Pomash uses Markdown to write posts and pages. LaTeX is also supported.
 Theme
 ====
 
-Pomash's theme engine is called Potheme. Here is a Potheme theme list:
+Pomash's theme is called Potheme. Here is a Potheme list:
 
 * [Potheme-Clean](https://github.com/JmPotato/Potheme-Clean)
 * [Potheme-Maupassant](https://github.com/JmPotato/Potheme-Maupassant)
