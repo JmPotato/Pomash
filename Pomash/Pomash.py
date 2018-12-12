@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import time
+import math
 import string
 import dropbox
 import os.path
@@ -23,9 +24,10 @@ class HomeHandler(BaseHandler):
         self.render("home.html",
             all_articles = get_all_articles(),
             articlesList = get_articles(1, post_per_page),
-            post_per_page = post_per_page,
+            post_per_page = float(post_per_page),
             page_number = 1,
-            count = get_article_count(),
+            count = float(get_article_count()),
+            max_page = math.ceil(float(get_article_count())/float(post_per_page))
             )
 
 class PageHandler(BaseHandler):
@@ -33,9 +35,10 @@ class PageHandler(BaseHandler):
         self.render("home.html",
             all_articles = get_all_articles(),
             articlesList = get_articles(int(page), post_per_page),
-            post_per_page = post_per_page,
+            post_per_page = float(post_per_page),
             page_number = int(page),
-            count = get_article_count(),
+            count = float(get_article_count()),
+            max_page = math.ceil(float(get_article_count())/float(post_per_page))
             )
 
 class CuPageHandler(BaseHandler):

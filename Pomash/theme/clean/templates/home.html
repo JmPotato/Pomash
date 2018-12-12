@@ -12,13 +12,17 @@
 {% if count > post_per_page %}
 <div id="pagination">
     {% if page_number-1 > 0 %}
-    <a id="prev" href="/page/{{ page_number-1 }}">Prev</a>
+        <a id="prev" href="/page/{{ page_number-1 }}">Prev</a>
+    {% else %}
+        <a id="prev" style="visibility:hidden">Prev</a>
     {% end %}
 
-    <span>Page {{ page_number }} of {{ int(count/post_per_page) + 1 }}</span>
+    <span>Page {{ page_number }} of {{ max_page }}</span>
 
     {% if post_per_page*page_number < count %}
-    <a id="next" href="/page/{{ page_number+1 }}">Next</a>
+        <a id="next" href="/page/{{ page_number+1 }}">Next</a>
+    {% else %}
+        <a id="next" style="visibility:hidden">Next</a>
     {% end %}
 </div>
 {% end %}
