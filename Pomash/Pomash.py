@@ -51,6 +51,8 @@ class CuPageHandler(BaseHandler):
 class ArticleHandler(BaseHandler):
     def get(self, article_id):
         article = get_article(article_id)
+        if(not article):
+            self.redirect("/404")
         tags = [tag.strip() for tag in article.tag.split(",")]
         self.render("article.html",
             article = article,
@@ -61,6 +63,7 @@ class ArticleHandler(BaseHandler):
             valine_app_key = valine_app_key,
             twitter_card = twitter_card,
             twitter_username = twitter_username,
+            all_articles = get_all_articles(),
             )
 
 class ArticlesHandler(BaseHandler):
@@ -81,9 +84,19 @@ class ArticlesHandler(BaseHandler):
 
 class TagHandler(BaseHandler):
     def get(self, tag_name):
+        all_tag_articles = get_tag_articles(tag_name)
+        year_list = {}
+        for article in all_tag_articles:
+            year = article["datetime"].split("-")[0]
+            if year in year_list:
+                year_list[year].append(article)
+            else:
+                year_list[year] = []
+                year_list[year].append(article)
         self.render("tag.html",
+            all_articles = get_all_articles(),
             tag_name = tag_name,
-            articlesList = get_tag_articles(tag_name),
+            articlesList = year_list,
             )
 
 class TagsHandler(BaseHandler):

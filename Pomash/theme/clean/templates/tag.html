@@ -5,10 +5,15 @@
 {% block content %}
 <h2>Tag: {{ tag_name }}</h2>
 <ol id="posts">
-    {% for article in articlesList %}
-    <li>
-        <span class="meta">{{ article.datetime[:10] }}</span> <a href="/article/{{ article.article_id }}">{{ article.title }}</a>
-    </li>
+    {% for year in sorted(articlesList.keys(), reverse = True) %}
+    <h2>{{ year }}</h2>
+    <ol id="posts">
+        {% for i in range(len(articlesList[year])) %}
+        <li>
+            <span class="meta">{{ articlesList[year][i].datetime[:10] }}</span> <a href="/article/{{ articlesList[year][i].article_id }}">{{ articlesList[year][i].title }}</a>
+        </li>
+        {% end %}
+    </ol>
     {% end %}
 </ol>
 {% end %}
