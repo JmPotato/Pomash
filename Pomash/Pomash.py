@@ -44,12 +44,9 @@ class PageHandler(BaseHandler):
 class CuPageHandler(BaseHandler):
     def get(self, page_id):
         article = gat_page(page_id)
-        if(not article):
-            self.redirect("/404")
         self.render("page.html",
             all_articles = get_all_articles(),
-            article = article
-            )
+            article=article)
         
 class ArticleHandler(BaseHandler):
     def get(self, article_id):
