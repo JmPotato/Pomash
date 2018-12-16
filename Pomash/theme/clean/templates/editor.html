@@ -79,9 +79,9 @@
             </div>
         </form>
     </article>
-    <div class="post" id="preview">
+    <div class="post">
         <h1 id="title">Preview</h1>
-        <article v-html="compiledMarkdown"></article>
+        <article id="preview" v-html="compiledMarkdown"></article>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -92,6 +92,14 @@
 <script src="https://unpkg.com/lodash@4.16.0"></script>
 <script>
     document.addEventListener("wheel", function() {
+        renderMathInElement(document.getElementById("preview"), {
+            delimiters: [
+                {left: "$$", right: "$$", display: true},
+                {left: "$", right: "$", display: false}
+            ]
+        });
+    });
+    document.addEventListener("touchmove", function() {
         renderMathInElement(document.getElementById("preview"), {
             delimiters: [
                 {left: "$$", right: "$$", display: true},
