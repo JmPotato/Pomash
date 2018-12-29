@@ -5,14 +5,19 @@ import re
 import mistune
 import tornado.web
 
-
 from urllib.parse import unquote, quote
 
 from .models import *
 from .markdown import *
-from tornado.escape import to_unicode
+from tornado.escape import to_unicode, xhtml_escape
 
 class BaseHandler(tornado.web.RequestHandler):
+    def get_pure_title(self, title):
+        return re.sub('''<("[^"]*"|'[^']*'|[^'">])*>''', "", title).strip()
+
+    def escape_string(self, s):
+        return xhtml_escape(s)
+        
     def description(self, text):
         if len(text) <= 200:
             return re.sub('(<.*?>)', '', text).replace('\n', ' ')[:int(len(text)/2-4)] + '...'

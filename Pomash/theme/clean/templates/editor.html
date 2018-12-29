@@ -64,11 +64,11 @@
         <form action="#" method="post" id="article_editor">
             <div class="input">
                 <label for="title">Title</label>
-                <input id="title" name="title" type="text" value="{% if not is_page and not new %}{{ article.title }}{% elif is_page and not new %}{{ content.title }}{% end %}" style="width:100%;">
+                <input id="title" name="title" type="text" value="{% if not is_page and not new %}{{ handler.escape_string(article.title) }}{% elif is_page and not new %}{{ handler.escape_string(content.title) }}{% end %}" style="width:100%;">
             </div>
             <div v-if="!is_page" class="input">
                 <label for="tag">Tag</label>
-                <input id="tag" name="tag" type="text" value="{% if not is_page and not new %}{{ article.tag }}{% end %}" style="width:100%;">
+                <input id="tag" name="tag" type="text" value="{% if not is_page and not new %}{{ handler.escape_string(article.tag) }}{% end %}" style="width:100%;">
             </div>
             <div class="input">
                 <label for="content">Content</label>
