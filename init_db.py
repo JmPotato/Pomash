@@ -16,7 +16,7 @@ if not os.path.exists("blog.db"):
     print("Creat Admin Config......")
     c.execute('''CREATE TABLE articles 
              (id integer NOT NULL PRIMARY KEY autoincrement, title text NOT NULL, content text NOT NULL, tag text NOT NULL, datetime text NOT NULL);''')
-    c.execute('''INSERT INTO admin_config VALUES (\"%s\", \"%s\", "token");''' % (login_username, hashlib.md5("admin").hexdigest()))
+    c.execute('''INSERT INTO admin_config VALUES (\"%s\", \"%s\", "token");''' % (login_username, hashlib.md5("admin".encode('utf-8')).hexdigest()))
     c.execute("CREATE UNIQUE INDEX articles_id ON articles(id);")
     print("Creat Article Database......")
     c.execute('''CREATE TABLE pages 
