@@ -265,7 +265,7 @@ class EditArticleHandler(BaseHandler):
         self.render("editor.html",
             is_page = False,
             new = False,
-            article = get_article(article_id)
+            content = get_article(article_id)
         )
 
     @tornado.web.authenticated

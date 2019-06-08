@@ -3,142 +3,206 @@
 {% block title %} | Editor{% end %}
 
 {% block head %}
-<script>
-    function AutoSave(it) {
-        var _value = it.value;
-        var _LastContent = GetCookie('AutoSaveContent');
-        if (_value.length >= _LastContent.length) {
-            var expDays = 30;
-            var exp = new Date();
-            exp.setTime(exp.getTime() + (expDays * 86400000));
-            var expires = '; expires=' + exp.toGMTString();
-            document.cookie = "AutoSaveContent=" + escape(_value) + expires;
-        }
-    }
 
-    function AutoLoad(it) {
-        var _value = it.value;
-        if (!_value) {
-            var _LastContent = GetCookie('AutoSaveContent');
-            if (!_LastContent) return;
-            if (confirm("Load Last AutoSave Content?")) {
-                it.value = _LastContent;
-                return true;
-            }
-        }
-    }
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css"
+    integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"
+    integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx"
+    crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"
+    integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe"
+    crossorigin="anonymous"></script>
+<script src="https://unpkg.com/marked@0.3.6"></script>
+<script src="https://unpkg.com/lodash@4.16.0"></script>
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
     function getCookieVal(offset) {
-        var endstr = document.cookie.indexOf(";",offset);
+        var endstr = document.cookie.indexOf(";", offset);
         if (endstr === -1) endstr = document.cookie.length;
         return unescape(document.cookie.substring(offset, endstr));
     }
-
-    function GetCookie(name) {
-        var arg = name+"=";
+    function getCookie(name) {
+        var arg = name + "=";
         var alen = arg.length;
         var clen = document.cookie.length;
         var i = 0;
-        while (i < clen){
+        while (i < clen) {
             var j = i + alen;
-            if(document.cookie.substring(i,j) === arg) return getCookieVal (j);
-            i = document.cookie.indexOf(" ",i)+1;
+            if (document.cookie.substring(i, j) === arg) return getCookieVal(j);
+            i = document.cookie.indexOf(" ", i) + 1;
             if (i === 0) break;
         }
         return null;
     }
-
-    function DeleteCookie (name) {
-        var exp = new Date();
-        exp.setTime(exp.getTime() - 1);
-        var cval = GetCookie(name);
-        document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+    function renderMarkdown(raw) {
+        return marked(raw, { sanitize: true });
     }
+    class TitleEditor extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                title: {% if not new %}{{ json_encode(content.title) }}{% else %}''{% end %}
+            };
+            this.handleChange = this.handleChange.bind(this);
+        }
+
+        handleChange(event) {
+            this.setState({title: event.target.value});
+        }
+
+        render() {
+            return (
+                <div className="input">
+                    <label htmlFor="title">Title</label>
+                    <input name="title" type="text" 
+                        value={this.state.title} 
+                        onChange={this.handleChange} 
+                        style={{!width: '100%'}} />
+                </div>
+            );
+        }
+    }
+    class TagEditor extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                tag: {% if not new and not is_page %}{{ json_encode(content.tag) }}{% else %}''{% end %}
+            };
+            this.handleChange = this.handleChange.bind(this);
+        }
+
+        handleChange(event) {
+            this.setState({tag: event.target.value});
+        }
+
+        render() {
+            return (
+                <div className="input">
+                    <label htmlFor="tag">Tag</label>
+                    <input name="tag" type="text" 
+                        value={this.state.tag} 
+                        onChange={this.handleChange} 
+                        style={{!width: '100%'}} />
+                </div>
+            );
+        }
+    }
+    class ContentEditor extends React.Component {
+        constructor(props) {
+            super(props);
+            this.handleChange = this.handleChange.bind(this);
+            this.handleLoad = this.handleLoad.bind(this);
+        }
+
+        handleChange(event) {
+            this.props.onContentChange(event.target.value);
+            const latestContent = getCookie('autoSavedContent');
+            if (latestContent === null || event.target.value.length >= latestContent.length) {
+                var expDays = 30;
+                var exp = new Date();
+                exp.setTime(exp.getTime() + (expDays * 86400000));
+                var expires = '; expires=' + exp.toGMTString();
+                document.cookie = "autoSavedContent=" + escape(event.target.value) + expires;
+            }
+        }
+
+        handleLoad(event) {
+            const latestContent = getCookie('autoSavedContent');
+            if (!latestContent) return;
+            if (confirm("Load latest saved content?")) {
+                this.props.onContentChange(latestContent);
+                return true;
+            }
+        }
+
+        render() {
+            return (
+                <div className="input">
+                    <label htmlFor="content">Content</label>
+                    <textarea rows="30" name="content" 
+                        value={this.props.content} 
+                        onChange={this.handleChange}
+                        onDoubleClick={this.handleLoad}></textarea>
+                    <label>Tip: Double click box to load last autosave content</label>
+                    <div id="submit">
+                        <label><a href="#preview">Go To Preview</a></label>
+                        <button type="submit">Post</button>
+                    </div>
+                </div>
+            );
+        }
+    }
+    class Editor extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                isPage: {% if is_page %}true{% else %}false{% end %},
+                content: {% if not new %}{{ json_encode(content.content) }}{% else %}''{% end %},
+                preview: {% if not new %}renderMarkdown({{ json_encode(content.content) }}){% else %}''{% end %}
+            };
+            this.handleContentChange = this.handleContentChange.bind(this);
+        }
+
+        handleContentChange(newContent) {
+            this.setState({
+                content: newContent,
+                preview: renderMarkdown(newContent)
+            });
+        }
+
+        render() {
+            let ediotrForm;
+            if(this.state.isPage) {
+                ediotrForm = (
+                    <form action="#" method="post">
+                        <TitleEditor />
+                        <ContentEditor content={this.state.content} onContentChange={this.handleContentChange}/>
+                    </form>
+                )
+            } else {
+                ediotrForm = (
+                    <form action="#" method="post">
+                        <TitleEditor />
+                        <TagEditor />
+                        <ContentEditor content={this.state.content} onContentChange={this.handleContentChange}/>
+                    </form>
+                )
+            }
+            const previewHTML = {__html: this.state.preview}
+            return (
+                <div className="post">
+                    <h1 id="title">Editor</h1>
+                    <article id="editor">{ediotrForm}</article>
+                    <h1 id="title">Preview</h1>
+                    <article id="preview" dangerouslySetInnerHTML={previewHTML}>
+                    </article>
+                    <label style={{!textAlign: 'center'}}><a href="#editor">Back To Editor</a></label>
+                </div>
+            )
+        }
+    }
+    const editorContainer = document.querySelector('#content');
+    ReactDOM.render(<Editor />, editorContainer);
+    document.addEventListener("wheel", function () {
+        renderMathInElement(document.getElementById("preview"), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false }
+            ]
+        });
+    });
+    document.addEventListener("touchmove", function () {
+        renderMathInElement(document.getElementById("preview"), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false }
+            ]
+        });
+    });
 </script>
 {% end %}
 
 {% block content %}
-<div class="post" id="editor">
-    <h1 id="title">Editor</h1>
-    <article>
-        <form action="#" method="post" id="article_editor">
-            <div class="input">
-                <label for="title">Title</label>
-                <input id="title" name="title" type="text" value="{% if not is_page and not new %}{{ handler.escape_string(article.title) }}{% elif is_page and not new %}{{ handler.escape_string(content.title) }}{% end %}" style="width:100%;">
-            </div>
-            <div v-if="!is_page" class="input">
-                <label for="tag">Tag</label>
-                <input id="tag" name="tag" type="text" value="{% if not is_page and not new %}{{ handler.escape_string(article.tag) }}{% end %}" style="width:100%;">
-            </div>
-            <div class="input">
-                <label for="content">Content</label>
-                <textarea :value="input" @input="update" rows="30" id="content" name="content" onkeyup="AutoSave(this);"  onchange="AutoSave(this);"ondblclick="AutoLoad(this);"></textarea>
-                <label>Tip: Double click box to load last autosave content</label>
-            <div id="submit">
-                <button type="submit">Post</button>
-            </div>
-        </form>
-    </article>
-    <div class="post">
-        <h1 id="title">Preview</h1>
-        <article id="preview" v-html="compiledMarkdown"></article>
-    </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
-<script src='{{ static_url("js/marked.min.js") }}'></script>
-<script src="https://unpkg.com/lodash@4.16.0"></script>
-<script>
-    document.addEventListener("wheel", function() {
-        renderMathInElement(document.getElementById("preview"), {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false}
-            ]
-        });
-    });
-    document.addEventListener("touchmove", function() {
-        renderMathInElement(document.getElementById("preview"), {
-            delimiters: [
-                {left: "$$", right: "$$", display: true},
-                {left: "$", right: "$", display: false}
-            ]
-        });
-    });
-    var editor = new Vue({
-        el: '#editor',
-        data: {
-            {% if new %}
-            is_new: true,
-            input: '',
-            {% if is_page %}
-            is_page: true,
-            {% else %}
-            is_page: false,
-            {% end %}
-            {% else %}
-            is_new: false,
-            {% if is_page %}
-            is_page: true,
-            input: {{ json_encode(content.content) }}
-            {% else %}
-            is_page: false,
-            input: {{ json_encode(article.content) }}
-            {% end %}
-            {% end %}
-        },
-        computed: {
-            compiledMarkdown: function () {
-                return marked(this.input, { sanitize: true })
-            }
-        },
-        methods: {
-            update: _.debounce(function (e) {
-                this.input = e.target.value
-            }, 300)
-        }
-    });
-</script>
 {% end %}

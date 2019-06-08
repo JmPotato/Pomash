@@ -95,7 +95,7 @@ def update_token(username, token):
 
 def verify_user(username, password_md5):
     information = db.get("SELECT * FROM admin_config WHERE username = ?;", username)
-    if information.password == password_md5:
+    if information and information.password == password_md5:
         return True
     else:
         return False
