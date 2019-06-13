@@ -2,45 +2,63 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width" />
-    <title>{{ handler.settings['blog_name'] }}{% block title%}{% end %}</title>
-    <link rel="stylesheet" href='{{ static_url("css/style.css") }}' type="text/css" />
-    <link rel="alternate" type="application/rss+xml" href="/feed" title="{{ handler.settings['blog_name'] }}" />
-    <link rel="icon" href='{{ static_url("img/Pomash.png") }}' />
+    <meta name="viewport" content="width=device-width"/>
+    <title>{{ handler.settings['blog_name'] }}{% block title %}{% end %}</title>
+    <link rel="alternate" type="application/rss+xml" href="/feed" title="{{ handler.settings['blog_name'] }}"/>
+    <link rel="icon" href='{{ static_url("img/Pomash.png") }}'/>
     {% if handler.settings['analytics'] %}
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id={{ handler.settings['analytics'] }}"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '{{ handler.settings["analytics"] }}');
-        </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ handler.settings['analytics'] }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', '{{ handler.settings["analytics"] }}');
+    </script>
     {% end %}
     {% block head %}{% end %}
+    <script>
+        let doc = document;
+        let link = doc.createElement("link");
+        link.setAttribute("rel", "stylesheet");
+        link.setAttribute("type", "text/css");
+        const now = new Date();
+        if (now.getHours() >= 18 || now.getHours() <= 6) {
+            link.setAttribute("href", '{{ static_url("css/style-dark.css") }}');
+        } else {
+            link.setAttribute("href", '{{ static_url("css/style.css") }}');
+        }
+        let heads = doc.getElementsByTagName("head");
+        heads[0].appendChild(link);
+    </script>
 </head>
 <body>
-    <div id="wrapper" class="yue">
-        <header id="header">
-            <a href="{{ handler.settings['blog_url'] }}" id="site_name">{{ handler.settings['blog_name'] }}</a>
-            <nav>
-                <a href="/articles">Articles</a>
-                <a href="/tags">Tags</a>
-                {% for page in handler.get_custom_page() %}
-                <a href="/page/custom/{{ page.id }}">{{ page.title }}</a>
-                {% end %}
-            </nav>
-        </header>
-        <div id="content">
+<div id="wrapper" class="yue">
+    <header id="header">
+        <a href="{{ handler.settings['blog_url'] }}" id="site_name">{{ handler.settings['blog_name'] }}</a>
+        <nav>
+            <a href="/articles">Articles</a>
+            <a href="/tags">Tags</a>
+            {% for page in handler.get_custom_page() %}
+            <a href="/page/custom/{{ page.id }}">{{ page.title }}</a>
+            {% end %}
+        </nav>
+    </header>
+    <div id="content">
         {% block content %}
         {% end %}
-        </div>
-        <footer id="footer">
-            <div><a href="/admin">Admin</a> & <a href="/feed">RSS</a></div>
-            Powered by <a href="https://github.com/JmPotato/Pomash">Pomash</a>
-            &
-            Theme <a href="https://github.com/JmPotato/Potheme-Clean">Clean</a> by <a href="https://github.com/whtsky">whtsky</a> and modified by <a href="http://ipotato.me">JmPotato</a>
-        </footer>
     </div>
+    <footer id="footer">
+        <div><a href="/admin">Admin</a> & <a href="/feed">RSS</a></div>
+        Powered by <a href="https://github.com/JmPotato/Pomash">Pomash</a>
+        &
+        Theme <a href="https://github.com/JmPotato/Potheme-Clean">Clean</a> by <a href="https://github.com/whtsky">whtsky</a>
+        and modified by <a href="http://ipotato.me">JmPotato</a>
+    </footer>
+</div>
 </body>
 </html>
