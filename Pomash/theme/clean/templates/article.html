@@ -64,16 +64,27 @@
     <script src='{{ static_url("js/Valine.js") }}'></script>
     <div id="vcomments"></div>
     <script>
-        new Valine({
-            el: '#vcomments',
-            appId: '{{ valine_app_id }}',
-            appKey: '{{ valine_app_key }}',
-            notify: false,
-            verify: false,
-            lang: 'en',
-            avatar: 'mm',
-            placeholder: 'Make sure your comments are useful to others :)'
-        })
+        let script = doc.createElement("script");
+        if (now.getHours() >= 18 || now.getHours() <= 6) {
+            script.setAttribute("src", '{{ static_url("js/Valine-dark.js") }}');
+        } else {
+            script.setAttribute("src", '{{ static_url("js/Valine.js") }}');
+        }
+        let post = doc.getElementsByClassName("post");
+        post[0].appendChild(script);
+
+        setTimeout(function () {
+            new Valine({
+                el: '#vcomments',
+                appId: '{{ valine_app_id }}',
+                appKey: '{{ valine_app_key }}',
+                notify: false,
+                verify: false,
+                lang: 'en',
+                avatar: 'mm',
+                placeholder: 'Make sure your comments are useful to others :)'
+            });
+        }, 1000);
     </script>
     {% end %}
 </div>

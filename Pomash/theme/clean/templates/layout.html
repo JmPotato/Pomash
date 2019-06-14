@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script>
+        let doc = document;
+        let link = doc.createElement("link");
+        link.setAttribute("rel", "stylesheet");
+        link.setAttribute("type", "text/css");
+        const now = new Date();
+        if (now.getHours() >= 18 || now.getHours() <= 6) {
+            link.setAttribute("href", '{{ static_url("css/style-dark.css") }}');
+        } else {
+            link.setAttribute("href", '{{ static_url("css/style.css") }}');
+        }
+        let heads = doc.getElementsByTagName("head");
+        heads[0].appendChild(link);
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width"/>
     <title>{{ handler.settings['blog_name'] }}{% block title %}{% end %}</title>
@@ -21,20 +35,6 @@
     </script>
     {% end %}
     {% block head %}{% end %}
-    <script>
-        let doc = document;
-        let link = doc.createElement("link");
-        link.setAttribute("rel", "stylesheet");
-        link.setAttribute("type", "text/css");
-        const now = new Date();
-        if (now.getHours() >= 18 || now.getHours() <= 6) {
-            link.setAttribute("href", '{{ static_url("css/style-dark.css") }}');
-        } else {
-            link.setAttribute("href", '{{ static_url("css/style.css") }}');
-        }
-        let heads = doc.getElementsByTagName("head");
-        heads[0].appendChild(link);
-    </script>
 </head>
 <body>
 <div id="wrapper" class="yue">
