@@ -27,8 +27,8 @@ class BaseHandler(tornado.web.RequestHandler):
     def md_to_html(self, text):
         text = to_unicode(text)
         renderer = MyRenderer()
-        md = mistune.Markdown(renderer=renderer)
-        return md.render(text)
+        md = mistune.create_markdown(renderer=renderer)
+        return md(text)
 
     def urlencode(self, text):
         return quote(text.encode('utf8'))

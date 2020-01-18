@@ -22,6 +22,7 @@ class Application(tornado.web.Application):
             cookie_secret = cookie_secret,
             analytics = analytics.strip().lstrip(),
             login_url = "/login",
+            dark_mode = dark_mode,
             debug = DeBug
         )
         tornado.web.Application.__init__(self, handlers, **settings)

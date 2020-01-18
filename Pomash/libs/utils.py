@@ -10,15 +10,19 @@ import hashlib
 import pygments
 import datetime
 
+
 def to_md5(word):
     return hashlib.md5(word.encode('utf-8')).hexdigest()
+
 
 def make_token(username):
     key = ''.join(random.sample(string.ascii_letters+string.digits, 20))
     return key
 
+
 def get_datetime():
     return str(datetime.datetime.now()).split('.')[0]
+
 
 def backup(dbx, file_path, upload_path):
     path = '/' + upload_path
@@ -30,11 +34,13 @@ def backup(dbx, file_path, upload_path):
         res = dbx.files_upload(
             data, path, mode,
             client_modified=datetime.datetime(*time.gmtime(mtime)[:6]),
-            mute=True)
+            mute=True
+        )
     except dropbox.exceptions.ApiError as err:
         print('%s API error' % err)
         return False
     return True
+
 
 def restore(dbx, file_name, download_path):
     path = '/' + file_name
@@ -44,3 +50,7 @@ def restore(dbx, file_name, download_path):
         print('%s API error' % err)
         return False
     return True
+
+
+def trim(string):
+    return string.strip().lstrip()

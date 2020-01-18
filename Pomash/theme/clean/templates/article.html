@@ -4,37 +4,42 @@
 {% block title %} | {{ article.title }}{% end %}
 
 {% block head %}
-    {% if twitter_card %}
-        <meta name="twitter:card" content="summary">
-        <meta name="twitter:site" content="{{ twitter_username }}">
-        <meta name="twitter:title" content="{{ article.title }}">
-        <meta name="twitter:description" content="{{ handler.description(handler.md_to_html(article.content)) }}">
-        <meta name="twitter:creator" content="{{ twitter_username }}">
-        <meta name="twitter:domain" content="{{ handler.settings['blog_url'] }}">
-    {% end %}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.getElementById("article"), {
-                delimiters: [
-                    {left: "$$", right: "$$", display: true},
-                    {left: "$", right: "$", display: false}
-                ]
-            });
+{% if twitter_card %}
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="{{ twitter_username }}">
+<meta name="twitter:title" content="{{ article.title }}">
+<meta name="twitter:description" content="{{ handler.description(handler.md_to_html(article.content)) }}">
+<meta name="twitter:creator" content="{{ twitter_username }}">
+<meta name="twitter:domain" content="{{ handler.settings['blog_url'] }}">
+{% end %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.css"
+    integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/katex.min.js"
+    integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx"
+    crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/contrib/auto-render.min.js"
+    integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe"
+    crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        renderMathInElement(document.getElementById("article"), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false }
+            ]
         });
-    </script>
+    });
+</script>
 {% end %}
 
 {% block content %}
 <div class="post">
     <h1 id="title">{{ article.title }}</h1>
     <div class="date">
-    {{ article.datetime[:10] }}
+        {{ article.datetime[:10] }}
     </div>
     <article id="article">
-    {{ handler.md_to_html(article.content) }}
+        {{ handler.md_to_html(article.content) }}
     </article>
     <div class="tags">
         Tagged in :
@@ -45,45 +50,41 @@
     {% if current_user %}
     <div class="operation">
         <a href="/admin/edit/article/{{ article.id }}">Edit</a>
-        <a style="text-decoration:underline;" onclick="if(confirm('Are you sure to delete this article?')){window.location.href='/admin/edit/delete/article/{{ article.id }}';}">Delete</a>
+        <a style="text-decoration:underline;"
+            onclick="if(confirm('Are you sure to delete this article?')){window.location.href='/admin/edit/delete/article/{{ article.id }}';}">Delete</a>
     </div>
     {% end %}
     {% if comment_system == 1 and disqus_name %}
     <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = '{{ disqus_name.strip().lstrip() }}';
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    <script>
+        var disqus_config = function () {
+            this.page.url = '{{ handler.settings["blog_url"] }}';
+            this.page.identifier = '{{ disqus_name.strip().lstrip() }}';
+        };
+
+        (function () {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://' + '{{ disqus_name.strip().lstrip() }}' + '.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
         })();
     </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
     {% elif comment_system == 2 and valine_app_id and valine_app_key %}
-    <script src='{{ static_url("js/av-min.js") }}'></script>
+    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
     <div id="vcomments"></div>
     <script>
-        let script = doc.createElement("script");
-        if (now.getHours() >= 18 || now.getHours() <= 6) {
-            script.setAttribute("src", '{{ static_url("js/Valine-dark.js") }}');
-        } else {
-            script.setAttribute("src", '{{ static_url("js/Valine.js") }}');
-        }
-        let post = doc.getElementsByClassName("post");
-        post[0].appendChild(script);
-
-        setTimeout(function () {
-            new Valine({
-                el: '#vcomments',
-                appId: '{{ valine_app_id }}',
-                appKey: '{{ valine_app_key }}',
-                notify: false,
-                verify: false,
-                lang: 'en',
-                avatar: 'mm',
-                placeholder: 'Make sure your comments are useful to others :)'
-            });
-        }, 1000);
+        new Valine({
+            el: '#vcomments',
+            appId: '{{ valine_app_id }}',
+            appKey: '{{ valine_app_key }}',
+            notify: false,
+            verify: false,
+            lang: 'en',
+            avatar: 'mm',
+            placeholder: 'Make sure your comments are useful to others :)'
+        });
     </script>
     {% end %}
 </div>
