@@ -76,7 +76,7 @@ Theme
 
 Pomash's theme is called Potheme. Here is a Potheme list:
 
-* [Potheme-Clean](https://github.com/JmPotato/Potheme-Clean)
+* [Potheme-Clean](https://github.com/JmPotato/Pomash/tree/master/Pomash/theme/clean)
 * [Potheme-Maupassant](https://github.com/JmPotato/Potheme-Maupassant)
 * [Potheme-Default](https://github.com/JmPotato/Potheme-Default)
 
