@@ -1,7 +1,7 @@
 About
 ====
 
-Current Version: 2.0
+Current Version: v2.1
 
 Pomash is a lightweight blog system. Powered by Tornado Web Framework.
 
@@ -23,6 +23,9 @@ You should edit the `settings.py` to set up before running `run.py`. Here is a e
 * `blog_author` Your name.
 * `blog_url` Your blog's URL.
 * `theme` The theme you're using.
+* `dark_mode` The switch for dark mode. 0.Off & 1.On & 2.Auto. PS: Need theme support.
+* `pygments_style_light` The pygments style for light mode.
+* `pygments_style_dark` The pygments style for dark mode.
 * `post_per_page` The number of articles you want to display on the home page.
 * `twitter_card` Enable/Disable the twitter card function.
 * `twitter_username` Your twitter username.
