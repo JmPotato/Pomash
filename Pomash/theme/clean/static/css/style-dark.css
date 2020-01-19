@@ -355,7 +355,8 @@ table {
 #content .post article {
     padding-left: 6px;
     padding-top: 30px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1)
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    word-break: break-word;
 }
 
 #content .post article p img {
@@ -620,7 +621,8 @@ table {
     font-size: .9em;
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
     color: #b3b3b3;
-    background-color: #060608
+    background-color: #060608;
+    word-break: normal;
 }
 
 .yue pre code, .yue pre tt {
