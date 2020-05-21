@@ -58,8 +58,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function () {
-            this.page.url = '{{ handler.settings["blog_url"] }}';
-            this.page.identifier = '{{ disqus_name.strip().lstrip() }}';
+            this.page.url = '{{ handler.settings["blog_url"] }}/article/{{ article.id }}';
+            this.page.identifier = 'article/{{ article.id }}';
         };
 
         (function () {
