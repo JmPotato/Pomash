@@ -1,761 +1,813 @@
-article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
-    display: block
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+summary {
+  display: block;
 }
 
-audio, canvas, video {
-    display: inline-block
+audio,
+canvas,
+video {
+  display: inline-block;
 }
 
 audio:not([controls]) {
-    display: none;
-    height: 0
+  display: none;
+  height: 0;
 }
 
 [hidden] {
-    display: none
+  display: none;
 }
 
 html {
-    font-family: sans-serif;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-    margin: 0;
-    background-color: #111
+  margin: 0;
+  background-color: #111;
 }
 
 a:focus {
-    outline: thin dotted
+  outline: thin dotted;
 }
 
-a:active, a:hover {
-    outline: 0
+a:active,
+a:hover {
+  outline: 0;
 }
 
 h1 {
-    font-size: 2em;
-    margin: .67em 0
+  font-size: 2em;
+  margin: 0.67em 0;
 }
 
 abbr[title] {
-    border-bottom: 1px dotted
+  border-bottom: 1px dotted;
 }
 
-b, strong {
-    font-weight: bold
+b,
+strong {
+  font-weight: bold;
 }
 
 dfn {
-    font-style: italic
+  font-style: italic;
 }
 
 hr {
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-    height: 0
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
 }
 
 mark {
-    background: #ff0;
-    color: #FFF
+  background: #ff0;
+  color: #fff;
 }
 
-code, kbd, pre, samp {
-    font-family: monospace, serif;
-    font-size: 1em
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, serif;
+  font-size: 1em;
 }
 
 pre {
-    white-space: pre-wrap
+  white-space: pre-wrap;
 }
 
 q {
-    quotes: "\201C" "\201D" "\2018" "\2019"
+  quotes: "\201C""\201D""\2018""\2019";
 }
 
 small {
-    font-size: 80%
+  font-size: 80%;
 }
 
-sub, sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
 }
 
 sup {
-    top: -0.5em
+  top: -0.5em;
 }
 
 sub {
-    bottom: -0.25em
+  bottom: -0.25em;
 }
 
 img {
-    border: 0
+  border: 0;
 }
 
 svg:not(:root) {
-    overflow: hidden
+  overflow: hidden;
 }
 
 figure {
-    margin: 0
+  margin: 0;
 }
 
 fieldset {
-    border: 1px solid #c0c0c0;
-    margin: 0 2px;
-    padding: .35em .625em .75em
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
 }
 
 legend {
-    border: 0;
-    padding: 0
+  border: 0;
+  padding: 0;
 }
 
 form {
-    text-align: center
+  text-align: center;
 }
 
 div .page-item {
-    margin-top: 15px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    overflow: scroll;
-    max-height: 300px
+  margin-top: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: scroll;
+  max-height: 300px;
 }
 
 div .article-item {
-    margin-top: 15px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    overflow: scroll;
-    max-height: 600px
+  margin-top: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: scroll;
+  max-height: 600px;
 }
 
 div#submit {
-    margin: 10px;
-    text-align: center
+  margin: 10px;
+  text-align: center;
 }
 
 .input {
-    padding: 10px
+  padding: 10px;
 }
 
 input {
-    border: 0;
-    border-radius: 4px;
-    outline: 0;
-    background: #555;
-    color: #dddddc;
-    padding: 8px 6px;
-    font-size: 18px;
-    line-height: 1;
-    box-sizing: border-box;
-    width: 300px;
-    margin-right: 4px
+  border: 0;
+  border-radius: 4px;
+  outline: 0;
+  background: #555;
+  color: #dddddc;
+  padding: 8px 6px;
+  font-size: 18px;
+  line-height: 1;
+  box-sizing: border-box;
+  width: 300px;
+  margin-right: 4px;
 }
 
 label {
-    display: block;
-    padding-bottom: 5px
+  display: block;
+  padding-bottom: 5px;
 }
 
 textarea {
-    border: 0;
-    border-radius: 4px;
-    outline: 0;
-    background: #555;
-    color: #dddddc;
-    padding: 5px;
-    width: 98%
+  border: 0;
+  border-radius: 4px;
+  outline: 0;
+  background: #555;
+  color: #dddddc;
+  padding: 5px;
+  width: 98%;
 }
 
 button {
-    border: 0;
-    color: #eee;
-    background-color: #111;
-    text-decoration: underline
+  border: 0;
+  color: #eee;
+  background-color: #111;
+  text-decoration: underline;
 }
 
-button, input, select, textarea {
-    font-family: inherit;
-    font-size: 100%;
-    margin: 0
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
 }
 
-button, input {
-    line-height: normal
+button,
+input {
+  line-height: normal;
 }
 
-button, select {
-    text-transform: none
+button,
+select {
+  text-transform: none;
 }
 
-button, html input[type="button"], input[type="reset"], input[type="submit"] {
-    -webkit-appearance: button;
-    cursor: pointer
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
 }
 
 button[type="submit"] {
-    border: 0;
-    color: #eee;
-    background-color: #111;
-    text-decoration: underline
+  border: 0;
+  color: #eee;
+  background-color: #111;
+  text-decoration: underline;
 }
 
-button[disabled], html input[disabled] {
-    cursor: default
+button[disabled],
+html input[disabled] {
+  cursor: default;
 }
 
-input[type="checkbox"], input[type="radio"] {
-    box-sizing: border-box;
-    padding: 0
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
 }
 
 input[type="search"] {
-    -webkit-appearance: textfield;
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
-input[type="search"]::-webkit-search-cancel-button, input[type="search"]::-webkit-search-decoration {
-    -webkit-appearance: none
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
 }
 
-button::-moz-focus-inner, input::-moz-focus-inner {
-    border: 0;
-    padding: 0
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
 }
 
 textarea {
-    overflow: auto;
-    vertical-align: top
+  overflow: auto;
+  vertical-align: top;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 #wrapper {
-    width: 720px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 20px;
-    padding-left: 10px;
-    padding-right: 10px
+  width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
-@media only screen and (max-width:768px) {
-    #wrapper {
-        width: auto
-    }
+@media only screen and (max-width: 768px) {
+  #wrapper {
+    width: auto;
+  }
 }
 
 #header {
-    padding-bottom: 20px
+  padding-bottom: 20px;
 }
 
-@media only screen and (min-width:1200px) {
-    #header {
-        opacity: .7
-    }
-    #header a:hover {
-        opacity: 1;
-        color: #DDC
-    }
+@media only screen and (min-width: 1200px) {
+  #header {
+    opacity: 0.7;
+  }
+  #header a:hover {
+    opacity: 1;
+    color: #ddc;
+  }
 }
 
 #header #site_name {
-    text-decoration: none;
-    font-size: 1.3em
+  text-decoration: none;
+  font-size: 1.3em;
 }
 
-@media only screen and (max-width:1200px) {
-    #header #site_name {
-        display: block;
-        text-align: center;
-        font-size: 2em;
-        color: #EEE
-    }
+@media only screen and (max-width: 1200px) {
+  #header #site_name {
+    display: block;
+    text-align: center;
+    font-size: 2em;
+    color: #eee;
+  }
 }
 
 #header nav {
-    text-align: center;
-    display: block;
-    float: none;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+  text-align: center;
+  display: block;
+  float: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 #header nav a {
-    padding-right: 10px
+  padding-right: 10px;
 }
 
 #header nav a:last-child {
-    padding-right: 0
+  padding-right: 0;
 }
 
-@media only screen and (min-width:1200px) {
-    #header nav {
-        display: inline;
-        float: right;
-        border-top: 0;
-        border-bottom: 0
-    }
+@media only screen and (min-width: 1200px) {
+  #header nav {
+    display: inline;
+    float: right;
+    border-top: 0;
+    border-bottom: 0;
+  }
 }
 
 #content .date {
-    font-style: italic;
-    color: gray
+  font-style: italic;
+  color: gray;
 }
 
 #content ol#posts {
-    list-style-type: none
+  list-style-type: none;
 }
 
 #content ol#posts li {
-    padding-top: 5px;
-    padding-bottom: 5px
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 #content ol#posts li a {
-    padding-left: 5px
+  padding-left: 5px;
 }
 
 #content ol#posts li .date {
-    font-size: .8em
+  font-size: 0.8em;
 }
 
 #content #pagination {
-    font-family: "Lucida Grande", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    text-align: center
+  font-family: "Lucida Grande", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
 }
 
 #content #pagination #prev {
-    float: left
+  float: left;
 }
 
 #content #pagination #next {
-    float: right
+  float: right;
 }
 
 #content .post h1#title {
-    text-align: center
+  text-align: center;
 }
 
-#content .post>.date {
-    text-align: center
+#content .post > .date {
+  text-align: center;
 }
 
 #content .post article {
-    padding-left: 6px;
-    padding-top: 30px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    word-break: break-word;
+  padding-left: 6px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  word-break: break-word;
 }
 
 #content .post article p img {
-    display: block;
-    margin: auto
+  display: block;
+  margin: auto;
 }
 
 #content .post .tags {
-    display: inline;
-    color: gray;
-    font-style: italic;
-    font-size: .9em
+  display: inline;
+  color: gray;
+  font-style: italic;
+  font-size: 0.9em;
 }
 
 #content .post .tags a {
-    color: gray
+  color: gray;
 }
 
 #content .post .operation {
-    color: gray;
-    float: right;
-    font-style: italic;
-    font-size: .9em
+  color: gray;
+  float: right;
+  font-style: italic;
+  font-size: 0.9em;
 }
 
 #content .post .operation a {
-    color: gray
+  color: gray;
 }
 
 #vcomments {
-    margin-top: 20px;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1)
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 #vcomments .vnick {
-    color: #EEE
+  color: #eee;
 }
 
 #vcomments .vat {
-    color: gray;
-    font-style: italic;
-    text-decoration: underline
+  color: gray;
+  font-style: italic;
+  text-decoration: underline;
 }
 
 #footer {
-    color: gray;
-    font-size: .8em;
-    text-align: center;
-    margin-top: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1)
+  color: gray;
+  font-size: 0.8em;
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 #footer a {
-    color: gray
+  color: gray;
 }
 
 .yue {
-    font: 400 18px/1.62 "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
-    color: #EEE
+  font: 400 18px/1.62 "Georgia", "Xin Gothic", "Hiragino Sans GB",
+    "Droid Sans Fallback", "Microsoft YaHei", sans-serif;
+  color: #eee;
 }
 
 .windows .yue {
-    font-size: 16px;
-    font-family: "Georgia", "SimSun", sans-serif
+  font-size: 16px;
+  font-family: "Georgia", "SimSun", sans-serif;
 }
 
 .yue::-moz-selection {
-    background-color: rgba(100, 100, 100, 0.2)
+  background-color: rgba(100, 100, 100, 0.2);
 }
 
 .yue::selection {
-    background-color: rgba(100, 100, 100, 0.2)
+  background-color: rgba(100, 100, 100, 0.2);
 }
 
-.yue h1, .yue h2, .yue h3, .yue h4, .yue h5, .yue h6 {
-    font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB", "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
-    color: #dddddc
+.yue h1,
+.yue h2,
+.yue h3,
+.yue h4,
+.yue h5,
+.yue h6 {
+  font-family: "Georgia", "Xin Gothic", "Hiragino Sans GB",
+    "Droid Sans Fallback", "Microsoft YaHei", "SimSun", sans-serif;
+  color: #dddddc;
 }
 
 .yue h1 {
-    font-size: 1.8em;
-    margin: .67em 0
+  font-size: 1.8em;
+  margin: 0.67em 0;
 }
 
-.yue>h1 {
-    margin-top: 0;
-    font-size: 2em
+.yue > h1 {
+  margin-top: 0;
+  font-size: 2em;
 }
 
 .yue h2 {
-    font-size: 1.5em;
-    margin: .83em 0
+  font-size: 1.5em;
+  margin: 0.83em 0;
 }
 
 .yue h3 {
-    font-size: 1.17em;
-    margin: 1em 0
+  font-size: 1.17em;
+  margin: 1em 0;
 }
 
-.yue h4, .yue h5, .yue h6 {
-    font-size: 1em;
-    margin: 1.6em 0 1em 0
+.yue h4,
+.yue h5,
+.yue h6 {
+  font-size: 1em;
+  margin: 1.6em 0 1em 0;
 }
 
 .yue h6 {
-    font-weight: 500
+  font-weight: 500;
 }
 
 .yue p {
-    margin-top: 0;
-    margin-bottom: 1.46em
+  margin-top: 0;
+  margin-bottom: 1.46em;
 }
 
 .yue a {
-    color: #EEE;
-    word-wrap: break-word;
+  color: #eee;
+  word-wrap: break-word;
 }
 
 .yue a:hover {
-    color: #555;
-    -moz-text-decoration-color: rgba(100, 100, 1000, 0.6);
-    text-decoration-color: rgba(100, 100, 100, 0.6)
+  color: #555;
+  -moz-text-decoration-color: rgba(100, 100, 1000, 0.6);
+  text-decoration-color: rgba(100, 100, 100, 0.6);
 }
 
-.yue strong, .yue b {
-    font-weight: 700;
-    color: #DDD
+.yue strong,
+.yue b {
+  font-weight: 700;
+  color: #ddd;
 }
 
-.yue em, .yue i {
-    font-style: italic;
-    color: #DDD
+.yue em,
+.yue i {
+  font-style: italic;
+  color: #ddd;
 }
 
 .yue img {
-    max-width: 100%;
-    height: auto;
-    margin: .2em 0
+  max-width: 100%;
+  height: auto;
+  margin: 0.2em 0;
 }
 
 .yue a img {
-    border: 0
+  border: 0;
 }
 
 .yue figure {
-    position: relative;
-    clear: both;
-    outline: 0;
-    margin: 10px 0 30px;
-    padding: 0;
-    min-height: 100px
+  position: relative;
+  clear: both;
+  outline: 0;
+  margin: 10px 0 30px;
+  padding: 0;
+  min-height: 100px;
 }
 
 .yue figure img {
-    display: block;
-    max-width: 100%;
-    margin: auto auto 4px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box
+  display: block;
+  max-width: 100%;
+  margin: auto auto 4px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .yue figure figcaption {
-    position: relative;
-    width: 100%;
-    text-align: center;
-    left: 0;
-    margin-top: 10px;
-    font-weight: 400;
-    font-size: 14px;
-    color: #99999a
+  position: relative;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  margin-top: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  color: #99999a;
 }
 
 .yue figure figcaption a {
-    text-decoration: none;
-    color: #99999a
+  text-decoration: none;
+  color: #99999a;
 }
 
 .yue hr {
-    display: block;
-    width: 14%;
-    margin: 40px auto 34px;
-    border: 0 none;
-    border-top: 3px solid #dededc
+  display: block;
+  width: 14%;
+  margin: 40px auto 34px;
+  border: 0 none;
+  border-top: 3px solid #dededc;
 }
 
 .yue blockquote {
-    margin: 0 0 1.64em 0;
-    border-left: 3px solid #dadada;
-    padding-left: 12px;
-    color: #99999b
+  margin: 0 0 1.64em 0;
+  border-left: 3px solid #dadada;
+  padding-left: 12px;
+  color: #99999b;
 }
 
 .yue blockquote a {
-    color: #99999b
+  color: #99999b;
 }
 
-.yue ul, .yue ol {
-    margin: 0 0 24px 6px;
-    padding-left: 16px
+.yue ul,
+.yue ol {
+  margin: 0 0 24px 6px;
+  padding-left: 16px;
 }
 
 .yue ul {
-    list-style-type: square
+  list-style-type: square;
 }
 
 .yue ol {
-    list-style-type: decimal
+  list-style-type: decimal;
 }
 
 .yue li {
-    margin-bottom: .2em
+  margin-bottom: 0.2em;
 }
 
-.yue li ul, .yue li ol {
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 14px
+.yue li ul,
+.yue li ol {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 14px;
 }
 
 .yue li ul {
-    list-style-type: disc
+  list-style-type: disc;
 }
 
 .yue li ul ul {
-    list-style-type: circle
+  list-style-type: circle;
 }
 
 .yue li p {
-    margin: .4em 0 .6em
+  margin: 0.4em 0 0.6em;
 }
 
 .yue .unstyled {
-    list-style-type: none;
-    margin: 0;
-    padding: 0
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-.yue code, .yue tt {
-    color: #7f7f7f;
-    font-size: .96em;
-    background-color: #060608;
-    padding: 1px 2px;
-    border: 1px solid #252525;
-    border-radius: 3px;
-    font-family: "Inconsolata", "Menlo", monospace;
-    word-break: break-all
+.yue code,
+.yue tt {
+  color: #7f7f7f;
+  font-size: 0.96em;
+  background-color: #060608;
+  padding: 1px 2px;
+  border: 1px solid #252525;
+  border-radius: 3px;
+  font-family: "Inconsolata", "Menlo", monospace;
+  word-break: break-all;
 }
 
 .yue pre {
-    margin: 1.64em 0;
-    padding: 7px;
-    border: 0;
-    border-left: 3px solid #252525;
-    padding-left: 10px;
-    overflow: auto;
-    line-height: 1.5;
-    font-size: .9em;
-    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
-    color: #b3b3b3;
-    background-color: #060608;
-    word-break: normal;
+  margin: 1.64em 0;
+  padding: 7px;
+  border: 0;
+  border-left: 3px solid #252525;
+  padding-left: 10px;
+  overflow: auto;
+  line-height: 1.5;
+  font-size: 0.9em;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  color: #b3b3b3;
+  background-color: #060608;
+  word-break: normal;
 }
 
-.yue pre code, .yue pre tt {
-    color: #b3b3b3;
-    border: 0;
-    background: 0;
-    padding: 0
+.yue pre code,
+.yue pre tt {
+  color: #b3b3b3;
+  border: 0;
+  background: 0;
+  padding: 0;
 }
 
 .yue table {
-    width: 100%;
-    border-collapse: collapse;
-    border-spacing: 0;
-    margin-bottom: 1.5em;
-    font-size: .96em
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: 1.5em;
+  font-size: 0.96em;
 }
 
-.yue th, .yue td {
-    text-align: left;
-    padding: 4px 8px 4px 10px;
-    border: 1px solid #252525
+.yue th,
+.yue td {
+  text-align: left;
+  padding: 4px 8px 4px 10px;
+  border: 1px solid #252525;
 }
 
 .yue td {
-    vertical-align: top
+  vertical-align: top;
 }
 
 .yue tr:nth-child(even) {
-    background-color: #101011
+  background-color: #101011;
 }
 
 .yue iframe {
-    display: block;
-    max-width: 100%;
-    margin-bottom: 30px
+  display: block;
+  max-width: 100%;
+  margin-bottom: 30px;
 }
 
 .yue figure iframe {
-    margin: auto
+  margin: auto;
 }
 
 .yue table pre {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    background: 0
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: 0;
 }
 
-@media(min-width:1100px) {
-    .yue blockquote {
-        margin-left: -24px;
-        padding-left: 20px;
-        border-width: 4px
-    }
-    .yue blockquote blockquote {
-        margin-left: 0
-    }
-    .yue figure img {
-        margin: 0 0 4px
-    }
-    .yue figure figcaption:before {
-        width: 25%;
-        margin-left: 75%;
-        border-top: 1px solid #dededc;
-        display: block;
-        content: "";
-        margin-bottom: 10px
-    }
-    .yue figure figcaption {
-        position: absolute;
-        left: -172px;
-        width: 150px;
-        top: 0;
-        text-align: right;
-        margin-top: 0
-    }
+@media (min-width: 1100px) {
+  .yue blockquote {
+    margin-left: -24px;
+    padding-left: 20px;
+    border-width: 4px;
+  }
+  .yue blockquote blockquote {
+    margin-left: 0;
+  }
+  .yue figure img {
+    margin: 0 0 4px;
+  }
+  .yue figure figcaption:before {
+    width: 25%;
+    margin-left: 75%;
+    border-top: 1px solid #dededc;
+    display: block;
+    content: "";
+    margin-bottom: 10px;
+  }
+  .yue figure figcaption {
+    position: absolute;
+    left: -172px;
+    width: 150px;
+    top: 0;
+    text-align: right;
+    margin-top: 0;
+  }
 }
 
 .v p {
-    color: #EEE !important;
+  color: #eee !important;
 }
 
 .v .vwrap {
-    border: 1px solid #222 !important;
+  border: 1px solid #222 !important;
 }
 
 .v .vwrap .vheader .vinput {
-    color: #eee;
-    border-bottom: 1px dashed #212121 !important;
+  color: #eee;
+  border-bottom: 1px dashed #212121 !important;
 }
 
 .v .vbtn {
-    color: #808080 !important;
-    border: 1px solid #333 !important;
-    background: #333 !important;
+  color: #808080 !important;
+  border: 1px solid #333 !important;
+  background: #333 !important;
 }
 
-.v code, .v pre {
-    background-color: #222 !important;
+.v code,
+.v pre {
+  background-color: #222 !important;
 }
 
 .v .vlist .vcard .vimg {
-    border: 1px solid #222 !important;
+  border: 1px solid #222 !important;
 }
 
 .v .vlist .vcard .vquote {
-    border-left: 1px dashed #222 !important;
+  border-left: 1px dashed #222 !important;
 }
 
 .v .veditor {
-    color: #EEE;
+  color: #eee;
 }
 
 .v .vlist .vcard .vcontent.expand:before {
-    background: linear-gradient(180deg, hsla(0, 0%, 100%, 0), hsla(0, 0%, 6%, .9)) !important;
+  background: linear-gradient(
+    180deg,
+    hsla(0, 0%, 100%, 0),
+    hsla(0, 0%, 6%, 0.9)
+  ) !important;
 }
 
 .v .vlist .vcard .vcontent.expand:after {
-    background: hsla(0, 0%, 6%, 0.9) !important;
+  background: hsla(0, 0%, 6%, 0.9) !important;
 }
 
 .v .vlist .vcard .vh {
-    border-bottom: 1px dashed #222 !important;
+  border-bottom: 1px dashed #222 !important;
 }
 
 .v .vlist .vcard .vhead .vsys {
-    background: #333333 !important;
+  background: #333333 !important;
 }
 
 .v .info {
-    display: none !important;
+  display: none !important;
 }
 
 .v .vwrap .vedit .vemojis {
-    box-shadow: 0 0 1px #222 !important;
+  box-shadow: 0 0 1px #222 !important;
 }
