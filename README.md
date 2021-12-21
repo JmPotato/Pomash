@@ -57,16 +57,18 @@ Note: To avoid conflict between LaTeX and Markdown, Pomash removed the emphasis 
     ```python
     print('Hello, World!')
     ```
-    
+
     Hello, World!
 
     Inline LaTeX: $\int_a^b f(x)\mathrm{d}x$
 
     New line LaTeX: $$\sum_{i=0}^{n}i^2$$
-    
+
     <em>This is a emphasis.</em>
-    
+
     **This is a double emphasis.**
+
+    ~~This is a strikethrough.~~
 
     * Hello
     * World

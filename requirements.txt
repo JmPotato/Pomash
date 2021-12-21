@@ -1,4 +1,4 @@
 dropbox==9.3.0
-mistune==2.0.0a2
+mistune==2.0.0
 Pygments==2.4.2
 tornado==6.0.3

@@ -15,7 +15,7 @@ def to_md5(word):
     return hashlib.md5(word.encode('utf-8')).hexdigest()
 
 
-def make_token(username):
+def make_token():
     key = ''.join(random.sample(string.ascii_letters+string.digits, 20))
     return key
 
@@ -31,7 +31,7 @@ def backup(dbx, file_path, upload_path):
     with open(file_path, 'rb') as f:
         data = f.read()
     try:
-        res = dbx.files_upload(
+        dbx.files_upload(
             data, path, mode,
             client_modified=datetime.datetime(*time.gmtime(mtime)[:6]),
             mute=True
@@ -45,7 +45,7 @@ def backup(dbx, file_path, upload_path):
 def restore(dbx, file_name, download_path):
     path = '/' + file_name
     try:
-        res = dbx.files_download_to_file(download_path, path)
+        dbx.files_download_to_file(download_path, path)
     except dropbox.exceptions.HttpError as err:
         print('%s API error' % err)
         return False

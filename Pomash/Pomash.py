@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import time
 import math
-import string
 import dropbox
 import os.path
 import tornado.web
@@ -15,31 +13,37 @@ from .libs.models import *
 from .libs.handler import *
 
 db_file = os.path.join(os.path.abspath(os.path.dirname("__file__")), 'blog.db')
-set_file = os.path.join(os.path.abspath(os.path.dirname("__file__")), 'settings.py')
+set_file = os.path.join(os.path.abspath(
+    os.path.dirname("__file__")), 'settings.py')
 if dropbox_app_token:
     dbx = dropbox.Dropbox(dropbox_app_token)
+
 
 class HomeHandler(BaseHandler):
     def get(self):
         self.render("home.html",
-            all_articles = get_all_articles(),
-            articlesList = get_articles(1, post_per_page),
-            post_per_page = float(post_per_page),
-            page_number = 1,
-            count = float(get_article_count()),
-            max_page = math.ceil(float(get_article_count())/float(post_per_page))
-            )
+                    all_articles=get_all_articles(),
+                    articlesList=get_articles(1, post_per_page),
+                    post_per_page=float(post_per_page),
+                    page_number=1,
+                    count=float(get_article_count()),
+                    max_page=math.ceil(
+                        float(get_article_count())/float(post_per_page))
+                    )
+
 
 class PageHandler(BaseHandler):
     def get(self, page):
         self.render("home.html",
-            all_articles = get_all_articles(),
-            articlesList = get_articles(int(page), post_per_page),
-            post_per_page = float(post_per_page),
-            page_number = int(page),
-            count = float(get_article_count()),
-            max_page = math.ceil(float(get_article_count())/float(post_per_page))
-            )
+                    all_articles=get_all_articles(),
+                    articlesList=get_articles(int(page), post_per_page),
+                    post_per_page=float(post_per_page),
+                    page_number=int(page),
+                    count=float(get_article_count()),
+                    max_page=math.ceil(
+                        float(get_article_count())/float(post_per_page))
+                    )
+
 
 class CuPageHandler(BaseHandler):
     def get(self, page_id):
@@ -47,10 +51,11 @@ class CuPageHandler(BaseHandler):
         if(not article):
             self.redirect("/404")
         self.render("page.html",
-            all_articles = get_all_articles(),
-            article = article
-            )
-        
+                    all_articles=get_all_articles(),
+                    article=article
+                    )
+
+
 class ArticleHandler(BaseHandler):
     def get(self, article_id):
         article = get_article(article_id)
@@ -58,16 +63,17 @@ class ArticleHandler(BaseHandler):
             self.redirect("/404")
         tags = [tag.strip() for tag in article.tag.split(",")]
         self.render("article.html",
-            article = article,
-            tags = tags,
-            comment_system = comment_system,
-            disqus_name = disqus_name,
-            valine_app_id = valine_app_id,
-            valine_app_key = valine_app_key,
-            twitter_card = twitter_card,
-            twitter_username = twitter_username,
-            all_articles = get_all_articles(),
-            )
+                    article=article,
+                    tags=tags,
+                    comment_system=comment_system,
+                    disqus_name=disqus_name,
+                    valine_app_id=valine_app_id,
+                    valine_app_key=valine_app_key,
+                    twitter_card=twitter_card,
+                    twitter_username=twitter_username,
+                    all_articles=get_all_articles(),
+                    )
+
 
 class ArticlesHandler(BaseHandler):
     def get(self):
@@ -81,9 +87,10 @@ class ArticlesHandler(BaseHandler):
                 year_list[year] = []
                 year_list[year].append(article)
         self.render("articles.html",
-            all_articles = get_all_articles(),
-            articlesList = year_list,
-            )
+                    all_articles=get_all_articles(),
+                    articlesList=year_list,
+                    )
+
 
 class TagHandler(BaseHandler):
     def get(self, tag_name):
@@ -97,17 +104,19 @@ class TagHandler(BaseHandler):
                 year_list[year] = []
                 year_list[year].append(article)
         self.render("tag.html",
-            all_articles = get_all_articles(),
-            tag_name = tag_name,
-            articlesList = year_list,
-            )
+                    all_articles=get_all_articles(),
+                    tag_name=tag_name,
+                    articlesList=year_list,
+                    )
+
 
 class TagsHandler(BaseHandler):
     def get(self):
         self.render("tags.html",
-            all_articles = get_all_articles(),
-            tags = get_all_tags(),
-            )
+                    all_articles=get_all_articles(),
+                    tags=get_all_tags(),
+                    )
+
 
 class LoginHandler(BaseHandler):
     def get(self):
@@ -125,7 +134,7 @@ class LoginHandler(BaseHandler):
         password = self.get_argument("password", None)
         if login_username == username:
             if verify_user(username, to_md5(password)):
-                token = make_token(username)
+                token = make_token()
                 update_token(username, token)
                 self.set_secure_cookie("token", token)
                 self.set_secure_cookie("username", username)
@@ -136,6 +145,7 @@ class LoginHandler(BaseHandler):
         else:
             self.redirect("/login")
 
+
 class LogoutHandler(BaseHandler):
     def get(self):
         user = self.get_current_user()
@@ -144,6 +154,7 @@ class LogoutHandler(BaseHandler):
         self.clear_all_cookies()
         self.redirect("/")
 
+
 class AdminHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
@@ -151,18 +162,19 @@ class AdminHandler(BaseHandler):
         if not dropbox_app_token:
             dropbox_on = False
         self.render("admin.html",
-            blog_author = blog_author,
-            articlesList = get_all_articles(),
-            dropbox_on = dropbox_on,
-            )
+                    blog_author=blog_author,
+                    articlesList=get_all_articles(),
+                    dropbox_on=dropbox_on,
+                    )
+
 
 class PasswordHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
         message = self.get_argument('message', None)
         self.render("change_pw.html",
-            message = message,
-            )
+                    message=message,
+                    )
 
     @tornado.web.authenticated
     def post(self):
@@ -172,21 +184,26 @@ class PasswordHandler(BaseHandler):
                 self.clear_all_cookies()
                 self.redirect("/")
         else:
-            self.redirect("/admin/change_password?message=Failed to change Password: Wrong Old Password")
+            self.redirect(
+                "/admin/change_password?message=Failed to change Password: Wrong Old Password")
+
 
 class DropboxHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
         if not dropbox_app_token:
             authorized = False
-            message = self.get_argument('message', 'Authenticated Failed: You have not filled the token in settings.py')
+            message = self.get_argument(
+                'message', 'Authenticated Failed: You have not filled the token in settings.py')
         else:
             authorized = True
-            message = self.get_argument('message', 'Please backup your database and settings regularly.')
+            message = self.get_argument(
+                'message', 'Please backup your database and settings regularly.')
         self.render("dropbox.html",
-            authorized = authorized,
-            message = message,
-            )
+                    authorized=authorized,
+                    message=message,
+                    )
+
 
 class DropboxBackupHandler(BaseHandler):
     @tornado.web.authenticated
@@ -196,6 +213,7 @@ class DropboxBackupHandler(BaseHandler):
         else:
             self.redirect("/admin/dropbox?message=Backup failed")
 
+
 class DropboxRestoreHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
@@ -204,38 +222,41 @@ class DropboxRestoreHandler(BaseHandler):
         else:
             self.redirect('/admin/dropbox?message=Restore failed')
 
+
 class NewPageHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
         self.render("editor.html",
-            is_page = True,
-            new = True,
-            )
+                    is_page=True,
+                    new=True,
+                    )
 
     @tornado.web.authenticated
     def post(self):
         title = self.get_argument("title", None)
         content = self.get_argument("content", None)
-        if creat_page(title = title, content = content):
+        if create_page(title=title, content=content):
             self.redirect("/")
         else:
             self.redirect("/admin")
+
 
 class EditPageHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self, page_id):
         self.render("editor.html",
-            is_page = True,
-            new = False,
-            content = gat_page(page_id),
-            )
+                    is_page=True,
+                    new=False,
+                    content=gat_page(page_id),
+                    )
 
     @tornado.web.authenticated
     def post(self, page_id):
         title = self.get_argument("title", None)
         content = self.get_argument("content", None)
-        if update_page(int(page_id), title = title, content = content):
+        if update_page(int(page_id), title=title, content=content):
             self.redirect("/admin")
+
 
 class DelPageHandler(BaseHandler):
     @tornado.web.authenticated
@@ -243,38 +264,41 @@ class DelPageHandler(BaseHandler):
         if delete_page(page_id):
             self.redirect("/admin")
 
+
 class NewArticleHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
         self.render("editor.html",
-            is_page = False,
-            new = True,
-            )
+                    is_page=False,
+                    new=True,
+                    )
 
     @tornado.web.authenticated
     def post(self):
         title = self.get_argument("title", None)
         tags = self.get_argument("tag", None)
         content = self.get_argument("content", None)
-        creat_article(title = title, content = content, tags = tags)
+        create_article(title=title, content=content, tags=tags)
         self.redirect("/")
+
 
 class EditArticleHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self, article_id):
         self.render("editor.html",
-            is_page = False,
-            new = False,
-            content = get_article(article_id)
-        )
+                    is_page=False,
+                    new=False,
+                    content=get_article(article_id)
+                    )
 
     @tornado.web.authenticated
     def post(self, article_id):
         title = self.get_argument("title", None)
         tags = self.get_argument("tag", None)
         content = self.get_argument("content", None)
-        if update_article(int(article_id), title = title, content = content, tags = tags):
+        if update_article(int(article_id), title=title, content=content, tags=tags):
             self.redirect("/article/" + article_id)
+
 
 class DelArticleHandler(BaseHandler):
     @tornado.web.authenticated
@@ -282,17 +306,20 @@ class DelArticleHandler(BaseHandler):
         if delete_article(article_id):
             self.redirect("/admin")
 
+
 class FeedHandler(BaseHandler):
     def get(self):
         self.set_header("Content-Type", "text/xml; charset=utf-8")
         self.render("feed.xml",
-            articlesList = get_all_articles(),
-            blog_author = blog_author,
-            )
+                    articlesList=get_all_articles(),
+                    blog_author=blog_author,
+                    )
+
 
 class PageNotFound(BaseHandler):
     def get(self):
         self.render("404.html")
+
 
 handlers = [
     ("/", HomeHandler),

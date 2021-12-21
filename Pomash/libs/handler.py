@@ -5,11 +5,11 @@ import re
 import mistune
 import tornado.web
 
-from urllib.parse import unquote, quote
-
 from .models import *
 from .markdown import *
+from urllib.parse import unquote, quote
 from tornado.escape import to_unicode, xhtml_escape
+
 
 class BaseHandler(tornado.web.RequestHandler):
     def get_pure_title(self, title):
@@ -17,7 +17,7 @@ class BaseHandler(tornado.web.RequestHandler):
 
     def escape_string(self, s):
         return xhtml_escape(s)
-        
+
     def description(self, text):
         if len(text) <= 200:
             return re.sub('(<.*?>)', '', text).replace('\n', ' ')[:int(len(text)/2-4)] + '...'
@@ -27,7 +27,10 @@ class BaseHandler(tornado.web.RequestHandler):
     def md_to_html(self, text):
         text = to_unicode(text)
         renderer = MyRenderer()
-        md = mistune.create_markdown(renderer=renderer)
+        md = mistune.create_markdown(
+            renderer=renderer,
+            plugins=['strikethrough']
+        )
         return md(text)
 
     def urlencode(self, text):
@@ -48,12 +51,14 @@ class BaseHandler(tornado.web.RequestHandler):
     def get_error_html(self, status_code, **kwargs):
         if status_code == 404:
             self.render("404.html",
-                title = "404 Page Not Found",
-                )
+                        title="404 Page Not Found",
+                        )
         else:
             try:
-                exception = "%s\n\n%s" % (kwargs["exception"],
-                    traceback.format_exc())
+                exception = "%s\n\n%s" % (
+                    kwargs["exception"],
+                    traceback.format_exc()
+                )
                 if self.settings.get("debug"):
                     self.set_header('Content-Type', 'text/plain')
                     for line in exception:
@@ -61,5 +66,7 @@ class BaseHandler(tornado.web.RequestHandler):
                 else:
                     self.write("oOps...! I made ​​a mistake... ")
             except Exception:
-                return super(BaseHandler, self).get_error_html(status_code,
-                    **kwargs)
+                return super(BaseHandler, self).get_error_html(
+                    status_code,
+                    **kwargs
+                )
