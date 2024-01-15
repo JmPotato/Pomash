@@ -1,12 +1,8 @@
-About
-====
-
-Current Version: v2.1
+# Pomash
 
 Pomash is a lightweight blog system. Powered by Tornado Web Framework.
 
-Build up
-====
+## Deployment
 
 Note: The Python environment has been updated to 3.7.1. So I am not sure whether Pomash works properly under the 2.x version of Python.
 
@@ -15,8 +11,9 @@ How to get Pomash:
 ```shell
 git clone https://github.com/JmPotato/Pomash.git
 cd Pomash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
+
 You should edit the `settings.py` to set up before running `run.py`. Here is a explanation for `settings.py`:
 
 * `blog_name` Your blog's name.
@@ -41,18 +38,17 @@ You should edit the `settings.py` to set up before running `run.py`. Here is a e
 After customizing `settings.py` and initialize the database, you could put Pomash online.
 
 ```shell
-python init_db.py
-python run.py --port=8080
+python3 init_db.py
+python3 run.py --port=8080
 ```
 
-Usage
-====
+## Usage
 
 Pomash uses Markdown to write posts and pages. LaTeX is also supported.
 
 Note: To avoid conflict between LaTeX and Markdown, Pomash removed the emphasis syntax `*word*` and `_word_` which you should use `<em>word</em>` as an alternative.
 
-    #Hello World
+    # Hello World
 
     ```python
     print('Hello, World!')
@@ -73,8 +69,7 @@ Note: To avoid conflict between LaTeX and Markdown, Pomash removed the emphasis 
     * Hello
     * World
 
-Theme
-====
+## Themes
 
 Pomash's theme is called Potheme. Here is a Potheme list:
 
@@ -82,14 +77,10 @@ Pomash's theme is called Potheme. Here is a Potheme list:
 * [Potheme-Maupassant](https://github.com/JmPotato/Potheme-Maupassant)
 * [Potheme-Default](https://github.com/JmPotato/Potheme-Default)
 
-Other Reference
-====
+## References
 
 A [Chinese guide](https://ipotato.me/article/16) for setting up.(Maybe a little outdated)
 
-License
-====
+## License
 
 Please read the [MIT-LICENSE](./LICENSE)
-
-
