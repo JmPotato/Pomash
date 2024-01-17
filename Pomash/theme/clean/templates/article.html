@@ -4,7 +4,8 @@
 {% block title %} | {{ article.title }}{% end %}
 
 {% block head %}
-{% if twitter_card %}
+<meta property="og:title" content="{{ article.title }}" />
+{% if twitter_card_enabled %}
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="{{ twitter_username }}">
 <meta name="twitter:title" content="{{ article.title }}">
@@ -54,38 +55,14 @@
             onclick="if(confirm('Are you sure to delete this article?')){window.location.href='/admin/edit/delete/article/{{ article.id }}';}">Delete</a>
     </div>
     {% end %}
-    {% if comment_system == 1 and disqus_name %}
-    <div id="disqus_thread"></div>
-    <script>
-        var disqus_config = function () {
-            this.page.url = '{{ handler.settings["blog_url"] }}/article/{{ article.id }}';
-            this.page.identifier = 'article/{{ article.id }}';
-        };
-
-        (function () {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://' + '{{ disqus_name.strip().lstrip() }}' + '.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
-            Disqus.</a></noscript>
-    {% elif comment_system == 2 and valine_app_id and valine_app_key %}
-    <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
-    <div id="vcomments"></div>
-    <script>
-        new Valine({
-            el: '#vcomments',
-            appId: '{{ valine_app_id }}',
-            appKey: '{{ valine_app_key }}',
-            notify: false,
-            verify: false,
-            lang: 'en',
-            avatar: 'mm',
-            placeholder: 'Make sure your comments are useful to others :)'
-        });
-    </script>
+    {% if giscus['repo'] %}
+    <script src="https://giscus.app/client.js" data-repo="{{ giscus['repo'] }}" data-repo-id="{{ giscus['repo_id'] }}"
+        data-category="{{ giscus['category'] }}" data-category-id="{{ giscus['category_id'] }}"
+        data-mapping="{{ giscus['mapping'] }}" data-strict="0"
+        data-reactions-enabled="{{ giscus['reactions_enabled'] }}" data-emit-metadata="{{ giscus['emit_metadata'] }}"
+        data-input-position="{{ giscus['input_position'] }}" data-theme="{{ giscus['theme'] }}"
+        data-lang="{{ giscus['lang'] }}" crossorigin="anonymous" async>
+        </script>
     {% end %}
 </div>
 {% end %}

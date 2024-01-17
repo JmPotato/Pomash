@@ -5,34 +5,48 @@ import os
 import hashlib
 import sqlite3
 
-from settings import *
+CONFIG_FILE = "config.toml"
+DB_FILE = "blog.db"
 
-if not os.path.exists("blog.db"):
-    conn = sqlite3.connect("blog.db")
+if not os.path.exists(CONFIG_FILE):
+    print("Unable to find config file.")
+    print("Failed to create database.")
+    exit(1)
+if not os.path.exists(DB_FILE):
+    print("No database file found, creating database...")
+    config = tomllib.load(CONFIG_FILE)
+    conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
-    print("Did not find any database file.")
-    c.execute('''CREATE TABLE admin_config 
-             (username text NOT NULL PRIMARY KEY, password text NOT NULL, token text);''')
-    print("Creating Admin Config......")
-    c.execute('''CREATE TABLE articles 
-             (id integer NOT NULL PRIMARY KEY autoincrement, title text NOT NULL, content text NOT NULL, tag text NOT NULL, datetime text NOT NULL);''')
-    c.execute('''INSERT INTO admin_config VALUES (\"%s\", \"%s\", "token");''' % (
-        login_username,
-        hashlib.md5("admin".encode('utf-8')).hexdigest()
-    ))
+
+    print("Initializing admin config......")
+    c.execute(
+        """CREATE TABLE admin_config 
+             (username text NOT NULL PRIMARY KEY, password text NOT NULL, token text);"""
+    )
+    c.execute(
+        """INSERT INTO admin_config VALUES (\"%s\", \"%s\", "token");"""
+        % (config.admin.name, hashlib.md5("admin".encode("utf-8")).hexdigest())
+    )
+
+    print("Initializing articles table...")
+    c.execute(
+        """CREATE TABLE articles 
+             (id integer NOT NULL PRIMARY KEY autoincrement, title text NOT NULL, content text NOT NULL, tag text NOT NULL, datetime text NOT NULL);"""
+    )
     c.execute("CREATE UNIQUE INDEX articles_id ON articles(id);")
-    print("Creating Article Database......")
-    c.execute('''CREATE TABLE pages 
-             (id integer NOT NULL PRIMARY KEY, title text NOT NULL, content text NOT NULL);''')
-    print("Creating Page Database......")
-    c.execute('''CREATE TABLE tags 
-             (id integer NOT NULL PRIMARY KEY autoincrement, name text NOT NULL, article_id integer NOT NULL);''')
-    print("Creating Tag Database......")
-    c.execute('''''')
-    print("Creating Index......")
+    c.execute(
+        """CREATE TABLE pages 
+             (id integer NOT NULL PRIMARY KEY, title text NOT NULL, content text NOT NULL);"""
+    )
+
+    print("Initializing tags table...")
+    c.execute(
+        """CREATE TABLE tags 
+             (id integer NOT NULL PRIMARY KEY autoincrement, name text NOT NULL, article_id integer NOT NULL);"""
+    )
+
     conn.commit()
     conn.close()
-    print("Successful to create database file.")
+    print("Database created successfully.")
 else:
-    print("Database File already exists.")
-    print("Failed to create database file.")
+    print("Skip creating database due to existing database file.")

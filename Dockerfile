@@ -1,15 +1,11 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.8-slim-buster
+FROM python:3.11.7
 
 WORKDIR /pomash_deployment
 
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
-
-
 COPY . .
 
-RUN python3 init_db.py
+RUN chmod +x deploy.sh
 
-CMD ["python3", "run.py" , "--port=5299"]
+CMD ["./deploy.sh", "5299"]

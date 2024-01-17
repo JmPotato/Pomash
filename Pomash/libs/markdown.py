@@ -9,7 +9,11 @@ from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 
 from .utils import trim
-from .. import dark_mode, pygments_style_light, pygments_style_dark
+from .. import config
+
+dark_mode = config["theme"]["dark_mode"]
+pygments_light_style = config["theme"]["pygments"]["light_style"]
+pygments_style_dark = config["theme"]["pygments"]["dark_style"]
 
 
 class MarkdownRender(mistune.HTMLRenderer):
@@ -17,9 +21,10 @@ class MarkdownRender(mistune.HTMLRenderer):
         return "%s" % text
 
     def block_code(self, code, info=None):
-        if info is None:
+        try:
+            lexer = get_lexer_by_name(info, stripall=True)
+        except:
             return "<pre><code>%s</code></pre>" % code.strip()
-        lexer = get_lexer_by_name(info, stripall=True)
 
         try:
             get_style_by_name(trim(pygments_style_light))

@@ -85,7 +85,7 @@ samp {
 }
 
 q {
-  quotes: "\201C""\201D""\2018""\2019";
+  quotes: "\201C" "\201D" "\2018" "\2019";
 }
 
 small {
@@ -286,6 +286,7 @@ table {
   #header {
     opacity: 0.7;
   }
+
   #header a:hover {
     opacity: 1;
     color: #223;
@@ -370,7 +371,7 @@ table {
   text-align: center;
 }
 
-#content .post > .date {
+#content .post>.date {
   text-align: center;
 }
 
@@ -408,24 +409,15 @@ table {
   color: gray;
 }
 
-#vcomments {
+.giscus {
   margin-top: 20px;
   padding-top: 20px;
   padding-bottom: 10px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#vcomments .vnick {
-  color: #111;
-}
-
-#vcomments .vat {
-  color: gray;
-  font-style: italic;
-  text-decoration: underline;
-}
-
-#login input {
+#login input,
+#change_pw input {
   text-align: center;
 }
 
@@ -478,7 +470,7 @@ table {
   margin: 0.67em 0;
 }
 
-.yue > h1 {
+.yue>h1 {
   margin-top: 0;
   font-size: 2em;
 }
@@ -725,12 +717,15 @@ table {
     padding-left: 20px;
     border-width: 4px;
   }
+
   .yue blockquote blockquote {
     margin-left: 0;
   }
+
   .yue figure img {
     margin: 0 0 4px;
   }
+
   .yue figure figcaption:before {
     width: 25%;
     margin-left: 75%;
@@ -739,6 +734,7 @@ table {
     content: "";
     margin-bottom: 10px;
   }
+
   .yue figure figcaption {
     position: absolute;
     left: -172px;

@@ -12,6 +12,9 @@ from tornado.escape import to_unicode, xhtml_escape
 
 
 class BaseHandler(tornado.web.RequestHandler):
+    def get_login_url(self):
+        return "/login"
+
     def get_pure_title(self, title):
         return re.sub("""<("[^"]*"|'[^']*'|[^'">])*>""", "", title).strip()
 

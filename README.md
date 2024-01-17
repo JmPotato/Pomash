@@ -1,45 +1,20 @@
 # Pomash
 
-Pomash is a lightweight blog system. Powered by Tornado Web Framework.
+Pomash is a lightweight blog system. Powered by Tornado Web Framework. In an era that static blog generators and frontend-backend separated applications dominate, embrace this classic monolithic web application to embody a unique retro style.
 
 ## Deployment
 
-Note: The Python environment has been updated to 3.7.1. So I am not sure whether Pomash works properly under the 2.x version of Python.
-
-How to get Pomash:
+Get Pomash:
 
 ```shell
 git clone https://github.com/JmPotato/Pomash.git
 cd Pomash
-pip3 install -r requirements.txt
 ```
 
-You should edit the `settings.py` to set up before running `run.py`. Here is a explanation for `settings.py`:
-
-* `blog_name` Your blog's name.
-* `blog_author` Your name.
-* `blog_url` Your blog's URL.
-* `theme` The theme you're using.
-* `dark_mode` The switch for dark mode. 0.Off & 1.On & 2.Auto. PS: Need theme support.
-* `pygments_style_light` The pygments style for light mode.
-* `pygments_style_dark` The pygments style for dark mode.
-* `post_per_page` The number of articles you want to display on the home page.
-* `twitter_card` Enable/Disable the twitter card function.
-* `twitter_username` Your twitter username.
-* `analytics` Google Analytics code. If you don't know what it is, just leave it empty.
-* `comment_system` Pomash currently supports Disqus or Valine as the comment system. `0` means turn off the comment. `1` means using Disqus. `2` means using Valine.
-* `disqus_name` If you choose Disqus as your comment system, please fill this with your own code.
-* `valine_app_id/key` If you choose Valine as your comment system, please fill this with your own LeanCloud app id/key. You can look [this](https://valine.js.org/quickstart.html#%E8%8E%B7%E5%8F%96APP-ID-%E5%92%8C-APP-Key) as a reference.
-* `dropbox_app_token` If you want to use the backup function, get a Dropbox app token [here](https://www.dropbox.com/developers/apps/create) first.
-* `cookie_secret` The string used to encrypt your cookie. ***PLEASE CHANGE THIS TO YOUR OWN STRING.***
-* `login_username` The admin username. Initial password of admin is `admin`. Please change it as soon as possible.
-* `DeBug` Developer setting. Normal user could just ignore it.
-
-After customizing `settings.py` and initialize the database, you could put Pomash online.
+After customizing `config.toml`, run `deploy.sh [PORT]` to deploy the Pomash automatically.
 
 ```shell
-python3 init_db.py
-python3 run.py --port=8080
+chmod +x deploy.sh && ./deploy.sh 5299
 ```
 
 ## Usage

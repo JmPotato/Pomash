@@ -1,0 +1,43 @@
+author = "JmPotato" # Your name.
+name = "iPotato" # Your blog name.
+url = "https://ipotato.me/" # Your blog URL.
+
+[theme]
+dark_mode = 0 # 0 for light mode, 1 for dark mode, 2 for auto mode.
+name = "clean"
+post_per_page = 15
+[theme.pygments]
+# See https://pygments.org/styles for more styles.
+dark_style = "monokai"
+light_style = "igor"
+
+[twitter_card]
+enabled = false
+username = "@JmPotat0"
+
+[google_analytics]
+id = ""
+
+[giscus]
+# See https://giscus.app to get your own giscus settings.
+category = "[ENTER CATEGORY NAME HERE]"
+category_id = "[ENTER CATEGORY ID HERE]"
+emit_metadata = "0"
+input_position = "top"
+lang = "en"
+loading = ""
+mapping = "og:title"
+reactions_enabled = "1"
+repo = "[ENTER REPO HERE]"
+repo_id = "[ENTER REPO ID HERE]"
+theme = "light"
+
+[backup]
+dropbox_app_token = ""
+
+[admin]
+cookie_secret = "[MODIFY TO YOUR OWN COOKIE SECRET HERE]" 
+username = "admin" # The default password is `admin`.
+
+[development]
+debug = false

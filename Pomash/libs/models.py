@@ -6,14 +6,16 @@ import os
 from .tools import *
 from .utils import *
 
+DB_FILE = "blog.db"
+
 
 class DatabaseError(Exception):
     def __init__(self, message):
         super().__init__(message)
 
 
-if os.path.exists("blog.db"):
-    db = Connection("blog.db")
+if os.path.exists(DB_FILE):
+    db = Connection(DB_FILE)
 else:
     raise DatabaseError("Database file not found!")
 
@@ -34,8 +36,11 @@ def get_article(id):
 
 
 def get_articles(page, post_per_page):
-    articles = db.query("SELECT * FROM articles ORDER BY id DESC LIMIT ?, ?;",
-                        (page - 1) * post_per_page, post_per_page)
+    articles = db.query(
+        "SELECT * FROM articles ORDER BY id DESC LIMIT ?, ?;",
+        (page - 1) * post_per_page,
+        post_per_page,
+    )
     return articles
 
 
@@ -45,7 +50,7 @@ def get_all_articles():
 
 
 def get_article_count():
-    count = db.query('''SELECT COUNT(*) AS count FROM articles''')
+    count = db.query("""SELECT COUNT(*) AS count FROM articles""")
     return count[0].count
 
 
@@ -57,14 +62,15 @@ def get_tag_articles(tag_name):
 
 def get_all_tags():
     tags = db.query(
-        "SELECT name, COUNT(name) AS num FROM tags GROUP BY name ORDER BY num DESC;")
+        "SELECT name, COUNT(name) AS num FROM tags GROUP BY name ORDER BY num DESC;"
+    )
     return tags
 
 
 def create_page(**kwargs):
-    count = db.query('''SELECT COUNT(*) AS count FROM pages''')
+    count = db.query("""SELECT COUNT(*) AS count FROM pages""")
     if count[0].count < 5:
-        sql = '''INSERT INTO pages (title, content) VALUES (?,?);'''
+        sql = """INSERT INTO pages (title, content) VALUES (?,?);"""
         id = db.execute(sql, kwargs["title"], kwargs["content"])
         return id
     else:
@@ -72,7 +78,7 @@ def create_page(**kwargs):
 
 
 def update_page(id, **kwargs):
-    sql = '''UPDATE pages SET title=?, content=? WHERE id=?;'''
+    sql = """UPDATE pages SET title=?, content=? WHERE id=?;"""
     db.execute(sql, kwargs["title"], kwargs["content"], id)
     return True
 
@@ -83,9 +89,10 @@ def delete_page(id):
 
 
 def create_article(**kwargs):
-    sql = '''INSERT INTO articles (title, content, tag, datetime) VALUES (?,?,?,?);'''
+    sql = """INSERT INTO articles (title, content, tag, datetime) VALUES (?,?,?,?);"""
     id = db.execute(
-        sql, kwargs["title"], kwargs["content"], kwargs["tags"], get_datetime())
+        sql, kwargs["title"], kwargs["content"], kwargs["tags"], get_datetime()
+    )
     tags = [tag.strip() for tag in kwargs["tags"].split(",")]
     for tag in tags:
         db.execute("INSERT INTO tags (name, article_id) VALUES (?,?);", tag, id)
@@ -94,7 +101,7 @@ def create_article(**kwargs):
 
 def update_article(id, **kwargs):
     db.execute("DELETE FROM tags WHERE article_id=?;", id)
-    sql = '''UPDATE articles SET title=?, content=?, tag=? WHERE id=?;'''
+    sql = """UPDATE articles SET title=?, content=?, tag=? WHERE id=?;"""
     db.execute(sql, kwargs["title"], kwargs["content"], kwargs["tags"], id)
     tags = [tag.strip() for tag in kwargs["tags"].split(",")]
     for tag in tags:
@@ -109,14 +116,13 @@ def delete_article(id):
 
 
 def update_token(username, token):
-    sql = '''UPDATE admin_config SET token=? WHERE username=?;'''
+    sql = """UPDATE admin_config SET token=? WHERE username=?;"""
     db.execute(sql, token, username)
     return True
 
 
 def verify_user(username, password_md5):
-    information = db.get(
-        "SELECT * FROM admin_config WHERE username = ?;", username)
+    information = db.get("SELECT * FROM admin_config WHERE username = ?;", username)
     if information and information.password == password_md5:
         return True
     else:
@@ -124,8 +130,7 @@ def verify_user(username, password_md5):
 
 
 def verify_token(username, token):
-    information = db.get(
-        "SELECT * FROM admin_config WHERE username = ?;", username)
+    information = db.get("SELECT * FROM admin_config WHERE username = ?;", username)
     if information.token == token:
         return True
     else:
@@ -133,6 +138,6 @@ def verify_token(username, token):
 
 
 def change_password(username, n_password_md5):
-    sql = '''UPDATE admin_config SET password=? WHERE username=?;'''
+    sql = """UPDATE admin_config SET password=? WHERE username=?;"""
     db.execute(sql, n_password_md5, username)
     return True

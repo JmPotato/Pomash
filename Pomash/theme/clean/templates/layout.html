@@ -7,7 +7,7 @@
     <title>{{ handler.settings['blog_name'] }}{% block title %}{% end %}</title>
     <link rel="alternate" type="application/rss+xml" href="/feed" title="{{ handler.settings['blog_name'] }}" />
     <link rel="icon" href='{{ static_url("img/Pomash.png") }}' />
-    {% if handler.settings['dark_mode'] == 2 %}
+    {% if handler.settings['theme']['dark_mode'] == 2 %}
     <link id="theme" rel="stylesheet" href='{{ static_url("css/style.css") }}' type="text/css" />
     <script>
         const now = new Date();
@@ -15,7 +15,7 @@
             document.getElementById("theme").setAttribute("href", '{{ static_url("css/style-dark.css") }}');
         }
     </script>
-    {% elif handler.settings['dark_mode'] == 1 %}
+    {% elif handler.settings['theme']['dark_mode'] == 1 %}
     <link id="theme" rel="stylesheet" href='{{ static_url("css/style-dark.css") }}' type="text/css" />
     {% else %}
     <link id="theme" rel="stylesheet" href='{{ static_url("css/style.css") }}' type="text/css" />
