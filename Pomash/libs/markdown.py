@@ -8,12 +8,14 @@ from pygments.styles import get_style_by_name
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 
-from .utils import trim
 from .. import config
 
+DEFAULT_LIGHT_STYLE = "pastie"
+DEFAULT_DARK_STYLE = "monokai"
+
 dark_mode = config["theme"]["dark_mode"]
-pygments_light_style = config["theme"]["pygments"]["light_style"]
-pygments_style_dark = config["theme"]["pygments"]["dark_style"]
+pygments_light_style = config["theme"]["pygments"]["light_style"].strip()
+pygments_style_dark = config["theme"]["pygments"]["dark_style"].strip()
 
 
 class MarkdownRender(mistune.HTMLRenderer):
@@ -27,16 +29,16 @@ class MarkdownRender(mistune.HTMLRenderer):
             return "<pre><code>%s</code></pre>" % code.strip()
 
         try:
-            get_style_by_name(trim(pygments_style_light))
-            light_style = trim(pygments_style_light)
+            get_style_by_name(pygments_style_light)
+            light_style = pygments_style_light
         except:
-            light_style = "pastie"
+            light_style = DEFAULT_LIGHT_STYLE
 
         try:
-            get_style_by_name(trim(pygments_style_dark))
-            dark_style = trim(pygments_style_dark)
+            get_style_by_name(pygments_style_dark)
+            dark_style = pygments_style_dark
         except:
-            dark_style = "monokai"
+            dark_style = DEFAULT_DARK_STYLE
 
         formatter = HtmlFormatter(
             style=dark_style if dark_mode else light_style,

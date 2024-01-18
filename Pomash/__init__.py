@@ -20,11 +20,11 @@ class Application(tornado.web.Application):
             template_path=os.path.join(THEME_PATH, "templates"),
             autoescape=None,
             # Blog-related
-            blog_name=config["name"],
-            blog_url=config["url"].strip().lstrip().rstrip("/"),
-            blog_author=config["author"],
+            blog_name=config["name"].strip(),
+            blog_url=config["url"].strip().rstrip("/"),
+            blog_author=config["author"].strip(),
             theme=config["theme"],
-            analytics=config["google_analytics"]["id"].strip().lstrip(),
+            analytics=config["google_analytics"]["id"].strip(),
             cookie_secret=config["admin"]["cookie_secret"],
             debug=config["development"]["debug"],
         )

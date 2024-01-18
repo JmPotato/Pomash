@@ -9,6 +9,9 @@ import dropbox
 import hashlib
 import pygments
 import datetime
+import logging
+
+logger = logging.getLogger("tornado.application")
 
 
 def to_md5(word):
@@ -39,7 +42,7 @@ def backup(dbx, file_name):
             mute=True,
         )
     except dropbox.exceptions.ApiError as err:
-        print("%s API error" % err)
+        logger.error("backup to dropbox failed, error: %s" % err)
         return False
     return True
 
@@ -49,10 +52,6 @@ def restore(dbx, file_name):
     try:
         dbx.files_download_to_file(file_name, dropbox_path)
     except dropbox.exceptions.HttpError as err:
-        print("%s API error" % err)
+        logger.error("restore from dropbox failed, error: %s" % err)
         return False
     return True
-
-
-def trim(string):
-    return string.strip().lstrip()
