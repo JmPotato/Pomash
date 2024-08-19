@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.11.7
+FROM python:3.12.4
 
 WORKDIR /pomash_deployment
 

@@ -14,18 +14,20 @@ if [[ "$(python3 --version | awk '{print $2}')" < "$PYTHON_VERSION" ]]; then
 fi
 
 # Create the virtual environment if it does not exist.
-if [ ! -d "venv" ]; then
+if [ ! -d "env" ]; then
     echo -e "${GREEN}Creating virtual environment...${NC}"
-    python3 -m venv venv
+    python3 -m venv env
+else
+    echo -e "${GREEN}Virtual environment already exists, do nothing${NC}"
 fi
 
 # Activate the virtual environment and install the dependencies.
-source venv/bin/activate
-pip3 install --upgrade pip
-pip3 install -r requirements.txt
+source ./env/bin/activate
+pip3 install -Uq pip
+pip3 install -qr requirements.txt
 
 # Init the database if it does not exist.
-if [ ! -f "$db_file" ]; then
+if [ ! -f "$DB_FILE" ]; then
     echo -e "${GREEN}Creating database...${NC}"
     python3 init_db.py
 else

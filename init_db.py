@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
 import hashlib
+import os
 import sqlite3
+import tomllib
 
 CONFIG_FILE = "config.toml"
 DB_FILE = "blog.db"
@@ -14,7 +15,7 @@ if not os.path.exists(CONFIG_FILE):
     exit(1)
 if not os.path.exists(DB_FILE):
     print("No database file found, creating database...")
-    config = tomllib.load(CONFIG_FILE)
+    config = tomllib.loads(open(CONFIG_FILE, "r").read())
     conn = sqlite3.connect(DB_FILE)
     c = conn.cursor()
 
@@ -25,7 +26,10 @@ if not os.path.exists(DB_FILE):
     )
     c.execute(
         """INSERT INTO admin_config VALUES (\"%s\", \"%s\", "token");"""
-        % (config.admin.name, hashlib.md5("admin".encode("utf-8")).hexdigest())
+        % (
+            config["admin"]["username"],
+            hashlib.md5("admin".encode("utf-8")).hexdigest(),
+        )
     )
 
     print("Initializing articles table...")
