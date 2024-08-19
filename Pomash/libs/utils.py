@@ -1,15 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
-import time
-import string
-import random
-import dropbox
-import hashlib
-import pygments
 import datetime
+import hashlib
 import logging
+import os
+import random
+import string
+import time
+
+import dropbox
 
 logger = logging.getLogger("tornado.application")
 

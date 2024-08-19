@@ -2,11 +2,10 @@
 # -*- coding: utf-8 -*-
 
 import mistune
-
 from pygments import highlight
-from pygments.styles import get_style_by_name
-from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
+from pygments.lexers import get_lexer_by_name
+from pygments.styles import get_style_by_name
 
 from .. import config
 

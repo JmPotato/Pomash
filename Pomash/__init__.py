@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import tomllib
 import os.path
+
 import tornado.web
 
-from .config import config
-from .pomash import handlers as handler
+from Pomash.config import config
+from Pomash.Pomash import handlers as handler
 
 THEME_PATH = os.path.join(os.path.dirname(__file__), "theme/" + config["theme"]["name"])
 

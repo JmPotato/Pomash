@@ -2,13 +2,14 @@
 # -*- coding: utf-8 -*-
 
 import re
+from urllib.parse import quote, unquote
+
 import mistune
 import tornado.web
-
-from .models import *
-from .markdown import MarkdownRender
-from urllib.parse import unquote, quote
 from tornado.escape import to_unicode, xhtml_escape
+
+from .markdown import MarkdownRender
+from .models import *
 
 
 class BaseHandler(tornado.web.RequestHandler):
