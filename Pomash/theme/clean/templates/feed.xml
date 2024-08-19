@@ -3,12 +3,17 @@
     <title>{{ handler.settings['blog_name'] }}</title>
     <link href="/feed" rel="self" />
     <link href="{{ handler.settings['blog_url'] }}" />
+    {% if articlesList %}
     <updated>{{ articlesList[0].datetime }}</updated>
+    {% end %}
     <id>{{ handler.settings['blog_url'] }}</id>
     {% for article in articlesList %}
     <entry>
         <title><![CDATA[{{ article.title }}]]></title>
-        <author><name>{{ handler.settings['blog_author'] }}</name><uri>{{ handler.settings['blog_url'] }}</uri></author>
+        <author>
+            <name>{{ handler.settings['blog_author'] }}</name>
+            <uri>{{ handler.settings['blog_url'] }}</uri>
+        </author>
         <link href="http://{{ request.host }}/article/{{ article.id }}"/>
         <updated>{{ article.datetime }}</updated>
         <published>{{ article.datetime }}</published>
