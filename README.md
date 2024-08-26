@@ -1,5 +1,7 @@
 # Pomash
 
+**NOTICE: This repo is no longer maintained, please use [rsomhaP](https://github.com/JmPotato/rsomhaP) which is the latest refactored version.**
+
 Pomash is a lightweight blog system. Powered by Tornado Web Framework. In an era that static blog generators and frontend-backend separated applications dominate, embrace this classic monolithic web application to embody a unique retro style.
 
 ## Deployment
